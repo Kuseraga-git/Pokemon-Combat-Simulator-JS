@@ -1,0 +1,167 @@
+import { Capacites } from "./Capacites.js"
+import { Types } from "./Types.js"
+
+export const Pokedex = {
+    PIKACHU : {
+        Nom: "Pikachu",
+        Type1: Types.ELECTRICK,
+        Type2: Types.Aucun,
+        PV_Max: 274,
+        Attaque: 350,
+        Defense: 196,
+        Spe_Attaque: 218,
+        Spe_Defense: 218,
+        Vitesse: 306,
+        Image: '../Images_Pokemon/Pikachu.png',
+        Capacites : [
+            Capacites.ELECTACLE,
+            Capacites.CALINERIE,
+            Capacites.CASSE_BRIQUE,
+            Capacites.QUEUE_DE_FER,
+        ]
+    },
+    FLORIZARRE : {
+        Nom: "Florizarre",
+        Type1: Types.PLANTE,
+        Type2: Types.POISON,
+        PV_Max: 364,
+        Attaque: 289,
+        Defense: 291,
+        Spe_Attaque: 328,
+        Spe_Defense: 328,
+        Vitesse: 284,
+        Image: '../Images_Pokemon/Florizarre.png',
+        Capacites : [
+            Capacites.MEGA_SANGSUE,
+            Capacites.SEISME,
+            Capacites.BOMB_BEURK,
+            Capacites.TEMPETE_VERTE,
+        ]
+    },
+    LOKHLASS : {
+        Nom: "Lokhlass",
+        Type1: Types.EAU,
+        Type2: Types.GLACE,
+        PV_Max: 464,
+        Attaque: 295,
+        Defense: 284,
+        Spe_Attaque: 295,
+        Spe_Defense: 317,
+        Vitesse: 240,
+        Image: '../Images_Pokemon/Lokhlass.png',
+        Capacites : [
+            Capacites.SURF,
+            Capacites.BLIZZARD,
+            Capacites.PSYCHO,
+            Capacites.POUVOIR_ANTIQUE,
+        ]
+    },
+    DRACAUFEU : {
+        Nom: "Dracaufeu",
+        Type1: Types.FEU,
+        Type2: Types.VOL,
+        PV_Max: 360,
+        Attaque: 293,
+        Defense: 280,
+        Spe_Attaque: 348,
+        Spe_Defense: 295,
+        Vitesse: 328,
+        Image: '../Images_Pokemon/Dracaufeu.png',
+        Capacites : [
+            Capacites.DEFLAGRATION,
+            Capacites.VENT_VIOLENT,
+            Capacites.DRACO_CHOC,
+            Capacites.EXPLOFORCE,
+        ]
+    },
+    NOADKOKO : {
+        Nom: "Noadkoko",
+        Type1: Types.PLANTE,
+        Type2: Types.PSY,
+        PV_Max: 394,
+        Attaque: 317,
+        Defense: 295,
+        Spe_Attaque: 383,
+        Spe_Defense: 273,
+        Vitesse: 229,
+        Image: '../Images_Pokemon/Noadkoko.png',
+        Capacites : [
+            Capacites.MEGAFOUET,
+            Capacites.PSYCHO,
+            Capacites.DAMOCLES,
+            Capacites.POUVOIR_ANTIQUE,
+        ]
+    },
+    TAUROS : {
+        Nom: "Tauros",
+        Type1: Types.NORMAL,
+        Type2: Types.Aucun,
+        PV_Max: 354,
+        Attaque: 328,
+        Defense: 317,
+        Spe_Attaque: 196,
+        Spe_Defense: 262,
+        Vitesse: 350,
+        Image: '../Images_Pokemon/Tauros.png',
+        Capacites : [
+            Capacites.DAMOCLES,
+            Capacites.SEISME,
+            Capacites.EBOULEMENT,
+            Capacites.QUEUE_DE_FER,
+        ]
+    },
+    TORTANK : {
+        Nom: "Tortank",
+        Type1: Types.EAU,
+        Type2: Types.Aucun,
+        PV_Max: 362,
+        Attaque: 291,
+        Defense: 328,
+        Spe_Attaque: 295,
+        Spe_Defense: 339,
+        Vitesse: 280,
+        Image: '../Images_Pokemon/Tortank.png',
+        Capacites : [
+            Capacites.HYDROCANON,
+            Capacites.LUMINOCANON,
+            Capacites.LASER_GLACE,
+            Capacites.AURASPHERE,
+        ]
+    },
+    MELODELFE : {
+        Nom: "Mélodelfe",
+        Type1: Types.FEE,
+        Type2: Types.Aucun,
+        PV_Max: 394,
+        Attaque: 262,
+        Defense: 269,
+        Spe_Attaque: 317,
+        Spe_Defense: 306,
+        Vitesse: 240,
+        Image: '../Images_Pokemon/Melodelfe.png',
+        Capacites : [
+            Capacites.POUVOIR_LUNAIRE,
+            Capacites.TRIPLATTAQUE,
+            Capacites.LANCE_FLAMME,
+            Capacites.TONNERRE,
+        ]
+    },
+    ECTOPLASMA : {
+        Nom: "Ectoplasma",
+        Type1: Types.SPECTRE,
+        Type2: Types.POISON,
+        PV_Max: 324,
+        Attaque: 251,
+        Defense: 240,
+        Spe_Attaque: 394,
+        Spe_Defense: 273,
+        Vitesse: 350,
+        Image: '../Images_Pokemon/Ectoplasma.png',
+        Capacites : [
+            Capacites.VIBROBSCUR,
+            Capacites.BALLOMBRE,
+            Capacites.BOMB_BEURK,
+            Capacites.ECO_SPHERE,
+        ]
+    },
+}

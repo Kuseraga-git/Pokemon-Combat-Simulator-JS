@@ -1,0 +1,32 @@
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    border: 2px solid;
+}  
+
+.flex-child:first-child {
+    margin-right: 20px;
+} 
+
+.pokemon-infos {
+    font-size: 25px;
+    flex: 1;
+}
+
+.pokemon-image {
+    flex: 1;
+    width: 30%;
+    height: 30%;
+}
+
+.card {
+    display: flex; /* Utiliser un affichage flex pour aligner horizontalement les éléments enfants */
+    align-items: center; /* Aligner verticalement les éléments enfants au centre */
+}
+
+.pokemon-infos {
+    flex: 1; /* Le contenu de cette div occupera l'espace disponible (largeur flexible) */
+}
