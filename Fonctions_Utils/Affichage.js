@@ -53,7 +53,6 @@ export function afficherEquipe1(equipe, partie) {
     const pokemon_card = document.querySelectorAll(".equipe1-pokemon-card");
     for (const [index, element] of pokemon_card.entries()) {
         element.addEventListener("click", function(event) {
-            equipe.pokemons[index].Appel()
             // partie.index_pokemon1 = index
             const boutonsCapa = document.getElementById("capa-list1");
             boutonsCapa.innerHTML = ``

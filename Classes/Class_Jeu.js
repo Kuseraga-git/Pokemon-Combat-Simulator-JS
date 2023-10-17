@@ -34,15 +34,21 @@ export class Jeu {
 
         // SI changement de pokemon
         if (choix1 == 4){
-            if (pokemon1.KO) { // SI le pokemon est KO
-                this.index_pokemon1 = index_nouveau_pokemon1
-                pokemon1 = this.dresseurs[0].pokemons[this.index_pokemon1]
-                MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2)
-            } else { // SI le pokemon n'est pas KO
-                this.index_pokemon1 = index_nouveau_pokemon1
-                pokemon1 = this.dresseurs[0].pokemons[this.index_pokemon1]
-                pokemon2.capacites[valeurAleatoire].Effet(pokemon1, pokemon2)
-                MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2)
+            if (pokemon1.KO) { // SI le pokemon actif est KO
+                if (this.dresseurs[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
+                    this.index_pokemon1 = index_nouveau_pokemon1
+                    pokemon1 = this.dresseurs[0].pokemons[this.index_pokemon1]
+                    pokemon1.Appel()
+                    MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2)
+                }
+            } else { // SI le pokemon actif n'est pas KO
+                if (this.dresseurs[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
+                    this.index_pokemon1 = index_nouveau_pokemon1
+                    pokemon1 = this.dresseurs[0].pokemons[this.index_pokemon1]
+                    pokemon1.Appel()
+                    pokemon2.capacites[valeurAleatoire].Effet(pokemon1, pokemon2)
+                    MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2)
+                }
             }
         } else if (pokemon1.KO == false && pokemon2.KO == false) { // SI les 2 pokemons ne sont pas KO
             if (pokemon1.Vitesse_Actuel >= pokemon2.Vitesse_Actuel) { // SI pokemon joueur + Rapide
