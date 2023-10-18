@@ -377,7 +377,7 @@ export const Capacites = {
     DAMOCLES :{
         Nom_capa : "Damoclès",
         Categorie : Categorie.PHYSIQUE,
-        Type : Types.Normal,
+        Type : Types.NORMAL,
         Puissance : 120,
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
@@ -489,16 +489,12 @@ export const Capacites = {
         Precision : 200,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
-                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
-                Infliger_Degats(adversaire, tmp[0])
-                if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
-                }
-                adversaire.Check_KO()
-            } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+            let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
+            Infliger_Degats(adversaire, tmp[0])
+            if (tmp[1]) {
+                console.log("COUP CRITIQUE !!!")
             }
+            adversaire.Check_KO()
         }
     },
     POUVOIR_LUNAIRE : {
