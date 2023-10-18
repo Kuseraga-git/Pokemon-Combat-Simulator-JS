@@ -27,10 +27,6 @@ export class Equipe {
         this.pokemons.push(new Pokemon(Pokedex.ECTOPLASMA))
         this.pokemons.push(new Pokemon(Pokedex.TORTANK))
     }
-    
-    Creer_Equipe_Paul() {
-        this.pokemons.push(new Pokemon(Pokedex.MIRABELLE))
-    }
 
     Check_Equipe_KO() {
         for (const pokemon of this.pokemons) {
