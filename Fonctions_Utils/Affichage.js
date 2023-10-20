@@ -62,14 +62,6 @@ export function afficherEquipe1(equipe, partie) {
     }
 }
 
-// const test = document.getElementById("test_switch_poke")
-// test.addEventListener("click", function(event) {
-//     Partie.index_pokemon1 = 2
-//     const boutonsCapa = document.getElementById("capa-list1");
-//     boutonsCapa.innerHTML = ``
-//     affichePokemon1(Partie.dresseurs[0].pokemons[Partie.index_pokemon1], Partie.dresseurs[1].pokemons[Partie.index_pokemon2])
-// })
-
 export function afficherEquipe2(equipe) {
     const equipeContainer = document.getElementById("equipe2");
     equipe.pokemons.forEach(pokemon => {

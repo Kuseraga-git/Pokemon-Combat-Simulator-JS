@@ -22,7 +22,7 @@ export function Attaque_Augmenter_Stat(pokemon, stat) {
 }
 
 export function Degat_de_Recul(pokemon, degats, pourcentage) {
-    pokemon.PV_Actuel = pokemon.PV_Actuel - (degats * pourcentage)
+    pokemon.PV_Actuel = Math.trunc(pokemon.PV_Actuel - (degats * pourcentage))
     console.log(`${pokemon.nom} subit des dégâts de recul`)
     pokemon.Check_KO()
 }

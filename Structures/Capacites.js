@@ -2,6 +2,7 @@ import { Categorie } from "./Categories.js"
 import { Types } from "./Types.js"
 import { Infliger_Degats, Calcul_Degats, Check_Precision } from "../Fonctions_Utils/Offensif.js"
 import { Chance_Effet_Supplementaire, Attaque_Baisser_Stat, Degat_de_Recul, Soigner_PV, Attaque_Augmenter_Stat } from "../Fonctions_Utils/Effets_Speciaux.js"
+
 export const Capacites = {
     ELECTACLE : {
         Nom_capa : "Electacle",
@@ -644,6 +645,29 @@ export const Capacites = {
                 adversaire.Check_KO()
                 if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
                     Attaque_Baisser_Stat(adversaire, "Spe_Defense")
+                }
+            } else {
+                console.log(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
+    TORGNOLE : {
+        Nom_capa : "Torgnole",
+        Categorie : Categorie.PHYSIQUE,
+        Type : Types.NORMAL,
+        Puissance : 25,
+        Precision : 100,
+        Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
+            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            if (Check_Precision(Precision)) {
+                let rand = Math.trunc(Math.random() * 5)
+                for (let i = 0; i < rand && adversaire.KO == false; i++) {
+                    let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
+                    Infliger_Degats(adversaire, tmp[0])
+                    if (tmp[1]) {
+                        console.log("COUP CRITIQUE !!!")
+                    }
+                    adversaire.Check_KO()
                 }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
