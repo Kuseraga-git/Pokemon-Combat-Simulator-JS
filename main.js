@@ -5,14 +5,17 @@ import { Jeu } from "./Classes/Class_Jeu.js";
 // ###                      INITIALISATION                       ###
 // #################################################################
 
-// Vous devez initialiser une instance de jeu - Codez en dessous
+let Partie = new Jeu()
+let equipe1 = new Equipe("Leaf", 1)
+equipe1.Creer_Equipe_Leaf()
+Partie.Ajouter_Dresseur(equipe1)
 
-
+let equipe2 = new Equipe("Red", 2)
+equipe2.Creer_Equipe_Red()
+Partie.Ajouter_Dresseur(equipe2)
 
 // #################################################################
 // ###                         AFFICHAGE                         ###
 // #################################################################
 
-// Vous devez utiliser la/les fonction/fonctions d'affichage sur l'écran - Codez en dessous
-
-
+affichageGeneral(Partie)
