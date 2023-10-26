@@ -22,6 +22,7 @@ export class Pokemon {
 
     Appel() {
         console.log(`Je te choisis ${this.nom} !!!`)
+        this.Reinitialisation_Stats()
     }
 
     Check_KO() {
@@ -30,5 +31,13 @@ export class Pokemon {
             this.KO = true
             console.log(`${this.nom} est KO`)
         }
+    }
+
+    Reinitialisation_Stats() {
+        this.Attaque = this.Attaque_Actuel
+        this.Defense = this.Defense_Actuel
+        this.Spe_Attaque = this.Spe_Attaque_Actuel
+        this.Spe_Defense = this.Spe_Defense_Actuel
+        this.Vitesse = this.Vitesse_Actuel
     }
 }
