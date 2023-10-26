@@ -20,4 +20,3 @@ Partie.Ajouter_Dresseur(equipe2)
 // #################################################################
 
 affichageGeneral(Partie)
-
