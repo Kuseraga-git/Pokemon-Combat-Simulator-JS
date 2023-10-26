@@ -107,7 +107,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                Soigner_PV(pokemon, tmp[0] / 2)
+                Soigner_PV(pokemon, Math.trunc(tmp[0] / 2))
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }

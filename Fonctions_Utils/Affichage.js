@@ -7,6 +7,12 @@ export function MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2) {
     PV_Actuel2.textContent = `PV: ${pokemon2.PV_Actuel} / ${pokemon2.PV_Max}`
 }
 
+export function affichageGeneral(Partie){
+    affichePokemon1(Partie.dresseurs[0].pokemons[Partie.index_pokemon1], Partie.dresseurs[1].pokemons[Partie.index_pokemon2], Partie)
+    affichePokemon2(Partie.dresseurs[1].pokemons[Partie.index_pokemon2])
+    afficherEquipe1(Partie.dresseurs[0], Partie)
+}
+
 export function genererCartePokemon(pokemon, equipe, index) {
     return `
         <button class="equipe${index}-pokemon-card">
@@ -53,7 +59,6 @@ export function afficherEquipe1(equipe, partie) {
     const pokemon_card = document.querySelectorAll(".equipe1-pokemon-card");
     for (const [index, element] of pokemon_card.entries()) {
         element.addEventListener("click", function(event) {
-            // partie.index_pokemon1 = index
             const boutonsCapa = document.getElementById("capa-list1");
             boutonsCapa.innerHTML = ``
             partie.Ordre_Action(4, index)
@@ -82,7 +87,6 @@ export function affichePokemon1(pokemon1, pokemon2, partie) {
     for (const [index, element] of Capacites.entries()) {
         element.addEventListener("click", function(event) {
             partie.Ordre_Action(index)
-            // MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2)
         })
     }
 }

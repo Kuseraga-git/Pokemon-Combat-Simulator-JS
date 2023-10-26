@@ -1,6 +1,6 @@
 import { Equipe } from "./Classes/Class_Equipe.js";
 import { Jeu } from "./Classes/Class_Jeu.js";
-import { affichePokemon1, affichePokemon2, afficherEquipe1 } from "./Fonctions_Utils/Affichage.js";
+import { affichageGeneral } from "./Fonctions_Utils/Affichage.js";
 
 // #################################################################
 // ###                      INITIALISATION                       ###
@@ -17,7 +17,5 @@ Partie.Ajouter_Dresseur(equipe2)
 
 // #################################################################
 
-affichePokemon1(Partie.dresseurs[0].pokemons[Partie.index_pokemon1], Partie.dresseurs[1].pokemons[Partie.index_pokemon2], Partie)
-affichePokemon2(Partie.dresseurs[1].pokemons[Partie.index_pokemon2])
+affichageGeneral(Partie)
 
-afficherEquipe1(Partie.dresseurs[0], Partie)
