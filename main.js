@@ -16,6 +16,8 @@ equipe2.Creer_Equipe_Red()
 Partie.Ajouter_Dresseur(equipe2)
 
 // #################################################################
+// ###                         AFFICHAGE                         ###
+// #################################################################
 
 affichageGeneral(Partie)
 
