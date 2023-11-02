@@ -1,5 +1,5 @@
 export class Pokemon {
-    constructor(pokemon) {
+    constructor(pokemon) { // Le constructeur prend en paramètre un pokemon contenu dans le Pokedex
         this.nom = pokemon.Nom
         this.PV_Max = pokemon.PV_Max
         this.PV_Actuel = pokemon.PV_Max
