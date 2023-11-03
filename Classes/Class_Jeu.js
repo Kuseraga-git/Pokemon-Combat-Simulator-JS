@@ -2,18 +2,18 @@ import { MAJ_PV_Actuel_Pokemon, affichePokemon2 } from "../Fonctions_Utils/Affic
 
 export class Jeu {
     constructor() {
-        this.dresseurs = []
+        this.equipes = []
         this.index_pokemon1 = 0
         this.index_pokemon2 = 0
     }
 
     Ajouter_Dresseur(equipe) {
-        this.dresseurs.push(equipe)
+        this.equipes.push(equipe)
     }
 
     Lancer_Partie() {
-        if (this.dresseurs.length == 2) {
-            console.log(`L'équipe de ${this.dresseurs[0].dresseur} et de ${this.dresseurs[1].dresseur} sont prêtes !`)
+        if (this.equipes.length == 2) {
+            console.log(`L'équipe de ${this.equipes[0].dresseur} et de ${this.equipes[1].dresseur} sont prêtes !`)
             // Page selection pokemon - Seul le joueur choisit un pokemon, l'adversaire choisi un pokemon au hasard
             console.log(`Choisissez vos pokemons !!!`)
         } else {
@@ -28,23 +28,23 @@ export class Jeu {
         **  4 == changement de pokemon sur le pokemon, l'index du poke choisi est envoyé dans index_nouveau_pokemon
         **/
 
-        let pokemon1 = this.dresseurs[0].pokemons[this.index_pokemon1]
-        let pokemon2 = this.dresseurs[1].pokemons[this.index_pokemon2]
+        let pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
+        let pokemon2 = this.equipes[1].pokemons[this.index_pokemon2]
         const valeurAleatoire = Math.floor(Math.random() * 4);
 
         // SI changement de pokemon
         if (choix1 == 4){
             if (pokemon1.KO) { // SI le pokemon actif est KO
-                if (this.dresseurs[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
+                if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
                     this.index_pokemon1 = index_nouveau_pokemon1
-                    pokemon1 = this.dresseurs[0].pokemons[this.index_pokemon1]
+                    pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
                     pokemon1.Appel()
                     MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
                 }
             } else { // SI le pokemon actif n'est pas KO
-                if (this.dresseurs[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
+                if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
                     this.index_pokemon1 = index_nouveau_pokemon1
-                    pokemon1 = this.dresseurs[0].pokemons[this.index_pokemon1]
+                    pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
                     pokemon1.Appel()
                     pokemon2.capacites[valeurAleatoire].Effet(pokemon1, pokemon2)
                     MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
@@ -65,21 +65,21 @@ export class Jeu {
                 MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
             }
         }
-        if (this.dresseurs[0].Check_Equipe_KO() && this.dresseurs[1].Check_Equipe_KO()) { // SI les 2 équipes sont KO
+        if (this.equipes[0].Check_Equipe_KO() && this.equipes[1].Check_Equipe_KO()) { // SI les 2 équipes sont KO
             setTimeout(alert, 500, `Egalité !!!`);
         } else if (pokemon2.KO) { // SI pokemon adverse est KO
-            if (this.dresseurs[1].Check_Equipe_KO() == false) { // SI l'équipe adverse a encore des pokemons jouables
+            if (this.equipes[1].Check_Equipe_KO() == false) { // SI l'équipe adverse a encore des pokemons jouables
                 this.index_pokemon2 += 1
-                pokemon2 = this.dresseurs[1].pokemons[this.index_pokemon2]
+                pokemon2 = this.equipes[1].pokemons[this.index_pokemon2]
                 affichePokemon2(pokemon2)
                 MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
             } else {
                 MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
-                setTimeout(alert, 500, `Victoire pour ${this.dresseurs[0].dresseur} !!!`);
+                setTimeout(alert, 500, `Victoire pour ${this.equipes[0].dresseur} !!!`);
             }
-        } else if (this.dresseurs[0].Check_Equipe_KO()) {
+        } else if (this.equipes[0].Check_Equipe_KO()) {
             MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
-            setTimeout(alert, 500, `Victoire pour ${this.dresseurs[1].dresseur} !!!`);
+            setTimeout(alert, 500, `Victoire pour ${this.equipes[1].dresseur} !!!`);
         }
     }
 }
