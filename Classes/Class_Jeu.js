@@ -39,7 +39,7 @@ export class Jeu {
                     this.index_pokemon1 = index_nouveau_pokemon1
                     pokemon1 = this.dresseurs[0].pokemons[this.index_pokemon1]
                     pokemon1.Appel()
-                    MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2)
+                    MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
                 }
             } else { // SI le pokemon actif n'est pas KO
                 if (this.dresseurs[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
@@ -47,7 +47,7 @@ export class Jeu {
                     pokemon1 = this.dresseurs[0].pokemons[this.index_pokemon1]
                     pokemon1.Appel()
                     pokemon2.capacites[valeurAleatoire].Effet(pokemon1, pokemon2)
-                    MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2)
+                    MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
                 }
             }
         } else if (pokemon1.KO == false && pokemon2.KO == false) { // SI les 2 pokemons ne sont pas KO
@@ -56,13 +56,13 @@ export class Jeu {
                 if (pokemon2.KO == false && pokemon1.KO == false) {
                     pokemon2.capacites[valeurAleatoire].Effet(pokemon1, pokemon2)
                 }
-                MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2)
+                MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
             } else { // SI pokemon adverse + Rapide
                 pokemon2.capacites[valeurAleatoire].Effet(pokemon1, pokemon2)
                 if (pokemon2.KO == false && pokemon1.KO == false) {
                     pokemon1.capacites[choix1].Effet(pokemon2, pokemon1)
                 }
-                MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2)
+                MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
             }
         }
         if (this.dresseurs[0].Check_Equipe_KO() && this.dresseurs[1].Check_Equipe_KO()) { // SI les 2 équipes sont KO
@@ -72,13 +72,13 @@ export class Jeu {
                 this.index_pokemon2 += 1
                 pokemon2 = this.dresseurs[1].pokemons[this.index_pokemon2]
                 affichePokemon2(pokemon2)
-                MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2)
+                MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
             } else {
-                MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2)
+                MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
                 setTimeout(alert, 500, `Victoire pour ${this.dresseurs[0].dresseur} !!!`);
             }
         } else if (this.dresseurs[0].Check_Equipe_KO()) {
-            MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2)
+            MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
             setTimeout(alert, 500, `Victoire pour ${this.dresseurs[1].dresseur} !!!`);
         }
     }
