@@ -1,7 +1,7 @@
-export function MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2) {
+export function MAJ_PV_Actuel_Pokemon(pokemon1, index, pokemon2) {
     let PV_Actuel1 = document.getElementById("PV1")
     PV_Actuel1.textContent = `PV: ${pokemon1.PV_Actuel} / ${pokemon1.PV_Max}`
-    PV_Actuel1 = document.getElementById(`equipe1-${pokemon1.nom}`)
+    PV_Actuel1 = document.getElementById(`equipe1-${index}`)
     PV_Actuel1.textContent = `PV: ${pokemon1.PV_Actuel} / ${pokemon1.PV_Max}`
     let PV_Actuel2 = document.getElementById("PV2")
     PV_Actuel2.textContent = `PV: ${pokemon2.PV_Actuel} / ${pokemon2.PV_Max}`
@@ -13,12 +13,12 @@ export function affichageGeneral(Partie){
     afficherEquipe1(Partie.dresseurs[0], Partie)
 }
 
-export function genererCartePokemon(pokemon, equipe, index) {
+export function genererCartePokemon(pokemon, pkm_index, equipe, index) {
     return `
         <button class="equipe${index}-pokemon-card">
             <div class="${equipe.dresseur}">
                 <h5 class="card-title">${pokemon.nom}</h5>
-                <p id="equipe${index}-${pokemon.nom}" class="card-text">PV: ${pokemon.PV_Actuel} / ${pokemon.PV_Max}</p>
+                <p id="equipe${index}-${pkm_index}" class="card-text">PV: ${pokemon.PV_Actuel} / ${pokemon.PV_Max}</p>
                 <p class="card-text">Type 1: ${pokemon.type1}</p>
                 <p class="card-text">Type 2: ${pokemon.type2}</p>
                 <ul>
@@ -52,8 +52,8 @@ export function genererCapacitePokemon(capacite) {
 
 export function afficherEquipe1(equipe, partie) {
     const equipeContainer = document.getElementById("equipe1");
-    equipe.pokemons.forEach(pokemon => {
-        const cartePokemon = genererCartePokemon(pokemon, equipe, 1);
+    equipe.pokemons.forEach((pokemon, pkm_index) => {
+        const cartePokemon = genererCartePokemon(pokemon, pkm_index, equipe, 1);
         equipeContainer.innerHTML += cartePokemon;
     });
     const pokemon_card = document.querySelectorAll(".equipe1-pokemon-card");
