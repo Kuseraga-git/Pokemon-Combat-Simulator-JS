@@ -34,10 +34,10 @@ export class Pokemon {
     }
 
     Reinitialisation_Stats() {
-        this.Attaque = this.Attaque_Actuel
-        this.Defense = this.Defense_Actuel
-        this.Spe_Attaque = this.Spe_Attaque_Actuel
-        this.Spe_Defense = this.Spe_Defense_Actuel
-        this.Vitesse = this.Vitesse_Actuel
+        this.Attaque_Actuel = this.Attaque
+        this.Defense_Actuel = this.Defense
+        this.Spe_Attaque_Actuel = this.Spe_Attaque
+        this.Spe_Defense_Actuel = this.Spe_Defense
+        this.Vitesse_Actuel = this.Vitesse
     }
 }
