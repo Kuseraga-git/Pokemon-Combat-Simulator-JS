@@ -20,6 +20,7 @@ export const Types = {
     Aucun: "Aucun"
 }
 
+// Cette fonction correspond à cette matrice de calcul : https://www.pokepedia.fr/Table_des_types#Tableaux_récapitulatifs_des_faiblesses_et_résistances_de_chaque_type
 export function Calcul_Table_des_Types(type_attaque, type1, type2 = "Aucun") {
     let resultat = 1.0
     if (type_attaque == "Acier") {

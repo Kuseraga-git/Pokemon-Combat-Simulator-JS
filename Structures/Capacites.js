@@ -1,7 +1,7 @@
 import { Categorie } from "./Categories.js"
 import { Types } from "./Types.js"
 import { Infliger_Degats, Calcul_Degats, Check_Precision } from "../Fonctions_Utils/Offensif.js"
-import { Chance_Effet_Supplementaire, Attaque_Baisser_Stat, Degat_de_Recul, Soigner_PV, Attaque_Augmenter_Stat } from "../Fonctions_Utils/Effets_Speciaux.js"
+import { Chance_Effet_Supplementaire, Baisser_Stat, Degat_de_Recul, Soigner_PV, Augmenter_Stat } from "../Fonctions_Utils/Effets_Speciaux.js"
 
 export const Capacites = {
     ELECTACLE : {
@@ -42,7 +42,7 @@ export const Capacites = {
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
-                    Attaque_Baisser_Stat(adversaire, "Attaque")
+                    Baisser_Stat(adversaire, "Attaque")
                 }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
@@ -85,7 +85,7 @@ export const Capacites = {
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(30)) {
-                    Attaque_Baisser_Stat(adversaire, "Defense")
+                    Baisser_Stat(adversaire, "Defense")
                 }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
@@ -169,8 +169,8 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                Attaque_Baisser_Stat(pokemon, "Spe_Attaque")
-                Attaque_Baisser_Stat(pokemon, "Spe_Attaque")
+                Baisser_Stat(pokemon, "Spe_Attaque")
+                Baisser_Stat(pokemon, "Spe_Attaque")
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
@@ -233,7 +233,7 @@ export const Capacites = {
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
-                    Attaque_Baisser_Stat(adversaire, "Spe_Defense")
+                    Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
@@ -256,11 +256,11 @@ export const Capacites = {
                 }
                 adversaire.Check_KO()
                 if (tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
-                    Attaque_Augmenter_Stat(pokemon, "Attaque")
-                    Attaque_Augmenter_Stat(pokemon, "Defense")
-                    Attaque_Augmenter_Stat(pokemon, "Spe_Attaque")
-                    Attaque_Augmenter_Stat(pokemon, "Spe_Attaque")
-                    Attaque_Augmenter_Stat(pokemon, "Vitesse")
+                    Augmenter_Stat(pokemon, "Attaque")
+                    Augmenter_Stat(pokemon, "Defense")
+                    Augmenter_Stat(pokemon, "Spe_Attaque")
+                    Augmenter_Stat(pokemon, "Spe_Attaque")
+                    Augmenter_Stat(pokemon, "Vitesse")
                 }
                 
             } else {
@@ -346,7 +346,7 @@ export const Capacites = {
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
-                    Attaque_Baisser_Stat(adversaire, "Spe_Defense")
+                    Baisser_Stat(adversaire, "Spe_Defense")
                 }
                 
             } else {
@@ -454,7 +454,7 @@ export const Capacites = {
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
-                    Attaque_Baisser_Stat(adversaire, "Spe_Defense")
+                    Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
@@ -514,7 +514,7 @@ export const Capacites = {
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(30)) {
-                    Attaque_Baisser_Stat(adversaire, "Spe_Attaque")
+                    Baisser_Stat(adversaire, "Spe_Attaque")
                 }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
@@ -621,7 +621,7 @@ export const Capacites = {
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(20)) {
-                    Attaque_Baisser_Stat(adversaire, "Spe_Defense")
+                    Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
@@ -644,7 +644,7 @@ export const Capacites = {
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
-                    Attaque_Baisser_Stat(adversaire, "Spe_Defense")
+                    Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
@@ -665,8 +665,8 @@ export const Capacites = {
                     if (tmp[1]) {
                         console.log("COUP CRITIQUE !!!")
                     }
-                    Attaque_Baisser_Stat(pokemon, "Spe_Attaque")
-                    Attaque_Baisser_Stat(pokemon, "Spe_Attaque")
+                    Baisser_Stat(pokemon, "Spe_Attaque")
+                    Baisser_Stat(pokemon, "Spe_Attaque")
                     adversaire.Check_KO()
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
@@ -687,9 +687,9 @@ export const Capacites = {
                 if (tmp[1]) {
                     console.log("COUP CRITIQUE !!!")
                 }
-                Attaque_Baisser_Stat(pokemon, "Defense")
-                Attaque_Baisser_Stat(pokemon, "Spe_Defense")
-                Attaque_Baisser_Stat(pokemon, "Vitesse")
+                Baisser_Stat(pokemon, "Defense")
+                Baisser_Stat(pokemon, "Spe_Defense")
+                Baisser_Stat(pokemon, "Vitesse")
                 adversaire.Check_KO()
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
@@ -775,7 +775,7 @@ export const Capacites = {
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
-                    Attaque_Baisser_Stat(adversaire, "Spe_Defense")
+                    Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
@@ -798,7 +798,7 @@ export const Capacites = {
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(20)) {
-                    Attaque_Baisser_Stat(adversaire, "Defense")
+                    Baisser_Stat(adversaire, "Defense")
                 }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
@@ -904,8 +904,8 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                Attaque_Baisser_Stat(adversaire, "Attaque")
-                Attaque_Baisser_Stat(adversaire, "Defense")
+                Baisser_Stat(adversaire, "Attaque")
+                Baisser_Stat(adversaire, "Defense")
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }

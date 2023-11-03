@@ -1,3 +1,4 @@
+// Met à jour l'affichage des PV du Pokémon du joueur (pokemon1), de l'adversaire (pokemon2) et dans l'équipe (index)
 export function MAJ_PV_Actuel_Pokemon(pokemon1, index, pokemon2) {
     let PV_Actuel1 = document.getElementById("PV1")
     PV_Actuel1.textContent = `PV: ${pokemon1.PV_Actuel} / ${pokemon1.PV_Max}`
@@ -7,12 +8,14 @@ export function MAJ_PV_Actuel_Pokemon(pokemon1, index, pokemon2) {
     PV_Actuel2.textContent = `PV: ${pokemon2.PV_Actuel} / ${pokemon2.PV_Max}`
 }
 
+// Utilise les information contenu dans l'instance de Jeu pour afficher le pokémon actif du joueur, de l'adversaire et l'équipe du joueur
 export function affichageGeneral(Jeu){
     affichePokemon1(Jeu.equipes[0].pokemons[Jeu.index_pokemon1], Jeu)
     affichePokemon2(Jeu.equipes[1].pokemons[Jeu.index_pokemon2])
     afficherEquipe1(Jeu.equipes[0], Jeu)
 }
 
+// Génère l'affichage d'un pokémon dans la liste de l'équipe
 export function genererCartePokemon(pokemon, pkm_index, equipe, index) {
     return `
         <button class="equipe${index}-pokemon-card">
@@ -32,6 +35,7 @@ export function genererCartePokemon(pokemon, pkm_index, equipe, index) {
     `;
 }
 
+// Génère l'affichage d'un pokemon actif, l'index permet de savoir si le pokemon appartient à l'équipe de gauche (index == 1) ou de droite (index == 2)
 export function genererCartePokemonCombat(pokemon, index) {
     return `
         <div class="card" data-index="${index}">
@@ -46,10 +50,12 @@ export function genererCartePokemonCombat(pokemon, index) {
     `;
 }
 
+// Génère l'affichage d'une capacité du pokémon de l'équipe 1
 export function genererCapacitePokemon(capacite) {
     return `<li><button class="capa">${capacite.Nom_capa}</button></li>`;
 }
 
+// Déclenche les fonctions pour afficher les pokémons de l'équipe 1
 export function afficherEquipe1(equipe, jeu) {
     const equipeContainer = document.getElementById("equipe1");
     equipe.pokemons.forEach((pokemon, pkm_index) => {
@@ -67,6 +73,7 @@ export function afficherEquipe1(equipe, jeu) {
     }
 }
 
+// Déclenche les fonctions pour afficher le pokemon actif du joueur 1 et ses capacités
 export function affichePokemon1(pokemon1, jeu) {
     const pokemonContainer = document.getElementById("pokemon1");
     const cartePokemon = genererCartePokemonCombat(pokemon1, 1);
@@ -83,6 +90,7 @@ export function affichePokemon1(pokemon1, jeu) {
     }
 }
 
+// Déclenche les fonctions pour afficher le pokémon actif de l'adversaire
 export function affichePokemon2(pokemon2) {
     const pokemonContainer = document.getElementById("pokemon2");
     const cartePokemon = genererCartePokemonCombat(pokemon2, 2);
