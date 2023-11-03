@@ -27,15 +27,20 @@ export class Jeu {
         **  0, 1, 2, 3 == capacité pokemon du joueur
         **  4 == changement de pokemon sur le pokemon, l'index du poke choisi est envoyé dans index_nouveau_pokemon
         **/
-
-        /* Déclarez 3 variables :
-        ** La première a pour valeur le Pokemon du joueur 1
-        ** La seconde a pour valeur le Pokémon du joueur 2
-        ** La troisième a pour valeur un chiffre aléatoire entre 0 et 3, elle nous servira pour déterminer l'attaque du seconde Pokémon
-        ** Codez en dessous
+       
+        /* Initialisez 3 variables :
+        ** Vous trouverez juste ne dessous 3 variables déclaré mais sans valeurs, assignez leur une valeur en suivant les indications donnés
         **/
  
+        // Cette variable doit contenir le pokemon actif (sur le terrain) du joueur 1
+        let pokemon1
         
+        // Cette variable doit contenir le pokemon actif (sur le terrain) du joueur 2
+        let pokemon2
+
+        // Cette variable doit contenir un chiffre aléatoire entre 0 et 3, elle nous servira pour déterminer l'attaque du seconde Pokémon
+        let valeur_aleatoire
+
 
 
         // SI changement de pokemon
