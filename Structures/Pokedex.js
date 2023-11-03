@@ -2,6 +2,24 @@ import { Capacites } from "./Capacites.js"
 import { Types } from "./Types.js"
 
 export const Pokedex = {
+    test : {
+        Nom: "Test",
+        Type1: Types.PLANTE,
+        Type2: Types.POISON,
+        PV_Max: 364,
+        Attaque: 289,
+        Defense: 291,
+        Spe_Attaque: 328,
+        Spe_Defense: 328,
+        Vitesse: 284,
+        Image: '../Images_Pokemon/Florizarre.png',
+        Capacites : [
+            Capacites.DRACO_METEORE,
+            Capacites.COUP_VICTOIRE,
+            Capacites.BOURDON,
+            Capacites.EXPLOSION,
+        ]
+    },
     PIKACHU : {
         Nom: "Pikachu",
         Type1: Types.ELECTRICK,
