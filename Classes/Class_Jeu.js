@@ -110,11 +110,11 @@ export class Jeu {
 
 
             } else { // SI l'équipe adverse n'a plus de Pokémons jouables
-                MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2)
+                MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
                 setTimeout(alert, 500, `Victoire pour ${this.equipes[0].dresseur} !!!`);
             }
         } else if (this.equipes[0].Check_Equipe_KO()) { // SI l'équipe du joueur n'a plus de Pokémons
-            MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2)
+            MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
             setTimeout(alert, 500, `Victoire pour ${this.equipes[1].dresseur} !!!`);
         }
     }
