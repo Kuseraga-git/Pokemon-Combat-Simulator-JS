@@ -660,8 +660,6 @@ export const Capacites = {
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision)) {
-                let rand = Math.trunc(Math.random() * 5)
-                for (let i = 0; i < rand && adversaire.KO == false; i++) {
                     let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                     Infliger_Degats(adversaire, tmp[0])
                     if (tmp[1]) {
@@ -670,7 +668,6 @@ export const Capacites = {
                     Attaque_Baisser_Stat(pokemon, "Spe_Attaque")
                     Attaque_Baisser_Stat(pokemon, "Spe_Attaque")
                     adversaire.Check_KO()
-                }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
@@ -685,18 +682,15 @@ export const Capacites = {
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision)) {
-                let rand = Math.trunc(Math.random() * 5)
-                for (let i = 0; i < rand && adversaire.KO == false; i++) {
-                    let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
-                    Infliger_Degats(adversaire, tmp[0])
-                    if (tmp[1]) {
-                        console.log("COUP CRITIQUE !!!")
-                    }
-                    Attaque_Baisser_Stat(pokemon, "Defense")
-                    Attaque_Baisser_Stat(pokemon, "Spe_Defense")
-                    Attaque_Baisser_Stat(pokemon, "Vitesse")
-                    adversaire.Check_KO()
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    console.log("COUP CRITIQUE !!!")
                 }
+                Attaque_Baisser_Stat(pokemon, "Defense")
+                Attaque_Baisser_Stat(pokemon, "Spe_Defense")
+                Attaque_Baisser_Stat(pokemon, "Vitesse")
+                adversaire.Check_KO()
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
@@ -712,15 +706,12 @@ export const Capacites = {
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision)) {
-                let rand = Math.trunc(Math.random() * 5)
-                for (let i = 0; i < rand && adversaire.KO == false; i++) {
-                    let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
-                    Infliger_Degats(adversaire, tmp[0])
-                    if (tmp[1]) {
-                        console.log("COUP CRITIQUE !!!")
-                    }
-                    adversaire.Check_KO()
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    console.log("COUP CRITIQUE !!!")
                 }
+                adversaire.Check_KO()
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
