@@ -11,12 +11,12 @@ export function Chance_Effet_Supplementaire(Chance) {
     return (rand <= Chance)
 }
 
-export function Attaque_Baisser_Stat(pokemon, stat) {
+export function Baisser_Stat(pokemon, stat) {
     console.log(`${stat} de ${pokemon.nom} diminue !`)
     pokemon[stat + '_Actuel'] = Math.trunc(pokemon[stat + '_Actuel'] / 1.3)
 }
 
-export function Attaque_Augmenter_Stat(pokemon, stat) {
+export function Augmenter_Stat(pokemon, stat) {
     console.log(`${stat} de ${pokemon.nom} augmente !`)
     pokemon[stat + '_Actuel'] = Math.trunc(pokemon[stat + '_Actuel'] * 1.3)
 }
