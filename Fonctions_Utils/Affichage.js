@@ -7,10 +7,10 @@ export function MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2) {
     PV_Actuel2.textContent = `PV: ${pokemon2.PV_Actuel} / ${pokemon2.PV_Max}`
 }
 
-export function affichageGeneral(Partie){
-    affichePokemon1(Partie.dresseurs[0].pokemons[Partie.index_pokemon1], Partie.dresseurs[1].pokemons[Partie.index_pokemon2], Partie)
-    affichePokemon2(Partie.dresseurs[1].pokemons[Partie.index_pokemon2])
-    afficherEquipe1(Partie.dresseurs[0], Partie)
+export function affichageGeneral(Jeu){
+    affichePokemon1(Jeu.equipes[0].pokemons[Jeu.index_pokemon1], Jeu)
+    affichePokemon2(Jeu.equipes[1].pokemons[Jeu.index_pokemon2])
+    afficherEquipe1(Jeu.equipes[0], Jeu)
 }
 
 export function genererCartePokemon(pokemon, equipe, index) {
@@ -50,7 +50,7 @@ export function genererCapacitePokemon(capacite) {
     return `<li><button class="capa">${capacite.Nom_capa}</button></li>`;
 }
 
-export function afficherEquipe1(equipe, partie) {
+export function afficherEquipe1(equipe, jeu) {
     const equipeContainer = document.getElementById("equipe1");
     equipe.pokemons.forEach(pokemon => {
         const cartePokemon = genererCartePokemon(pokemon, equipe, 1);
@@ -61,8 +61,8 @@ export function afficherEquipe1(equipe, partie) {
         element.addEventListener("click", function(event) {
             const boutonsCapa = document.getElementById("capa-list1");
             boutonsCapa.innerHTML = ``
-            partie.Ordre_Action(4, index)
-            affichePokemon1(partie.dresseurs[0].pokemons[partie.index_pokemon1], partie.dresseurs[1].pokemons[partie.index_pokemon2], partie)
+            jeu.Ordre_Action(4, index)
+            affichePokemon1(jeu.equipes[0].pokemons[jeu.index_pokemon1], jeu)
         })
     }
 }
@@ -75,7 +75,7 @@ export function afficherEquipe2(equipe) {
     });
 }
 
-export function affichePokemon1(pokemon1, pokemon2, partie) {
+export function affichePokemon1(pokemon1, jeu) {
     const pokemonContainer = document.getElementById("pokemon1");
     const cartePokemon = genererCartePokemonCombat(pokemon1, 1);
     pokemonContainer.innerHTML = cartePokemon;
@@ -86,7 +86,7 @@ export function affichePokemon1(pokemon1, pokemon2, partie) {
     const Capacites = document.querySelectorAll(".capa");
     for (const [index, element] of Capacites.entries()) {
         element.addEventListener("click", function(event) {
-            partie.Ordre_Action(index)
+            jeu.Ordre_Action(index)
         })
     }
 }

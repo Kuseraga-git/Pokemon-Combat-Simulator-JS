@@ -2,18 +2,18 @@ import { MAJ_PV_Actuel_Pokemon, affichePokemon2 } from "../Fonctions_Utils/Affic
 
 export class Jeu {
     constructor() {
-        this.dresseurs = []
+        this.equipes = []
         this.index_pokemon1 = 0
         this.index_pokemon2 = 0
     }
 
     Ajouter_Dresseur(equipe) {
-        this.dresseurs.push(equipe)
+        this.equipes.push(equipe)
     }
 
     Lancer_Partie() {
-        if (this.dresseurs.length == 2) {
-            console.log(`L'équipe de ${this.dresseurs[0].dresseur} et de ${this.dresseurs[1].dresseur} sont prêtes !`)
+        if (this.equipes.length == 2) {
+            console.log(`L'équipe de ${this.equipes[0].dresseur} et de ${this.equipes[1].dresseur} sont prêtes !`)
             // Page selection pokemon - Seul le joueur choisit un pokemon, l'adversaire choisi un pokemon au hasard
             console.log(`Choisissez vos pokemons !!!`)
         } else {
@@ -41,7 +41,7 @@ export class Jeu {
         // SI changement de pokemon
         if (choix1 == 4){
             if (pokemon1.KO) { // SI le pokemon actif est KO
-                if (this.dresseurs[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
+                if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
                     // SI le nouveau Pokémon n'est pas KO et n'est pas le même que celui sur le terrain
                     
                     /* Vous avez 3 étapes à réaliser :
@@ -54,7 +54,7 @@ export class Jeu {
 
                 }
             } else { // SI le pokemon actif n'est pas KO
-                if (this.dresseurs[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
+                if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
                     // SI le nouveau Pokémon n'est pas KO et n'est pas le même que celui sur le terrain
 
                     /* Vous avez 4 étapes à réaliser :
@@ -96,10 +96,10 @@ export class Jeu {
             }
         }
         // Les conditions en dessous s'occupent de vérifier si une condition de victoire a été effectué ou si le jeu doit continuer
-        if (this.dresseurs[0].Check_Equipe_KO() && this.dresseurs[1].Check_Equipe_KO()) { // SI les 2 équipes sont KO
+        if (this.equipes[0].Check_Equipe_KO() && this.equipes[1].Check_Equipe_KO()) { // SI les 2 équipes sont KO
             setTimeout(alert, 500, `Egalité !!!`); // Permet au programme, après 1/2 seconde, d'afficher un message.
         } else if (pokemon2.KO) { // SI pokemon adverse est KO
-            if (this.dresseurs[1].Check_Equipe_KO() == false) { // SI l'équipe adverse a encore des pokemons jouables
+            if (this.equipes[1].Check_Equipe_KO() == false) { // SI l'équipe adverse a encore des pokemons jouables
                 /*
                 ** La partie continue ! Il vous reste 3 étapes à réaliser :
                 ** - Augmenter l'index_pokemon2 de 1 pour passer au Pokémon suivant
@@ -111,11 +111,11 @@ export class Jeu {
 
             } else { // SI l'équipe adverse n'a plus de Pokémons jouables
                 MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2)
-                setTimeout(alert, 500, `Victoire pour ${this.dresseurs[0].dresseur} !!!`);
+                setTimeout(alert, 500, `Victoire pour ${this.equipes[0].dresseur} !!!`);
             }
-        } else if (this.dresseurs[0].Check_Equipe_KO()) { // SI l'équipe du joueur n'a plus de Pokémons
+        } else if (this.equipes[0].Check_Equipe_KO()) { // SI l'équipe du joueur n'a plus de Pokémons
             MAJ_PV_Actuel_Pokemon(pokemon1, pokemon2)
-            setTimeout(alert, 500, `Victoire pour ${this.dresseurs[1].dresseur} !!!`);
+            setTimeout(alert, 500, `Victoire pour ${this.equipes[1].dresseur} !!!`);
         }
     }
 }
