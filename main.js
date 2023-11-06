@@ -8,7 +8,7 @@ import { affichageGeneral } from "./Fonctions_Utils/Affichage.js"; // To remove
 
 let Partie = new Jeu()
 let equipe1 = new Equipe("Leaf", 1)
-equipe1.Creer_Equipe_test()
+equipe1.Creer_Equipe_Leaf()
 Partie.Ajouter_Dresseur(equipe1)
 
 let equipe2 = new Equipe("Red", 2)

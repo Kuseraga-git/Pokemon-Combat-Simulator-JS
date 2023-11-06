@@ -28,13 +28,6 @@ export class Equipe {
         this.pokemons.push(new Pokemon(Pokedex.TORTANK))
     }
 
-    Creer_Equipe_test() {
-        console.log("L'équipe de Leaf a été crée !")
-        this.pokemons.push(new Pokemon(Pokedex.test))
-        this.pokemons.push(new Pokemon(Pokedex.test))
-        this.pokemons.push(new Pokemon(Pokedex.test))
-    }
-
     Check_Equipe_KO() {
         for (const pokemon of this.pokemons) {
             if (pokemon.KO == false) {

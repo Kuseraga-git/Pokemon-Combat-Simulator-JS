@@ -31,7 +31,7 @@ export class Jeu {
 
         let pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
         let pokemon2 = this.equipes[1].pokemons[this.index_pokemon2]
-        const valeurAleatoire = Math.floor(Math.random() * 4);
+        const valeur_aleatoire = Math.floor(Math.random() * 4);
 
         // SI changement de pokemon
         if (choix1 == 4){
@@ -49,7 +49,7 @@ export class Jeu {
                     this.index_pokemon1 = index_nouveau_pokemon1
                     pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
                     pokemon1.Appel()
-                    pokemon2.capacites[valeurAleatoire].Effet(pokemon1, pokemon2)
+                    pokemon2.capacites[valeur_aleatoire].Effet(pokemon1, pokemon2)
                     // MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2) // Remove
                 }
             }
@@ -59,14 +59,14 @@ export class Jeu {
                     pokemon1.capacites[choix1].Effet(pokemon2, pokemon1)
                 }
                 if (pokemon2.KO == false && pokemon1.KO == false) {
-                    if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeurAleatoire])) {
-                        pokemon2.capacites[valeurAleatoire].Effet(pokemon1, pokemon2)
+                    if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
+                        pokemon2.capacites[valeur_aleatoire].Effet(pokemon1, pokemon2)
                     }
                 }
                 MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
             } else { // SI pokemon adverse + Rapide
-                if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeurAleatoire])) {
-                    pokemon2.capacites[valeurAleatoire].Effet(pokemon1, pokemon2)
+                if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
+                    pokemon2.capacites[valeur_aleatoire].Effet(pokemon1, pokemon2)
                 }
                 if (pokemon2.KO == false && pokemon1.KO == false) {
                     if (Peut_Attaquer(pokemon1, pokemon1.capacites[choix1])) {
