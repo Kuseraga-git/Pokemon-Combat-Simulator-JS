@@ -2,17 +2,14 @@ import { Statut } from "../Structures/Statut.js";
 import { Types } from "../Structures/Types.js";
 import { MAJ_PV_Actuel_Pokemon } from "./Affichage.js";
 
-/**
- * 
- * A TESTER
- * 
- */
 
+// Permet de calculer la probabilité de déclencher un statut
 export function Calcul_Probabilite(Chance) {
     let rand = Math.trunc(Math.random() * 100)
     return (rand < Chance)
 }
 
+// Renvoit true si le pokemon peut attaquer (malgré un statut ou non) et false s'il ne peut pas attaquer
 export function Peut_Attaquer(pokemon, capacite) {
     if (pokemon.Statut == Statut.Aucun) {
         return(true)
@@ -47,6 +44,7 @@ export function Peut_Attaquer(pokemon, capacite) {
     return (true)
 }
 
+// Gère les effets de statut à la fin du round
 export function Statut_Fin_Round(Jeu) {
     let pokemon1 = Jeu.equipes[0].pokemons[Jeu.index_pokemon1]
     let pokemon2 = Jeu.equipes[1].pokemons[Jeu.index_pokemon2]
@@ -69,6 +67,7 @@ export function Statut_Fin_Round(Jeu) {
     MAJ_PV_Actuel_Pokemon(pokemon1, Jeu.index_pokemon1, pokemon2)
 }
 
+// Permet d'appliquer un statut au pokemon passé en paramètre
 export function Appliquer_Statut(pokemon, statut) {
     if (pokemon.Statut == Statut.Aucun) {
         if (statut == Statut.BRULURE && (pokemon.type1 != Types.FEU && pokemon.type2 != Types.FEU)) {
@@ -87,19 +86,23 @@ export function Appliquer_Statut(pokemon, statut) {
     }
 }
 
+// Gère l'effet de baisse de stat de la brulure
 function Effet_Brulure(pokemon) {
     pokemon.Attaque_Actuel = Math.trunc(pokemon.Attaque_Actuel / 2)
 }
 
+// Gère l'effet de baisse de stat de la paralysie
 function Effet_Paralysie(pokemon) {
     pokemon.Vitesse_Actuel = Math.trunc(pokemon.Vitesse_Actuel / 2)
 }
 
+// Calcul les dégats infligés par la brulure
 function Calcul_Degats_Brulure(pokemon) {
     let resultat = Math.trunc(pokemon.PV_Max * (1/8))
     return (resultat)
 }
 
+// Calcul les dégats infligés par l'empoisonnement
 function Calcul_Degats_Empoisonnement(pokemon) {
     pokemon.Tours_Poison += 1
     let resultat = Math.trunc(pokemon.PV_Max * (pokemon.Tours_Poison/16))
