@@ -1,4 +1,5 @@
 import { MAJ_PV_Actuel_Pokemon, affichePokemon2 } from "../Fonctions_Utils/Affichage.js"
+import { Peut_Attaquer, Statut_Fin_Round } from "../Fonctions_Utils/Alterations.js"
 
 export class Jeu {
     constructor() {
@@ -36,6 +37,7 @@ export class Jeu {
         if (choix1 == 4){
             if (pokemon1.KO) { // SI le pokemon actif est KO
                 if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
+                    pokemon1.Tours_Poison = 0 // ADD : Reset les tours de poisons
                     this.index_pokemon1 = index_nouveau_pokemon1
                     pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
                     pokemon1.Appel()
@@ -43,28 +45,38 @@ export class Jeu {
                 }
             } else { // SI le pokemon actif n'est pas KO
                 if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
+                    pokemon1.Tours_Poison = 0 // ADD : Reset les tours de poisons
                     this.index_pokemon1 = index_nouveau_pokemon1
                     pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
                     pokemon1.Appel()
                     pokemon2.capacites[valeurAleatoire].Effet(pokemon1, pokemon2)
-                    MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
+                    // MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2) // Remove
                 }
             }
         } else if (pokemon1.KO == false && pokemon2.KO == false) { // SI les 2 pokemons ne sont pas KO
             if (pokemon1.Vitesse_Actuel >= pokemon2.Vitesse_Actuel) { // SI pokemon joueur + Rapide
-                pokemon1.capacites[choix1].Effet(pokemon2, pokemon1)
+                if (Peut_Attaquer(pokemon1, pokemon1.capacites[choix1])) {
+                    pokemon1.capacites[choix1].Effet(pokemon2, pokemon1)
+                }
                 if (pokemon2.KO == false && pokemon1.KO == false) {
-                    pokemon2.capacites[valeurAleatoire].Effet(pokemon1, pokemon2)
+                    if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeurAleatoire])) {
+                        pokemon2.capacites[valeurAleatoire].Effet(pokemon1, pokemon2)
+                    }
                 }
                 MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
             } else { // SI pokemon adverse + Rapide
-                pokemon2.capacites[valeurAleatoire].Effet(pokemon1, pokemon2)
-                if (pokemon2.KO == false && pokemon1.KO == false) {
-                    pokemon1.capacites[choix1].Effet(pokemon2, pokemon1)
+                if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeurAleatoire])) {
+                    pokemon2.capacites[valeurAleatoire].Effet(pokemon1, pokemon2)
                 }
-                MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
+                if (pokemon2.KO == false && pokemon1.KO == false) {
+                    if (Peut_Attaquer(pokemon1, pokemon1.capacites[choix1])) {
+                        pokemon1.capacites[choix1].Effet(pokemon2, pokemon1)
+                    }
+                }
+                // MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2) // Remove
             }
         }
+        Statut_Fin_Round(this)
         if (this.equipes[0].Check_Equipe_KO() && this.equipes[1].Check_Equipe_KO()) { // SI les 2 équipes sont KO
             setTimeout(alert, 500, `Egalité !!!`);
         } else if (pokemon2.KO) { // SI pokemon adverse est KO

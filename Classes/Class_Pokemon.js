@@ -1,3 +1,5 @@
+import { Statut } from "../Structures/Statut.js"
+
 export class Pokemon {
     constructor(pokemon) {
         this.nom = pokemon.Nom
@@ -16,6 +18,9 @@ export class Pokemon {
         this.Vitesse = pokemon.Vitesse
         this.Vitesse_Actuel = pokemon.Vitesse
         this.KO = false
+        this.Statut = Statut.Aucun
+        this.Tours_Sommeil = 0
+        this.Tours_Poison = 0
         this.capacites = pokemon.Capacites
         this.image = pokemon.Image
     }
@@ -39,5 +44,19 @@ export class Pokemon {
         this.Spe_Attaque_Actuel = this.Spe_Attaque
         this.Spe_Defense_Actuel = this.Spe_Defense
         this.Vitesse_Actuel = this.Vitesse
+
+        // apply status effect on stat
+    }
+
+    Reinitialiser_Statut() {
+        this.Tours_Poison = 0
+        this.Tours_Sommeil = 0
+        if (this.Statut == Statut.PARALYSIE) {
+            this.Vitesse_Actuel *= 2
+        }
+        if (this.Statut == Statut.BRULURE) {
+            this.Attaque_Actuel *= 2
+        }
+        this.Statut = Statut.Aucun
     }
 }
