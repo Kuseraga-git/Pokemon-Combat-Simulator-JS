@@ -12,15 +12,15 @@ export class Jeu {
         this.equipes.push(equipe)
     }
 
-    Lancer_Partie() {
-        if (this.equipes.length == 2) {
-            console.log(`L'équipe de ${this.equipes[0].dresseur} et de ${this.equipes[1].dresseur} sont prêtes !`)
-            // Page selection pokemon - Seul le joueur choisit un pokemon, l'adversaire choisi un pokemon au hasard
-            console.log(`Choisissez vos pokemons !!!`)
-        } else {
-            console.log("Pas assez de dresseurs sur le terrain. La partie est reportée")
-        }
-    }
+    // Lancer_Partie() {
+    //     if (this.equipes.length == 2) {
+    //         console.log(`L'équipe de ${this.equipes[0].dresseur} et de ${this.equipes[1].dresseur} sont prêtes !`)
+    //         // Page selection pokemon - Seul le joueur choisit un pokemon, l'adversaire choisi un pokemon au hasard
+    //         console.log(`Choisissez vos pokemons !!!`)
+    //     } else {
+    //         console.log("Pas assez de dresseurs sur le terrain. La partie est reportée")
+    //     }
+    // }
 
     Ordre_Action(choix1, index_nouveau_pokemon1 = 0) {
 
