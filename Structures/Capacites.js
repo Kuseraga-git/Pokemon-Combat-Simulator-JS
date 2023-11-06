@@ -2,6 +2,8 @@ import { Categorie } from "./Categories.js"
 import { Types } from "./Types.js"
 import { Infliger_Degats, Calcul_Degats, Check_Precision } from "../Fonctions_Utils/Offensif.js"
 import { Chance_Effet_Supplementaire, Baisser_Stat, Degat_de_Recul, Soigner_PV, Augmenter_Stat } from "../Fonctions_Utils/Effets_Speciaux.js"
+import { Appliquer_Statut, Calcul_Probabilite } from "../Fonctions_Utils/Alterations.js"
+import { Statut } from "./Statut.js"
 
 export const Capacites = {
     ELECTACLE : {
@@ -134,7 +136,6 @@ export const Capacites = {
         }
     },
     BOMB_BEURK : {
-        // Les status ne sont pas encore intégré donc pas de poison
         Nom_capa : "Bombe Beurk",
         Categorie : Categorie.SPECIAL,
         Type : Types.POISON,
@@ -149,6 +150,9 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
+                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(30)) {
+                    Appliquer_Statut(adversaire, Statut.EMPOISONNEMENT)
+                }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
@@ -197,7 +201,6 @@ export const Capacites = {
         }
     },
     BLIZZARD : {
-        // Les status ne sont pas intégré donc pas de gèle
         Nom_capa : "Blizzard",
         Categorie : Categorie.SPECIAL,
         Type : Types.GLACE,
@@ -212,6 +215,9 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
+                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(10)) {
+                    Appliquer_Statut(adversaire, Statut.GEL)
+                }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
@@ -269,7 +275,6 @@ export const Capacites = {
         }
     },
     DEFLAGRATION : {
-        // Status pas fait, peut pas bruler
         Nom_capa : "Déflagration",
         Categorie : Categorie.SPECIAL,
         Type : Types.FEU,
@@ -284,6 +289,9 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
+                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(10)) {
+                    Appliquer_Statut(adversaire, Statut.BRULURE)
+                }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
@@ -398,7 +406,7 @@ export const Capacites = {
         }
     },
     EBOULEMENT : {
-        // Les status ne sont pas intégré donc pas de confusion
+        // Les status ne sont pas intégré donc pas de peur
         Nom_capa : "Eboulement",
         Categorie : Categorie.PHYSIQUE,
         Type : Types.ROCHE,
@@ -462,7 +470,6 @@ export const Capacites = {
         }
     },
     LASER_GLACE : {
-        // Status pas fait, pas de gèle
         Nom_capa : "Laser Glace",
         Categorie : Categorie.SPECIAL,
         Type : Types.GLACE,
@@ -477,6 +484,9 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
+                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(10)) {
+                    Appliquer_Statut(adversaire, Statut.GEL)
+                }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
@@ -522,7 +532,6 @@ export const Capacites = {
         }
     },
     TRIPLATTAQUE : {
-        // Status pas fait, pas de gèle, brulure, paralysie
         Nom_capa : "Triplattaque",
         Categorie : Categorie.SPECIAL,
         Type : Types.NORMAL,
@@ -537,13 +546,19 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
+                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(20)) {
+                    Appliquer_Statut(adversaire, Statut.BRULURE)
+                } else if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(20)) {
+                    Appliquer_Statut(adversaire, Statut.PARALYSIE)
+                } else if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(20)) {
+                    Appliquer_Statut(adversaire, Statut.GEL)
+                }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
     LANCE_FLAMME : {
-        // Status pas fait, peut pas bruler
         Nom_capa : "Lance Flamme",
         Categorie : Categorie.SPECIAL,
         Type : Types.FEU,
@@ -558,13 +573,15 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
+                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(10)) {
+                    Appliquer_Statut(adversaire, Statut.BRULURE)
+                }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
     TONNERRE : {
-        // Status pas fait, peut pas Paralyser
         Nom_capa : "Tonnerre",
         Categorie : Categorie.SPECIAL,
         Type : Types.ELECTRICK,
@@ -579,6 +596,9 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
+                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(10)) {
+                    Appliquer_Statut(adversaire, Statut.PARALYSIE)
+                }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
@@ -697,7 +717,6 @@ export const Capacites = {
         }
     },
     FLAMME_BLEUE : {
-        // Pas de brulure
         Nom_capa : "Flamme Bleue",
         Categorie : Categorie.SPECIAL,
         Type : Types.FEU,
@@ -712,6 +731,9 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
+                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(20)) {
+                    Appliquer_Statut(adversaire, Statut.BRULURE)
+                }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
@@ -912,7 +934,6 @@ export const Capacites = {
         }
     },
     FATAL_FOUDRE:{
-        // Status pas fait, peut pas paralyser
         Nom_capa : "Thunder",
         Categorie : Categorie.SPECIAL,
         Type : Types.ELECTRICK,
@@ -927,6 +948,9 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
+                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(30)) {
+                    Appliquer_Statut(adversaire, Statut.PARALYSIE)
+                }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
@@ -954,7 +978,6 @@ export const Capacites = {
         }
     },
     DETRICANON:{
-        // Status pas fait, peut pas empoisonner
         Nom_capa : "Détricanon",
         Categorie : Categorie.PHYSIQUE,
         Type : Types.POISON,
@@ -969,6 +992,9 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
+                if (Calcul_Probabilite(30)) {
+                    Appliquer_Statut(adversaire, Statut.EMPOISONNEMENT)
+                }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
@@ -1006,7 +1032,6 @@ export const Capacites = {
             if (Check_Precision(Precision)) {
                 let i = 0
                 const randint = Math.floor(Math.random() * 4) + 1
-                console.log(randint)
                 for (i; i <= randint && adversaire.KO == false ;i++){
                     let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                     Infliger_Degats(adversaire, tmp[0])
@@ -1086,7 +1111,6 @@ export const Capacites = {
         }
     },
     BOUTEFEU : {
-        // Status pas fait, peut pas bruler
         Nom_capa : "Boutefeu",
         Categorie : Categorie.PHYSIQUE,
         Type : Types.FEU,
@@ -1101,7 +1125,11 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
+                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(10)) {
+                    Appliquer_Statut(adversaire, Statut.BRULURE)
+                }
                 Degat_de_Recul(pokemon, tmp[0], 0.3)
+
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }

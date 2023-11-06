@@ -1,4 +1,5 @@
 import { MAJ_PV_Actuel_Pokemon, affichePokemon2 } from "../Fonctions_Utils/Affichage.js"
+import { Peut_Attaquer, Statut_Fin_Round } from "../Fonctions_Utils/Alterations.js"
 
 export class Jeu {
     constructor() {
@@ -49,7 +50,8 @@ export class Jeu {
                 if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
                     // SI le nouveau Pokémon n'est pas KO et n'est pas le même que celui sur le terrain
                     
-                    /* Vous avez 3 étapes à réaliser :
+                    /* Vous avez 4 étapes à réaliser :
+                    ** - Remettre le compteur des tours de poison à 0
                     ** - Changer l'index du Pokémon actif (et ce que cela implique)
                     ** - Déclencher la fonction "Appel()" du Pokémon
                     ** - Mettre à jour les PV des Pokémons
@@ -62,7 +64,8 @@ export class Jeu {
                 if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
                     // SI le nouveau Pokémon n'est pas KO et n'est pas le même que celui sur le terrain
 
-                    /* Vous avez 4 étapes à réaliser :
+                    /* Vous avez 5 étapes à réaliser :
+                    ** - Remettre le compteur des tours de poison à 0
                     ** - Changer l'index du Pokémon actif (et ce que cela implique)
                     ** - Déclencher la fonction "Appel()" du Pokémon
                     ** - Faire attaquer le Pokémon adverse
@@ -71,34 +74,39 @@ export class Jeu {
                     **/
 
 
+
                 }
-            }
+            } 
         } else if (pokemon1.KO == false && pokemon2.KO == false) { // SI les 2 pokemons ne sont pas KO
             if (pokemon1.Vitesse_Actuel >= pokemon2.Vitesse_Actuel) { // SI pokemon joueur + Rapide
-                // Vous devez faire attaquer le Pokémon du joueur 1 avec l'attaque choisir - Codez en dessous
+                if (Peut_Attaquer(pokemon1, pokemon1.capacites[choix1])) {
+                    // Vous devez faire attaquer le Pokémon du joueur 1 avec l'attaque choisir - Codez en dessous
 
+                }
 
                 if (pokemon2.KO == false && pokemon1.KO == false) { // Si les 2 Pokémons ne sont pas KO
+                    if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_Aleatoire])) {
+                        // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire - Codez en dessous
+
+                    }
+
+                }
+            } else { // SI pokemon adverse + Rapide
+                if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_Aleatoire])) {
                     // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire - Codez en dessous
 
-
                 }
-                // Mettez à jours les PV des Pokémons - Codez en dessous
-                
 
-            } else { // SI pokemon adverse + Rapide
-                // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire - Codez en dessous
-
-                
                 if (pokemon2.KO == false && pokemon1.KO == false) { // Si les 2 Pokémons ne sont pas KO
-                    // Vous devez faire attaquer le Pokémon du joueur 1 avec l'attaque choisir - Codez en dessous
-                    
+                    if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_Aleatoire])) {
+                        // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire - Codez en dessous
 
+                    }
                 }
-                // Mettez à jours les PV des Pokémons - Codez en dessous
-                
-
             }
+            // Appelez la fonction qui déclenche les effets de statut à la fin du tour - Codez en dessous
+
+
         }
         // Les conditions en dessous s'occupent de vérifier si une condition de victoire a été effectué ou si le jeu doit continuer
         if (this.equipes[0].Check_Equipe_KO() && this.equipes[1].Check_Equipe_KO()) { // SI les 2 équipes sont KO
