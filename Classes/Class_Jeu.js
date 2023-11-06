@@ -85,20 +85,20 @@ export class Jeu {
                 }
 
                 if (pokemon2.KO == false && pokemon1.KO == false) { // Si les 2 Pokémons ne sont pas KO
-                    if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_Aleatoire])) {
+                    if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
                         // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire - Codez en dessous
 
                     }
 
                 }
             } else { // SI pokemon adverse + Rapide
-                if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_Aleatoire])) {
+                if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
                     // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire - Codez en dessous
 
                 }
 
                 if (pokemon2.KO == false && pokemon1.KO == false) { // Si les 2 Pokémons ne sont pas KO
-                    if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_Aleatoire])) {
+                    if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
                         // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire - Codez en dessous
 
                     }
