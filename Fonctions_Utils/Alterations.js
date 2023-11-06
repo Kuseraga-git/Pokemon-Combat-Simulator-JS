@@ -50,8 +50,6 @@ export function Peut_Attaquer(pokemon, capacite) {
 export function Statut_Fin_Round(Jeu) {
     let pokemon1 = Jeu.equipes[0].pokemons[Jeu.index_pokemon1]
     let pokemon2 = Jeu.equipes[1].pokemons[Jeu.index_pokemon2]
-    console.log(pokemon1)
-    console.log(pokemon2)
     if (pokemon1.Statut == Statut.BRULURE) {
         pokemon1.PV_Actuel -= Calcul_Degats_Brulure(pokemon1)
         console.log(`${pokemon1.nom} subit des dégats de brulure`)
