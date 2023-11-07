@@ -70,13 +70,10 @@ export class Jeu {
                 this.index_pokemon2 += 1
                 pokemon2 = this.equipes[1].pokemons[this.index_pokemon2]
                 affichePokemon2(pokemon2)
-                MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2, this.equipes[1])
             } else {
-                MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2, this.equipes[1])
                 setTimeout(alert, 500, `Victoire pour ${this.equipes[0].dresseur} !!!`);
             }
         } else if (this.equipes[0].Check_Equipe_KO()) {
-            MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
             setTimeout(alert, 500, `Victoire pour ${this.equipes[1].dresseur} !!!`);
         }
     }
