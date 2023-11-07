@@ -64,7 +64,7 @@ export function Statut_Fin_Round(Jeu) {
     }
     pokemon1.Check_KO()
     pokemon2.Check_KO()
-    MAJ_PV_Actuel_Pokemon(pokemon1, Jeu.index_pokemon1, pokemon2)
+    MAJ_PV_Actuel_Pokemon(pokemon1, Jeu.index_pokemon1, pokemon2, Jeu.equipes[1])
 }
 
 // Permet d'appliquer un statut au pokemon passé en paramètre

@@ -35,3 +35,15 @@
     width: 100px;
     height: 100px;
 }
+
+#equipe2 {
+    float: right;
+}
+
+.control-panel {
+    float: left;
+}
+
+.clear {
+    clear: both;
+}
