@@ -63,7 +63,7 @@ export class Jeu {
                         pokemon2.capacites[valeur_aleatoire].Effet(pokemon1, pokemon2)
                     }
                 }
-                MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
+                // MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
             } else { // SI pokemon adverse + Rapide
                 if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
                     pokemon2.capacites[valeur_aleatoire].Effet(pokemon1, pokemon2)
