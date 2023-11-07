@@ -1,3 +1,5 @@
+import { Statut } from "../Structures/Statut.js"
+
 export function MAJ_PV_Actuel_Pokemon(pokemon1, index, pokemon2) {
     let PV_Actuel1 = document.getElementById("PV1")
     PV_Actuel1.textContent = `PV: ${pokemon1.PV_Actuel} / ${pokemon1.PV_Max}`
@@ -11,6 +13,7 @@ export function affichageGeneral(Jeu){
     affichePokemon1(Jeu.equipes[0].pokemons[Jeu.index_pokemon1], Jeu)
     affichePokemon2(Jeu.equipes[1].pokemons[Jeu.index_pokemon2])
     afficherEquipe1(Jeu.equipes[0], Jeu)
+    afficherEquipe2(Jeu.equipes[1])
 }
 
 export function genererCartePokemon(pokemon, pkm_index, equipe, index) {
@@ -65,6 +68,18 @@ export function afficherEquipe1(equipe, jeu) {
             affichePokemon1(jeu.equipes[0].pokemons[jeu.index_pokemon1], jeu)
         })
     }
+}
+
+function genererStatutEquipe2(pokemon, index) {
+    return `<img id="equipe2-${index}" class="pokeball" src="${pokemon.ko ? "../Images_Pokemon/pokeball_ko.png" : pokemon.Statut != Statut.Aucun ? "../Images_Pokemon/pokeball_statut.png" : "../Images_Pokemon/pokeball_ok.png"}"></img>`;
+}
+
+export function afficherEquipe2(equipe) {
+    const equipeContainer = document.getElementById("equipe2");
+    equipe.pokemons.forEach((pokemon, index) => {
+        const cartePokemon = genererStatutEquipe2(pokemon, index);
+        equipeContainer.innerHTML += cartePokemon;
+    });
 }
 
 export function affichePokemon1(pokemon1, jeu) {
