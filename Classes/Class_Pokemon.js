@@ -35,7 +35,7 @@ export class Pokemon {
             this.PV_Actuel = 0
             this.Statut = Statut.Aucun
             this.KO = true
-            console.log(`${this.nom} est KO`)
+            // console.log(`${this.nom} est KO`)
         }
     }
 
