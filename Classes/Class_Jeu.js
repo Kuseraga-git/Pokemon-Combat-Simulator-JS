@@ -50,11 +50,10 @@ export class Jeu {
                 if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
                     // SI le nouveau Pokémon n'est pas KO et n'est pas le même que celui sur le terrain
                     
-                    /* Vous avez 4 étapes à réaliser :
+                    /* Vous avez 3 étapes à réaliser :
                     ** - Remettre le compteur des tours de poison à 0
                     ** - Changer l'index du Pokémon actif (et ce que cela implique)
                     ** - Déclencher la fonction "Appel()" du Pokémon
-                    ** - Mettre à jour les PV des Pokémons
                     ** Codez en dessous
                     **/
 
@@ -64,12 +63,11 @@ export class Jeu {
                 if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
                     // SI le nouveau Pokémon n'est pas KO et n'est pas le même que celui sur le terrain
 
-                    /* Vous avez 5 étapes à réaliser :
+                    /* Vous avez 4 étapes à réaliser :
                     ** - Remettre le compteur des tours de poison à 0
                     ** - Changer l'index du Pokémon actif (et ce que cela implique)
                     ** - Déclencher la fonction "Appel()" du Pokémon
                     ** - Faire attaquer le Pokémon adverse
-                    ** - Mettre à jour les PV des Pokémons
                     ** Codez en dessous
                     **/
 
@@ -122,6 +120,7 @@ export class Jeu {
                 **/
 
 
+                
             } else { // SI l'équipe adverse n'a plus de Pokémons jouables
                 MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
                 setTimeout(alert, 500, `Victoire pour ${this.equipes[0].dresseur} !!!`);
