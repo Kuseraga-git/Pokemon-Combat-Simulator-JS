@@ -120,7 +120,7 @@ export class Jeu {
                 **/
 
 
-                
+
             } else { // SI l'équipe adverse n'a plus de Pokémons jouables
                 MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
                 setTimeout(alert, 500, `Victoire pour ${this.equipes[0].dresseur} !!!`);

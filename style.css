@@ -30,3 +30,8 @@
 .pokemon-infos {
     flex: 1; /* Le contenu de cette div occupera l'espace disponible (largeur flexible) */
 }
+
+.pokeball {
+    width: 100px;
+    height: 100px;
+}
