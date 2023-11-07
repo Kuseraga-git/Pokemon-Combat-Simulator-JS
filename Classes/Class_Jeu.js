@@ -12,16 +12,6 @@ export class Jeu {
         this.equipes.push(equipe)
     }
 
-    // Lancer_Partie() {
-    //     if (this.equipes.length == 2) {
-    //         console.log(`L'équipe de ${this.equipes[0].dresseur} et de ${this.equipes[1].dresseur} sont prêtes !`)
-    //         // Page selection pokemon - Seul le joueur choisit un pokemon, l'adversaire choisi un pokemon au hasard
-    //         console.log(`Choisissez vos pokemons !!!`)
-    //     } else {
-    //         console.log("Pas assez de dresseurs sur le terrain. La partie est reportée")
-    //     }
-    // }
-
     Ordre_Action(choix1, index_nouveau_pokemon1 = 0) {
 
         /* choix1 :
@@ -37,20 +27,18 @@ export class Jeu {
         if (choix1 == 4){
             if (pokemon1.KO) { // SI le pokemon actif est KO
                 if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
-                    pokemon1.Tours_Poison = 0 // ADD : Reset les tours de poisons
+                    pokemon1.Tours_Poison = 0
                     this.index_pokemon1 = index_nouveau_pokemon1
                     pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
                     pokemon1.Appel()
-                    MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
                 }
             } else { // SI le pokemon actif n'est pas KO
                 if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
-                    pokemon1.Tours_Poison = 0 // ADD : Reset les tours de poisons
+                    pokemon1.Tours_Poison = 0
                     this.index_pokemon1 = index_nouveau_pokemon1
                     pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
                     pokemon1.Appel()
                     pokemon2.capacites[valeur_aleatoire].Effet(pokemon1, pokemon2)
-                    // MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2) // Remove
                 }
             }
         } else if (pokemon1.KO == false && pokemon2.KO == false) { // SI les 2 pokemons ne sont pas KO
@@ -63,7 +51,6 @@ export class Jeu {
                         pokemon2.capacites[valeur_aleatoire].Effet(pokemon1, pokemon2)
                     }
                 }
-                // MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
             } else { // SI pokemon adverse + Rapide
                 if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
                     pokemon2.capacites[valeur_aleatoire].Effet(pokemon1, pokemon2)
@@ -73,7 +60,6 @@ export class Jeu {
                         pokemon1.capacites[choix1].Effet(pokemon2, pokemon1)
                     }
                 }
-                // MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2) // Remove
             }
         }
         Statut_Fin_Round(this)
@@ -84,9 +70,9 @@ export class Jeu {
                 this.index_pokemon2 += 1
                 pokemon2 = this.equipes[1].pokemons[this.index_pokemon2]
                 affichePokemon2(pokemon2)
-                MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
+                MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2, this.equipes[1])
             } else {
-                MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2)
+                MAJ_PV_Actuel_Pokemon(pokemon1, this.index_pokemon1, pokemon2, this.equipes[1])
                 setTimeout(alert, 500, `Victoire pour ${this.equipes[0].dresseur} !!!`);
             }
         } else if (this.equipes[0].Check_Equipe_KO()) {

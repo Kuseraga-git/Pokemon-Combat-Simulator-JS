@@ -33,6 +33,7 @@ export class Pokemon {
     Check_KO() {
         if (this.PV_Actuel <= 0) {
             this.PV_Actuel = 0
+            this.Statut = Statut.Aucun
             this.KO = true
             console.log(`${this.nom} est KO`)
         }
