@@ -15,28 +15,28 @@ export function Peut_Attaquer(pokemon, capacite) {
         return(true)
     } else if (pokemon.Statut == Statut.GEL){
         if (capacite.Type == Types.FEU || Calcul_Probabilite(20)) {
-            console.log(`${pokemon.nom} n'est plus ${pokemon.Statut}`)
+            console.log(`${pokemon.nom} n'est plus ${pokemon.Statut.nom}`)
             pokemon.Statut = Statut.Aucun
             return(true)
         } else {
-            console.log(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut}`)
+            console.log(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut.nom}`)
             return false
         }
     } else if (pokemon.Statut == Statut.PARALYSIE) {
         if (Calcul_Probabilite(75)) {
             return(true)
         } else {
-            console.log(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut}`)
+            console.log(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut.nom}`)
             return false
         }
     } else if (pokemon.Statut == Statut.SOMMEIL) {
         if (Calcul_Probabilite(33) || pokemon.Tours_Sommeil == 3) {
-            console.log(`${pokemon.nom} n'est plus ${pokemon.Statut}`)
+            console.log(`${pokemon.nom} n'est plus ${pokemon.Statut.nom}`)
             pokemon.Statut = Statut.Aucun
             pokemon.Tours_Sommeil = 0
             return(true)
         } else {
-            console.log(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut}`)
+            console.log(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut.nom}`)
             pokemon.Tours_Sommeil += 1
             return false
         }
@@ -64,6 +64,12 @@ export function Statut_Fin_Round(Jeu) {
     }
     pokemon1.Check_KO()
     pokemon2.Check_KO()
+    if (pokemon1.KO) {
+        console.log(`${pokemon1.nom} est KO`)
+    }
+    if (pokemon2.KO) {
+        console.log(`${pokemon2.nom} est KO`)
+    }
     MAJ_PV_Actuel_Pokemon(pokemon1, Jeu.index_pokemon1, pokemon2, Jeu.equipes[1])
 }
 
