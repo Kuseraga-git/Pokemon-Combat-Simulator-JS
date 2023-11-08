@@ -33,7 +33,10 @@
 
 .pokeball {
     width: 100px;
-    height: 100px;
+}
+
+.statut-box {
+    width: 80px;
 }
 
 #equipe2 {
