@@ -2,12 +2,18 @@ import { Statut } from "../Structures/Statut.js"
 
 // Met à jour l'affichage des PV du Pokémon du joueur (pokemon1), de l'adversaire (pokemon2) et dans l'équipe (index)
 export function MAJ_PV_Actuel_Pokemon(pokemon1, index, pokemon2, equipe2) {
-    let PV_Actuel1 = document.getElementById("PV1")
-    PV_Actuel1.textContent = `PV: ${pokemon1.PV_Actuel} / ${pokemon1.PV_Max}`
-    PV_Actuel1 = document.getElementById(`equipe1-${index}`)
-    PV_Actuel1.textContent = `PV: ${pokemon1.PV_Actuel} / ${pokemon1.PV_Max}`
-    let PV_Actuel2 = document.getElementById("PV2")
-    PV_Actuel2.textContent = `PV: ${pokemon2.PV_Actuel} / ${pokemon2.PV_Max}`
+    let PKM1 = document.getElementById("PV1")
+    PKM1.textContent = `PV: ${pokemon1.PV_Actuel} / ${pokemon1.PV_Max}`
+    PKM1 = document.getElementById(`equipe1-${index}`)
+    PKM1.textContent = `PV: ${pokemon1.PV_Actuel} / ${pokemon1.PV_Max}`
+    PKM1 = document.getElementById(`equipe1-${index}-statut`)
+    PKM1.src = pokemon1.Statut.image
+    PKM1 = document.getElementById(`pkm-statut-1`)
+    PKM1.src = pokemon1.Statut.image
+    let PKM2 = document.getElementById("PV2")
+    PKM2.textContent = `PV: ${pokemon2.PV_Actuel} / ${pokemon2.PV_Max}`
+    PKM2 = document.getElementById(`pkm-statut-2`)
+    PKM2.src = pokemon2.Statut.image
     afficherEquipe2(equipe2)
 }
 
@@ -28,6 +34,7 @@ export function genererCartePokemon(pokemon, pkm_index, equipe, index) {
                 <p id="equipe${index}-${pkm_index}" class="card-text">PV: ${pokemon.PV_Actuel} / ${pokemon.PV_Max}</p>
                 <p class="card-text">Type 1: ${pokemon.type1}</p>
                 <p class="card-text">Type 2: ${pokemon.type2}</p>
+                <p class="card-text"><img id="equipe${index}-${pkm_index}-statut" class="statut-box" src="${pokemon.Statut.image}"></img></p>
                 <ul>
                     <li>${pokemon.capacites[0].Nom_capa}</li>
                     <li>${pokemon.capacites[1].Nom_capa}</li>
@@ -48,6 +55,7 @@ export function genererCartePokemonCombat(pokemon, index) {
                 <p class="card-text" id="PV${index}">PV: ${pokemon.PV_Actuel} / ${pokemon.PV_Max}</p>
                 <p class="card-text">Type 1: ${pokemon.type1}</p>
                 <p class="card-text">Type 2: ${pokemon.type2}</p>
+                <p class="card-text">Statut: <img id="pkm-statut-${index}" class="statut-box" src="${pokemon.Statut.image}"></img></p>
             </div>
             <img class="pokemon-image" src="${pokemon.image}" alt="${pokemon.nom}" />
         </div>
