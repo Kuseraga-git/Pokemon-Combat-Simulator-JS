@@ -21,7 +21,6 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                // Degat de recul + check player KO
                 Degat_de_Recul(pokemon, tmp[0], 0.3)
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
@@ -298,7 +297,7 @@ export const Capacites = {
         }
     },
     VENT_VIOLENT : {
-        // Les status ne sont pas intégré donc pas de confusion
+        // La confusion n'a pas encore été intégrée
         Nom_capa : "Vent Violent",
         Categorie : Categorie.SPECIAL,
         Type : Types.VOL,
@@ -356,14 +355,12 @@ export const Capacites = {
                 if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
                     Baisser_Stat(adversaire, "Spe_Defense")
                 }
-                
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
     MEGAFOUET : {
-        // Les status ne sont pas intégré donc pas de confusion
         Nom_capa : "Mégafouet",
         Categorie : Categorie.PHYSIQUE,
         Type : Types.PLANTE,
@@ -398,7 +395,6 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                // Degat de recul + check player KO
                 Degat_de_Recul(pokemon, tmp[0], 0.3)
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
@@ -406,7 +402,7 @@ export const Capacites = {
         }
     },
     EBOULEMENT : {
-        // Les status ne sont pas intégré donc pas de peur
+        // La peur n'a pas encore été intégrée
         Nom_capa : "Eboulement",
         Categorie : Categorie.PHYSIQUE,
         Type : Types.ROCHE,
@@ -547,11 +543,17 @@ export const Capacites = {
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(20)) {
-                    Appliquer_Statut(adversaire, Statut.BRULURE)
-                } else if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(20)) {
-                    Appliquer_Statut(adversaire, Statut.PARALYSIE)
-                } else if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(20)) {
-                    Appliquer_Statut(adversaire, Statut.GEL)
+                    switch (Math.floor(Math.random() * 3)) {
+                        case 0:
+                            Appliquer_Statut(adversaire, Statut.BRULURE)
+                            break;
+                        case 1:
+                            Appliquer_Statut(adversaire, Statut.PARALYSIE)
+                            break;
+                        case 2:
+                            Appliquer_Statut(adversaire, Statut.GEL)
+                            break;
+                    }
                 }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
@@ -605,7 +607,7 @@ export const Capacites = {
         }
     },
     VIBROBSCUR : {
-        // Status pas fait, peut pas appeurer
+        // La peur n'a pas encore été intégrée
         Nom_capa : "Vibrobscur",
         Categorie : Categorie.SPECIAL,
         Type : Types.TENEBRE,
@@ -934,7 +936,7 @@ export const Capacites = {
         }
     },
     FATAL_FOUDRE:{
-        Nom_capa : "Thunder",
+        Nom_capa : "Fatal Foudre",
         Categorie : Categorie.SPECIAL,
         Type : Types.ELECTRICK,
         Puissance : 110,
@@ -1001,7 +1003,7 @@ export const Capacites = {
         }
     },
     OURAGAN : {
-        // Status pas fait, peut pas Apeurer
+        // La peur n'a pas encore été intégrée
         Nom_capa : "Ouragan",
         Categorie : Categorie.SPECIAL,
         Type : Types.DRAGON,

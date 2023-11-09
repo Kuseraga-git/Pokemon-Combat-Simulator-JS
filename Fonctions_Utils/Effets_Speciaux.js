@@ -1,4 +1,4 @@
-import { Pokemon } from "../Classes/Class_Pokemon"
+import { Pokemon } from "../Classes/Class_Pokemon.js"
 
 /**
  * Permet de soigner le pokemon du total passé en paramètre

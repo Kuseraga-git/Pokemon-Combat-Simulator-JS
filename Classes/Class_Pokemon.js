@@ -40,7 +40,6 @@ export class Pokemon {
             this.PV_Actuel = 0
             this.Statut = Statut.Aucun
             this.KO = true
-            // console.log(`${this.nom} est KO`)
         }
     }
 
@@ -50,8 +49,6 @@ export class Pokemon {
         this.Spe_Attaque_Actuel = this.Spe_Attaque
         this.Spe_Defense_Actuel = this.Spe_Defense
         this.Vitesse_Actuel = this.Vitesse
-
-        // apply status effect on stat
     }
 
     Reinitialiser_Statut() {
