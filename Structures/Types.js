@@ -20,6 +20,13 @@ export const Types = {
     Aucun: "Aucun"
 }
 
+/**
+ * Reproduit le calcul effectué par la table des types de pokemon
+ * @param {Object} type_attaque Type de l'attaque
+ * @param {Object} type1 Premier type du pokemon receveur
+ * @param {Object} type2 Second type du pokemon receveur
+ * @returns {number} Multiplicateur de dégâts à appliquer
+ */
 export function Calcul_Table_des_Types(type_attaque, type1, type2 = "Aucun") {
     let resultat = 1.0
     if (type_attaque == "Acier") {
@@ -97,7 +104,12 @@ export function Calcul_Table_des_Types(type_attaque, type1, type2 = "Aucun") {
     return resultat
 }
 
-
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Acier(type, resultat) {
     switch (type) {
         case "Acier":
@@ -162,6 +174,12 @@ function check_Acier(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Combat(type, resultat) {
     switch (type) {
         case "Acier":
@@ -226,6 +244,12 @@ function check_Combat(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Dragon(type, resultat) {
     switch (type) {
         case "Acier":
@@ -290,6 +314,12 @@ function check_Dragon(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Eau(type, resultat) {
     switch (type) {
         case "Acier":
@@ -354,6 +384,12 @@ function check_Eau(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Electrick(type, resultat) {
     switch (type) {
         case "Acier":
@@ -418,6 +454,12 @@ function check_Electrick(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Fee(type, resultat) {
     switch (type) {
         case "Acier":
@@ -482,6 +524,12 @@ function check_Fee(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Feu(type, resultat) {
     switch (type) {
         case "Acier":
@@ -546,6 +594,12 @@ function check_Feu(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Glace(type, resultat) {
     switch (type) {
         case "Acier":
@@ -610,6 +664,12 @@ function check_Glace(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Insecte(type, resultat) {
     switch (type) {
         case "Acier":
@@ -674,6 +734,12 @@ function check_Insecte(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Normal(type, resultat) {
     switch (type) {
         case "Acier":
@@ -738,6 +804,12 @@ function check_Normal(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Plante(type, resultat) {
     switch (type) {
         case "Acier":
@@ -802,6 +874,12 @@ function check_Plante(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Poison(type, resultat) {
     switch (type) {
         case "Acier":
@@ -866,6 +944,12 @@ function check_Poison(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Psy(type, resultat) {
     switch (type) {
         case "Acier":
@@ -930,6 +1014,12 @@ function check_Psy(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Roche(type, resultat) {
     switch (type) {
         case "Acier":
@@ -994,6 +1084,12 @@ function check_Roche(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Sol(type, resultat) {
     switch (type) {
         case "Acier":
@@ -1058,6 +1154,12 @@ function check_Sol(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Spectre(type, resultat) {
     switch (type) {
         case "Acier":
@@ -1122,6 +1224,12 @@ function check_Spectre(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Tenebre(type, resultat) {
     switch (type) {
         case "Acier":
@@ -1186,6 +1294,12 @@ function check_Tenebre(type, resultat) {
     return(resultat)
 }
 
+/**
+ * Multiplicateur selon le type de la fonction
+ * @param {Object} type Type du pokemon
+ * @param {number} resultat Multiplicateur
+ * @returns {number} Renvoit le multiplicateur modifié
+ */
 function check_Vol(type, resultat) {
     switch (type) {
         case "Acier":
