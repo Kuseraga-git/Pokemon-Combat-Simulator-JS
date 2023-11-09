@@ -1,6 +1,11 @@
 import { Statut } from "../Structures/Statut.js"
 
 export class Pokemon {
+    /**
+     * Permet de créer un nouvel objet Pokemon.
+     * @constructor
+     * @param {Object} pokemon - Pokemon contenu dans la structure Pokedex.
+     */
     constructor(pokemon) {
         this.nom = pokemon.Nom
         this.PV_Max = pokemon.PV_Max

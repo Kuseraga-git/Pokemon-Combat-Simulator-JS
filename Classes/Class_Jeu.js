@@ -1,17 +1,31 @@
-import { MAJ_PV_Actuel_Pokemon, affichePokemon2 } from "../Fonctions_Utils/Affichage.js"
+import { affichePokemon2 } from "../Fonctions_Utils/Affichage.js"
 import { Peut_Attaquer, Statut_Fin_Round } from "../Fonctions_Utils/Alterations.js"
+import { Equipe } from "./Class_Equipe.js"
 
 export class Jeu {
+    /**
+     * Permet de créer un nouvel objet Jeu.
+     * @constructor
+     */
     constructor() {
         this.equipes = []
         this.index_pokemon1 = 0
         this.index_pokemon2 = 0
     }
 
+    /**
+     * Ajoute une equipe dans le Jeu
+     * @param {Equipe} equipe Un objet Equipe
+     */
     Ajouter_Dresseur(equipe) {
         this.equipes.push(equipe)
     }
 
+    /**
+     * Détermine l'ordre des actions et le déroulée d'une partie
+     * @param {number} choix1 Chiffre symbolisant le choix du joueur (0, 1, 2, 3 == capacité pokemon, 4 == changement de pokemon actif)
+     * @param {number} [index_nouveau_pokemon1=0] Chiffre symbolisant l'index du nouveau pokemon actif
+     */
     Ordre_Action(choix1, index_nouveau_pokemon1 = 0) {
 
         /* choix1 :

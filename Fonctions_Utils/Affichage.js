@@ -1,5 +1,15 @@
+import { Equipe } from "../Classes/Class_Equipe.js"
+import { Jeu } from "../Classes/Class_Jeu.js"
+import { Pokemon } from "../Classes/Class_Pokemon.js"
 import { Statut } from "../Structures/Statut.js"
 
+/**
+ * Fait la mise à jour des infos affichés sur la page web.
+ * @param {Pokemon} pokemon1 - Pokemon du joueur de gauche
+ * @param {number} index - Index du pokemon actif du joueur
+ * @param {Pokemon} pokemon2 - Pokemon du joueur de droite
+ * @param {Equipe} equipe2 - Equipe du joueur de droite
+ */
 export function MAJ_PV_Actuel_Pokemon(pokemon1, index, pokemon2, equipe2) {
     let PKM1 = document.getElementById("PV1")
     PKM1.textContent = `PV: ${pokemon1.PV_Actuel} / ${pokemon1.PV_Max}`
@@ -16,6 +26,10 @@ export function MAJ_PV_Actuel_Pokemon(pokemon1, index, pokemon2, equipe2) {
     afficherEquipe2(equipe2)
 }
 
+/**
+ * Fait le premier affichage d'initialisation
+ * @param {Jeu} Jeu Instance du Jeu
+ */
 export function affichageGeneral(Jeu){
     affichePokemon1(Jeu.equipes[0].pokemons[Jeu.index_pokemon1], Jeu)
     affichePokemon2(Jeu.equipes[1].pokemons[Jeu.index_pokemon2])
@@ -23,6 +37,14 @@ export function affichageGeneral(Jeu){
     afficherEquipe2(Jeu.equipes[1])
 }
 
+/**
+ * Génère une carte pokemon standard.
+ * @param {Pokemon} pokemon - Pokemon à afficher
+ * @param {number} pkm_index - Index du pokemon
+ * @param {Pokemon} equipe - Equipe du pokemon
+ * @param {Equipe} index - Index de l'équipe
+ * @returns {InnerHTML}
+ */
 export function genererCartePokemon(pokemon, pkm_index, equipe, index) {
     return `
         <button class="equipe${index}-pokemon-card">
@@ -43,6 +65,12 @@ export function genererCartePokemon(pokemon, pkm_index, equipe, index) {
     `;
 }
 
+/**
+ * Génère une carte pokemon de combat.
+ * @param {Pokemon} pokemon 
+ * @param {number} index 
+ * @returns {InnerHTML}
+ */
 export function genererCartePokemonCombat(pokemon, index) {
     return `
         <div class="card" data-index="${index}">
@@ -58,10 +86,20 @@ export function genererCartePokemonCombat(pokemon, index) {
     `;
 }
 
+/**
+ * Génère l'affichage d'une capacité pokemon
+ * @param {Object} capacite La capacité à afficher 
+ * @returns 
+ */
 export function genererCapacitePokemon(capacite) {
     return `<li><button class="capa">${capacite.Nom_capa}</button></li>`;
 }
 
+/**
+ * Permet d'afficher l'équipe du joueur
+ * @param {Equipe} equipe Instance de l'équipe à afficher
+ * @param {Jeu} jeu Instance du jeu
+ */
 export function afficherEquipe1(equipe, jeu) {
     const equipeContainer = document.getElementById("equipe1");
     equipe.pokemons.forEach((pokemon, pkm_index) => {
@@ -79,10 +117,20 @@ export function afficherEquipe1(equipe, jeu) {
     }
 }
 
+/**
+ * Affiche le nombre et l'état des pokemons de l'adversaire
+ * @param {Pokemon} pokemon Pokemon adverse
+ * @param {number} index index du pokemon dans l'équipe
+ * @returns {InnerHTML}
+ */
 function genererStatutEquipe2(pokemon, index) {
     return `<img id="equipe2-${index}" class="pokeball" src="${pokemon.KO ? "../Images_Pokemon/pokeball_ko.png" : pokemon.Statut != Statut.Aucun ? "../Images_Pokemon/pokeball_statut.png" : "../Images_Pokemon/pokeball_ok.png"}"></img>`;
 }
 
+/**
+ * Permet d'afficher l'équipe de l'adversaire
+ * @param {Equipe} equipe Instance de l'équipe à afficher
+ */
 export function afficherEquipe2(equipe) {
     const equipeContainer = document.getElementById("equipe2");
     equipeContainer.innerHTML = '';
@@ -92,6 +140,11 @@ export function afficherEquipe2(equipe) {
     });
 }
 
+/**
+ * Permet d'afficher le pokemon actif du joueur
+ * @param {Pokemon} pokemon1 Instance du pokemon actif du joueur
+ * @param {Jeu} jeu Instance du jeu
+ */
 export function affichePokemon1(pokemon1, jeu) {
     const pokemonContainer = document.getElementById("pokemon1");
     const cartePokemon = genererCartePokemonCombat(pokemon1, 1);
@@ -108,6 +161,10 @@ export function affichePokemon1(pokemon1, jeu) {
     }
 }
 
+/**
+ * Permet d'afficher le pokemon actif de l'adverse
+ * @param {Pokemon} pokemon2 
+ */
 export function affichePokemon2(pokemon2) {
     const pokemonContainer = document.getElementById("pokemon2");
     const cartePokemon = genererCartePokemonCombat(pokemon2, 2);
