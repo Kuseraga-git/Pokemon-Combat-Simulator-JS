@@ -49,6 +49,12 @@ export class Pokemon {
         this.Spe_Attaque_Actuel = this.Spe_Attaque
         this.Spe_Defense_Actuel = this.Spe_Defense
         this.Vitesse_Actuel = this.Vitesse
+        if (this.Statut == Statut.PARALYSIE) {
+            this.Vitesse_Actuel /= 2
+        }
+        if (this.Statut == Statut.BRULURE) {
+            this.Attaque_Actuel /= 2
+        }
     }
 
     Reinitialiser_Statut() {
