@@ -1,15 +1,25 @@
+import { Jeu } from "../Classes/Class_Jeu.js";
+import { Pokemon } from "../Classes/Class_Pokemon.js";
 import { Statut } from "../Structures/Statut.js";
 import { Types } from "../Structures/Types.js";
 import { MAJ_PV_Actuel_Pokemon } from "./Affichage.js";
 
-
-// Permet de calculer la probabilité de déclencher un statut
+/**
+ * Permet de calculer la probabilité de déclencher un statut
+ * @param {number} Chance 
+ * @returns {boolean}
+ */
 export function Calcul_Probabilite(Chance) {
     let rand = Math.trunc(Math.random() * 100)
     return (rand < Chance)
 }
 
-// Renvoit true si le pokemon peut attaquer (malgré un statut ou non) et false s'il ne peut pas attaquer
+/**
+ * Renvoit true si le pokemon peut attaquer (malgré un statut ou non) et false s'il ne peut pas attaquer
+ * @param {Pokemon} pokemon Instance de pokemon
+ * @param {Object} capacite Capacité employée par le pokemon
+ * @returns {boolean}
+ */
 export function Peut_Attaquer(pokemon, capacite) {
     if (pokemon.Statut == Statut.Aucun) {
         return(true)
@@ -44,7 +54,10 @@ export function Peut_Attaquer(pokemon, capacite) {
     return (true)
 }
 
-// Gère les effets de statut à la fin du round
+/**
+ * Gère les effets de statut à la fin du round
+ * @param {Jeu} Jeu Instance de Jeu
+ */
 export function Statut_Fin_Round(Jeu) {
     let pokemon1 = Jeu.equipes[0].pokemons[Jeu.index_pokemon1]
     let pokemon2 = Jeu.equipes[1].pokemons[Jeu.index_pokemon2]
@@ -73,7 +86,11 @@ export function Statut_Fin_Round(Jeu) {
     MAJ_PV_Actuel_Pokemon(pokemon1, Jeu.index_pokemon1, pokemon2, Jeu.equipes[1])
 }
 
-// Permet d'appliquer un statut au pokemon passé en paramètre
+/**
+ * Permet d'appliquer un statut au pokemon passé en paramètre
+ * @param {Pokemon} pokemon Instance de pokemon
+ * @param {Object} statut Statut à appliquer au pokemon
+ */
 export function Appliquer_Statut(pokemon, statut) {
     if (pokemon.Statut == Statut.Aucun) {
         if (statut == Statut.BRULURE && (pokemon.type1 != Types.FEU && pokemon.type2 != Types.FEU)) {
@@ -92,23 +109,37 @@ export function Appliquer_Statut(pokemon, statut) {
     }
 }
 
-// Gère l'effet de baisse de stat de la brulure
+/**
+ * Gère l'effet de baisse de stat de la brulure
+ * @param {Pokemon} pokemon Instance de pokemon
+ */
 function Effet_Brulure(pokemon) {
     pokemon.Attaque_Actuel = Math.trunc(pokemon.Attaque_Actuel / 2)
 }
 
-// Gère l'effet de baisse de stat de la paralysie
+/**
+ * Gère l'effet de baisse de stat de la paralysie
+ * @param {Pokemon} pokemon Instance de pokemon
+ */
 function Effet_Paralysie(pokemon) {
     pokemon.Vitesse_Actuel = Math.trunc(pokemon.Vitesse_Actuel / 2)
 }
 
-// Calcul les dégats infligés par la brulure
+/**
+ * Calcul les dégats infligés par la brulure
+ * @param {Pokemon} pokemon Instance de pokemon
+ * @returns {number} Renvoit les dégats à infliger au pokemon
+ */
 function Calcul_Degats_Brulure(pokemon) {
     let resultat = Math.trunc(pokemon.PV_Max * (1/8))
     return (resultat)
 }
 
-// Calcul les dégats infligés par l'empoisonnement
+/**
+ * Calcul les dégats infligés par l'empoisonnement
+ * @param {Pokemon} pokemon 
+ * @returns {number} Renvoit les dégats à infliger au pokemon
+ */
 function Calcul_Degats_Empoisonnement(pokemon) {
     pokemon.Tours_Poison += 1
     let resultat = Math.trunc(pokemon.PV_Max * (pokemon.Tours_Poison/16))

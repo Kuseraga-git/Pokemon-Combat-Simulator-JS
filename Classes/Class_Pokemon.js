@@ -1,7 +1,12 @@
 import { Statut } from "../Structures/Statut.js"
 
 export class Pokemon {
-    constructor(pokemon) { // Le constructeur prend en paramètre un Pokémon venant du Pokedex
+    /**
+     * Permet de créer un nouvel objet Pokemon.
+     * @constructor
+     * @param {Object} pokemon - Pokemon contenu dans la structure Pokedex.
+     */
+    constructor(pokemon) {
         this.nom = pokemon.Nom
         this.PV_Max = pokemon.PV_Max
         this.PV_Actuel = pokemon.PV_Max
@@ -35,7 +40,6 @@ export class Pokemon {
             this.PV_Actuel = 0
             this.Statut = Statut.Aucun
             this.KO = true
-            // console.log(`${this.nom} est KO`)
         }
     }
 

@@ -2,6 +2,11 @@ import { Pokemon } from "./Class_Pokemon.js"
 import { Pokedex } from "../Structures/Pokedex.js"
 
 export class Equipe {
+    /**
+     * Permet de créer un nouvel objet Equipe.
+     * @constructor
+     * @param {string} dresseur - Nom du dresseur de l'Equipe.
+     */
     constructor(dresseur) {
         this.dresseur = dresseur
         this.pokemons = []
