@@ -26,6 +26,9 @@ export class Pokemon {
         this.Statut = Statut.Aucun
         this.Tours_Sommeil = 0
         this.Tours_Poison = 0
+        this.Confusion = false
+        this.Tours_Confusion = 0
+        this.Peur = false
         this.capacites = pokemon.Capacites
         this.image = pokemon.Image
     }
@@ -49,6 +52,8 @@ export class Pokemon {
         this.Spe_Attaque_Actuel = this.Spe_Attaque
         this.Spe_Defense_Actuel = this.Spe_Defense
         this.Vitesse_Actuel = this.Vitesse
+        this.Confusion = false
+        this.Peur = false
         if (this.Statut == Statut.PARALYSIE) {
             this.Vitesse_Actuel /= 2
         }
