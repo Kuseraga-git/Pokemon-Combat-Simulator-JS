@@ -21,20 +21,23 @@ export function Calcul_Probabilite(Chance) {
  * @returns {boolean}
  */
 export function Peut_Attaquer(pokemon, capacite) {
-    if (pokemon.Statut == Statut.Aucun) {
+    /**
+     * Manque l'intégration des status mineurs (confusions, peur)
+     */
+    if (pokemon.Statut == Statut.Aucun && pokemon.Confusion == false && pokemon.Peur == false) {
         return(true)
     } else if (pokemon.Statut == Statut.GEL){
         if (capacite.Type == Types.FEU || Calcul_Probabilite(20)) {
             console.log(`${pokemon.nom} n'est plus ${pokemon.Statut.nom}`)
             pokemon.Statut = Statut.Aucun
-            return(true)
+            return true
         } else {
             console.log(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut.nom}`)
             return false
         }
     } else if (pokemon.Statut == Statut.PARALYSIE) {
         if (Calcul_Probabilite(75)) {
-            return(true)
+            return true
         } else {
             console.log(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut.nom}`)
             return false
@@ -44,11 +47,28 @@ export function Peut_Attaquer(pokemon, capacite) {
             console.log(`${pokemon.nom} n'est plus ${pokemon.Statut.nom}`)
             pokemon.Statut = Statut.Aucun
             pokemon.Tours_Sommeil = 0
-            return(true)
+            return true
         } else {
             console.log(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut.nom}`)
             pokemon.Tours_Sommeil += 1
             return false
+        }
+    } else if (pokemon.Peur) {
+        console.log(`La peur empêche ${pokemon.nom} d'attaquer !`)
+        return false
+    } else if (pokemon.Confusion) {
+        if (Calcul_Probabilite(25) || pokemon.Tours_Confusion == 4) {
+            console.log(`${pokemon.nom} n'est plus confus`)
+            pokemon.Confusion = false
+            pokemon.Tours_Confusion = 0
+            return true
+        } else if (Calcul_Probabilite(33)) {
+            pokemon.PV_Actuel -= Calcul_Degats_Confusion(pokemon)
+            pokemon.Tours_Confusion += 1
+            console.log(`${pokemon.nom} se blesse dans sa confusion`)
+            return false
+        } else {
+            return true
         }
     }
     return (true)
@@ -75,6 +95,8 @@ export function Statut_Fin_Round(Jeu) {
         pokemon2.PV_Actuel -= Calcul_Degats_Empoisonnement(pokemon2)
         console.log(`${pokemon2.nom} subit des dégats d'empoisonnement`)
     }
+    pokemon1.Peur = false
+    pokemon2.Peur = false
     pokemon1.Check_KO()
     pokemon2.Check_KO()
     if (pokemon1.KO) {
@@ -144,4 +166,16 @@ function Calcul_Degats_Empoisonnement(pokemon) {
     pokemon.Tours_Poison += 1
     let resultat = Math.trunc(pokemon.PV_Max * (pokemon.Tours_Poison/16))
     return (resultat)
+}
+
+/**
+ * Calcul les dégats infligés par la confusion
+ * @param {Pokemon} pokemon 
+ * @returns {number} Renvoit les dégats à infliger au pokemon
+ */
+function Calcul_Degats_Confusion(pokemon) {
+    let Degats = 40
+    Degats = Degats * (40 * pokemon.Attaque_Actuel / 50.0)
+    Degats = (Degats / pokemon.Defense_Actuel) + 2.0
+    return Math.trunc(Degats)
 }
