@@ -132,6 +132,22 @@ export function Appliquer_Statut(pokemon, statut) {
 }
 
 /**
+ * Permet d'appliquer la confusion au pokemon passé en paramètre
+ * @param {Pokemon} pokemon Instance de pokemon
+ */
+export function Appliquer_Confusion(pokemon) {
+    pokemon.Confusion = true
+}
+
+/**
+ * Permet d'appliquer la peur au pokemon passé en paramètre
+ * @param {Pokemon} pokemon Instance de pokemon
+ */
+export function Appliquer_Peur(pokemon) {
+    pokemon.Peur = true
+}
+
+/**
  * Gère l'effet de baisse de stat de la brulure
  * @param {Pokemon} pokemon Instance de pokemon
  */
