@@ -2,7 +2,7 @@ import { Categorie } from "./Categories.js"
 import { Types } from "./Types.js"
 import { Infliger_Degats, Calcul_Degats, Check_Precision } from "../Fonctions_Utils/Offensif.js"
 import { Chance_Effet_Supplementaire, Baisser_Stat, Degat_de_Recul, Soigner_PV, Augmenter_Stat } from "../Fonctions_Utils/Effets_Speciaux.js"
-import { Appliquer_Statut, Calcul_Probabilite } from "../Fonctions_Utils/Alterations.js"
+import { Appliquer_Confusion, Appliquer_Peur, Appliquer_Statut, Calcul_Probabilite } from "../Fonctions_Utils/Alterations.js"
 import { Statut } from "./Statut.js"
 
 export const Capacites = {
@@ -297,7 +297,6 @@ export const Capacites = {
         }
     },
     VENT_VIOLENT : {
-        // La confusion n'a pas encore été intégrée
         Nom_capa : "Vent Violent",
         Categorie : Categorie.SPECIAL,
         Type : Types.VOL,
@@ -312,6 +311,9 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
+                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(30)){
+                    Appliquer_Confusion(adversaire)
+                }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
@@ -402,7 +404,6 @@ export const Capacites = {
         }
     },
     EBOULEMENT : {
-        // La peur n'a pas encore été intégrée
         Nom_capa : "Eboulement",
         Categorie : Categorie.PHYSIQUE,
         Type : Types.ROCHE,
@@ -417,6 +418,9 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
+                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(30)){
+                    Appliquer_Peur(adversaire)
+                }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
@@ -607,7 +611,6 @@ export const Capacites = {
         }
     },
     VIBROBSCUR : {
-        // La peur n'a pas encore été intégrée
         Nom_capa : "Vibrobscur",
         Categorie : Categorie.SPECIAL,
         Type : Types.TENEBRE,
@@ -622,6 +625,9 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
+                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(20)){
+                    Appliquer_Peur(adversaire)
+                }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
@@ -1003,7 +1009,6 @@ export const Capacites = {
         }
     },
     OURAGAN : {
-        // La peur n'a pas encore été intégrée
         Nom_capa : "Ouragan",
         Categorie : Categorie.SPECIAL,
         Type : Types.DRAGON,
@@ -1018,6 +1023,9 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
+                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(20)){
+                    Appliquer_Peur(adversaire)
+                }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
