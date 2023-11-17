@@ -22,6 +22,7 @@ export class Pokemon {
         this.Spe_Defense_Actuel = pokemon.Spe_Defense
         this.Vitesse = pokemon.Vitesse
         this.Vitesse_Actuel = pokemon.Vitesse
+        this.Precision = 0
         this.KO = false
         this.Statut = Statut.Aucun
         this.Tours_Sommeil = 0

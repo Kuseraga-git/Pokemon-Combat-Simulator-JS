@@ -1,4 +1,5 @@
 import { Pokemon } from "../Classes/Class_Pokemon.js"
+import { Precision } from "../Structures/Precision.js"
 import { Calcul_Table_des_Types } from "../Structures/Types.js"
 
 /**
@@ -68,10 +69,11 @@ export function Infliger_Degats(pokemon, total) {
 
 /**
  * Permet de calculer la probabilité de toucher le pokemon adverse
- * @param {number} Precision 
+ * @param {number} precision // Précision de la capacité
+ * @param {Pokemon} pokemon // Instance de pokemon
  * @returns {boolean}
  */
-export function Check_Precision(Precision) {
+export function Check_Precision(precision, pokemon) {
     let rand = Math.trunc(Math.random() * 100)
-    return (rand <= Precision)
+    return (rand <= precision * Precision[pokemon.Precision])
 }

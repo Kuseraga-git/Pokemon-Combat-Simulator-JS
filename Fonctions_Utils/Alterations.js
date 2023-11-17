@@ -195,3 +195,29 @@ function Calcul_Degats_Confusion(pokemon) {
     Degats = (Degats / pokemon.Defense_Actuel) + 2.0
     return Math.trunc(Degats)
 }
+
+/**
+ * Fait baisser la précision d'un pokemon passé en paramètre
+ * @param {Pokemon} pokemon Instance de pokemon
+ */
+export function Baisser_Precision(pokemon) {
+    if (pokemon.Precision > -5) {
+        console.log(`La Précision de ${pokemon.nom} diminue !`)
+        pokemon.Precision -= 1
+    } else {
+        console.log(`La Précision de ${pokemon.nom} ne peut plus diminuer !`)
+    }
+}
+
+/**
+ * Fait augmenter la précision d'un pokemon passé en paramètre
+ * @param {Pokemon} pokemon Instance de pokemon
+ */
+export function Augmenter_Precision(pokemon) {
+    if (pokemon.Precision < 6) {
+        console.log(`La Précision de ${pokemon.nom} augmente !`)
+        pokemon.Precision += 1
+    } else {
+        console.log(`La Précision de ${pokemon.nom} ne peut plus augmenter !`)
+    }
+}
