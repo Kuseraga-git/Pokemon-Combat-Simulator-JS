@@ -1,4 +1,5 @@
 import { Pokemon } from "../Classes/Class_Pokemon.js"
+import { Critique } from "../Structures/Critique.js"
 import { Precision } from "../Structures/Precision.js"
 import { Calcul_Table_des_Types } from "../Structures/Types.js"
 
@@ -9,13 +10,14 @@ import { Calcul_Table_des_Types } from "../Structures/Types.js"
  * @param {Pokemon} pokemon Instance du pokemon qui inflige la capacité
  * @param {number} Puissance Puissance de la capacité
  * @param {Object} Type Type de la capacité
+ * @param {number} chance_Critique Chance de critique, baasé sur la structure Critique
  * @returns {number} Renvoit les dégats infligé par la capacité au pokemon adverse
  */
-export function Calcul_Degats(Categorie, adversaire, pokemon, Puissance, Type) {
+export function Calcul_Degats(Categorie, adversaire, pokemon, Puissance, Type, chance_Critique) {
     if (Categorie == "Phys") {
-        return (Calcul_Degats_Physique(adversaire, pokemon, Puissance, Type))
+        return (Calcul_Degats_Physique(adversaire, pokemon, Puissance, Type, chance_Critique))
     } else if (Categorie == "Spe") {
-        return (Calcul_Degats_Speciaux(adversaire, pokemon, Puissance, Type))
+        return (Calcul_Degats_Speciaux(adversaire, pokemon, Puissance, Type, chance_Critique))
     }
 }
 
@@ -25,11 +27,12 @@ export function Calcul_Degats(Categorie, adversaire, pokemon, Puissance, Type) {
  * @param {Pokemon} pokemon Instance du pokemon qui inflige la capacité
  * @param {number} Puissance Puissance de la capacité
  * @param {Object} Type Type de la capacité
+ * @param {number} chance_Critique Chance de critique, baasé sur la structure Critique
  * @returns {number} Renvoit les dégats infligé par la capacité au pokemon adverse
  */
-function Calcul_Degats_Physique(adversaire, pokemon, Puissance, Type) {
+function Calcul_Degats_Physique(adversaire, pokemon, Puissance, Type, chance_Critique) {
     let Degats = 40
-    let critique = ((Math.random() * 100.0) < 5.0 ? 2.0 : 1.0)
+    let critique = ((Math.random() * 100.0) < Critique[chance_Critique] ? 2.0 : 1.0)
     Degats = Degats * (Puissance * pokemon.Attaque_Actuel / 50.0)
     Degats = (Degats / adversaire.Defense_Actuel) + 2.0
     Degats = Degats * critique
@@ -44,11 +47,12 @@ function Calcul_Degats_Physique(adversaire, pokemon, Puissance, Type) {
  * @param {Pokemon} pokemon Instance du pokemon qui inflige la capacité
  * @param {number} Puissance Puissance de la capacité
  * @param {Object} Type Type de la capacité
+ * @param {number} chance_Critique Chance de critique, baasé sur la structure Critique
  * @returns {number} Renvoit les dégats infligé par la capacité au pokemon adverse
  */
-function Calcul_Degats_Speciaux(adversaire, pokemon, Puissance, Type) {
+function Calcul_Degats_Speciaux(adversaire, pokemon, Puissance, Type, chance_Critique) {
     let Degats = 40
-    let critique = ((Math.random() * 100.0) < 5.0 ? 2.0 : 1.0)
+    let critique = ((Math.random() * 100.0) < Critique[chance_Critique] ? 2.0 : 1.0)
     Degats = Degats * (Puissance * pokemon.Spe_Attaque_Actuel / 50.0)
     Degats = (Degats / adversaire.Spe_Defense_Actuel) + 2.0
     Degats = Degats * critique

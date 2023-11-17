@@ -23,6 +23,7 @@ export class Pokemon {
         this.Vitesse = pokemon.Vitesse
         this.Vitesse_Actuel = pokemon.Vitesse
         this.Precision = 0
+        this.chance_Critique = 1
         this.KO = false
         this.Statut = Statut.Aucun
         this.Tours_Sommeil = 0
