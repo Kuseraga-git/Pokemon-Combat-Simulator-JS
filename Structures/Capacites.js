@@ -2,7 +2,7 @@ import { Categorie } from "./Categories.js"
 import { Types } from "./Types.js"
 import { Infliger_Degats, Calcul_Degats, Check_Precision } from "../Fonctions_Utils/Offensif.js"
 import { Chance_Effet_Supplementaire, Baisser_Stat, Degat_de_Recul, Soigner_PV, Augmenter_Stat } from "../Fonctions_Utils/Effets_Speciaux.js"
-import { Appliquer_Confusion, Appliquer_Peur, Appliquer_Statut, Calcul_Probabilite } from "../Fonctions_Utils/Alterations.js"
+import { Appliquer_Confusion, Appliquer_Peur, Appliquer_Statut, Baisser_Precision, Calcul_Probabilite } from "../Fonctions_Utils/Alterations.js"
 import { Statut } from "./Statut.js"
 
 export const Capacites = {
@@ -14,7 +14,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -35,7 +35,7 @@ export const Capacites = {
         Precision : 90,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -58,7 +58,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -78,7 +78,7 @@ export const Capacites = {
         Precision : 75,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -101,7 +101,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -122,7 +122,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -142,7 +142,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -165,7 +165,7 @@ export const Capacites = {
         Precision : 90,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -187,7 +187,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -207,7 +207,7 @@ export const Capacites = {
         Precision : 70,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -230,7 +230,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -253,7 +253,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -281,7 +281,7 @@ export const Capacites = {
         Precision : 85,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -304,7 +304,7 @@ export const Capacites = {
         Precision : 70,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -327,7 +327,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -347,7 +347,7 @@ export const Capacites = {
         Precision : 70,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -370,7 +370,7 @@ export const Capacites = {
         Precision : 85,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -390,7 +390,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -411,7 +411,7 @@ export const Capacites = {
         Precision : 90,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -434,7 +434,7 @@ export const Capacites = {
         Precision : 85,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -454,7 +454,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -477,7 +477,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -516,7 +516,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -539,7 +539,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -572,7 +572,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -595,7 +595,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -618,7 +618,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -641,7 +641,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -664,7 +664,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -687,7 +687,7 @@ export const Capacites = {
         Precision : 90,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                     let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                     Infliger_Degats(adversaire, tmp[0])
                     if (tmp[1]) {
@@ -709,7 +709,7 @@ export const Capacites = {
         Precision : 95,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -732,7 +732,7 @@ export const Capacites = {
         Precision : 85,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -756,13 +756,16 @@ export const Capacites = {
         Precision : 85,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
+                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(30)) {
+                    Baisser_Precision(adversaire)
+                }
             } else {
                 console.log(`${pokemon.nom} rate son attaque ...`)
             }
@@ -777,7 +780,7 @@ export const Capacites = {
         Precision : 80,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -797,7 +800,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -820,7 +823,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -843,7 +846,7 @@ export const Capacites = {
         Precision : 90,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -863,7 +866,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -885,7 +888,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -907,7 +910,7 @@ export const Capacites = {
         Precision : 75,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -927,7 +930,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -949,7 +952,7 @@ export const Capacites = {
         Precision : 70,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -972,7 +975,7 @@ export const Capacites = {
         Precision : 80,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -993,7 +996,7 @@ export const Capacites = {
         Precision : 80,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -1016,7 +1019,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -1039,7 +1042,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let i = 0
                 const randint = Math.floor(Math.random() * 4) + 1
                 for (i; i <= randint && adversaire.KO == false ;i++){
@@ -1064,7 +1067,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let i = 0
                 for (i; i<2 && adversaire.KO == false ;i++){
                     let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
@@ -1088,7 +1091,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -1108,7 +1111,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
@@ -1128,7 +1131,7 @@ export const Capacites = {
         Precision : 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision)) {
+            if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
