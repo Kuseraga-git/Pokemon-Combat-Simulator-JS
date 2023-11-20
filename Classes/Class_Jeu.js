@@ -1,5 +1,6 @@
 import { affichePokemon2 } from "../Fonctions_Utils/Affichage.js"
 import { Peut_Attaquer, Statut_Fin_Round } from "../Fonctions_Utils/Alterations.js"
+import { Statistiques } from "../Structures/Statistiques.js"
 import { Equipe } from "./Class_Equipe.js"
 
 export class Jeu {
@@ -56,7 +57,7 @@ export class Jeu {
                 }
             }
         } else if (pokemon1.KO == false && pokemon2.KO == false) { // SI les 2 pokemons ne sont pas KO
-            if (pokemon1.Vitesse_Actuel >= pokemon2.Vitesse_Actuel) { // SI pokemon joueur + Rapide
+            if (pokemon1.Vitesse * Statistiques[pokemon1.Vitesse_Niveau] >= pokemon2.Vitesse * Statistiques[pokemon2.Vitesse_Niveau]) { // SI pokemon joueur + Rapide
                 if (Peut_Attaquer(pokemon1, pokemon1.capacites[choix1])) {
                     pokemon1.capacites[choix1].Effet(pokemon2, pokemon1)
                 }

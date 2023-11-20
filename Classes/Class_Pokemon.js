@@ -13,15 +13,15 @@ export class Pokemon {
         this.type1 = pokemon.Type1
         this.type2 = pokemon.Type2
         this.Attaque = pokemon.Attaque
-        this.Attaque_Actuel = pokemon.Attaque
+        this.Attaque_Niveau = 0
         this.Defense = pokemon.Defense
-        this.Defense_Actuel = pokemon.Defense
+        this.Defense_Niveau = 0
         this.Spe_Attaque = pokemon.Spe_Attaque
-        this.Spe_Attaque_Actuel = pokemon.Spe_Attaque
+        this.Spe_Attaque_Niveau = 0
         this.Spe_Defense = pokemon.Spe_Defense
-        this.Spe_Defense_Actuel = pokemon.Spe_Defense
+        this.Spe_Defense_Niveau = 0
         this.Vitesse = pokemon.Vitesse
-        this.Vitesse_Actuel = pokemon.Vitesse
+        this.Vitesse_Niveau = 0
         this.Precision = 0
         this.chance_Critique = 1
         this.KO = false
@@ -49,18 +49,18 @@ export class Pokemon {
     }
 
     Reinitialisation_Stats() {
-        this.Attaque_Actuel = this.Attaque
-        this.Defense_Actuel = this.Defense
-        this.Spe_Attaque_Actuel = this.Spe_Attaque
-        this.Spe_Defense_Actuel = this.Spe_Defense
-        this.Vitesse_Actuel = this.Vitesse
+        this.Attaque_Niveau = 0
+        this.Defense_Niveau = 0
+        this.Spe_Attaque_Niveau = 0
+        this.Spe_Defense_Niveau = 0
+        this.Vitesse_Niveau = 0
         this.Confusion = false
         this.Peur = false
         if (this.Statut == Statut.PARALYSIE) {
-            this.Vitesse_Actuel /= 2
+            this.Vitesse = Math.trunc(this.Vitesse / 2)
         }
         if (this.Statut == Statut.BRULURE) {
-            this.Attaque_Actuel /= 2
+            this.Attaque = Math.trunc(this.Attaque / 2)
         }
     }
 
@@ -68,10 +68,10 @@ export class Pokemon {
         this.Tours_Poison = 0
         this.Tours_Sommeil = 0
         if (this.Statut == Statut.PARALYSIE) {
-            this.Vitesse_Actuel *= 2
+            this.Vitesse *= 2
         }
         if (this.Statut == Statut.BRULURE) {
-            this.Attaque_Actuel *= 2
+            this.Attaque *= 2
         }
         this.Statut = Statut.Aucun
     }
