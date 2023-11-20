@@ -1,5 +1,6 @@
 import { Jeu } from "../Classes/Class_Jeu.js";
 import { Pokemon } from "../Classes/Class_Pokemon.js";
+import { Statistiques } from "../Structures/Statistiques.js";
 import { Statut } from "../Structures/Statut.js";
 import { Types } from "../Structures/Types.js";
 import { MAJ_PV_Actuel_Pokemon } from "./Affichage.js";
@@ -21,53 +22,50 @@ export function Calcul_Probabilite(Chance) {
  * @returns {boolean}
  */
 export function Peut_Attaquer(pokemon, capacite) {
-    /**
-     * Manque l'intégration des status mineurs (confusions, peur)
-     */
-    if (pokemon.Statut == Statut.Aucun && pokemon.Confusion == false && pokemon.Peur == false) {
-        return(true)
-    } else if (pokemon.Statut == Statut.GEL){
-        if (capacite.Type == Types.FEU || Calcul_Probabilite(20)) {
+    if (pokemon.Statut == Statut.Aucun && pokemon.Confusion == false && pokemon.Peur == false) { // Si tout va bien
+        return true
+    } else if (pokemon.Statut == Statut.GEL){ // Si le pokemon est Gelé
+        if (capacite.Type == Types.FEU || Calcul_Probabilite(20)) { // Mais se dégel
             console.log(`${pokemon.nom} n'est plus ${pokemon.Statut.nom}`)
             pokemon.Statut = Statut.Aucun
             return true
-        } else {
+        } else { // Si il ne se dégel pas
             console.log(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut.nom}`)
             return false
         }
-    } else if (pokemon.Statut == Statut.PARALYSIE) {
-        if (Calcul_Probabilite(75)) {
+    } else if (pokemon.Statut == Statut.PARALYSIE) { // Si le pokemon est paralysé
+        if (Calcul_Probabilite(75)) { // Si la paralysie ne s'applique pas
             return true
-        } else {
+        } else { // Si la paralysie s'applique
             console.log(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut.nom}`)
             return false
         }
-    } else if (pokemon.Statut == Statut.SOMMEIL) {
-        if (Calcul_Probabilite(33) || pokemon.Tours_Sommeil == 3) {
+    } else if (pokemon.Statut == Statut.SOMMEIL) { // Si le pokemon dort
+        if (Calcul_Probabilite(33) || pokemon.Tours_Sommeil == 3) { // Mais se réveil
             console.log(`${pokemon.nom} n'est plus ${pokemon.Statut.nom}`)
             pokemon.Statut = Statut.Aucun
             pokemon.Tours_Sommeil = 0
             return true
-        } else {
+        } else { // Si il dort toujours
             console.log(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut.nom}`)
             pokemon.Tours_Sommeil += 1
             return false
         }
-    } else if (pokemon.Peur) {
+    } else if (pokemon.Peur) { // Si le pokemon a peur
         console.log(`La peur empêche ${pokemon.nom} d'attaquer !`)
         return false
-    } else if (pokemon.Confusion) {
-        if (Calcul_Probabilite(25) || pokemon.Tours_Confusion == 4) {
+    } else if (pokemon.Confusion) { // Si le pokemon est confus
+        if (Calcul_Probabilite(25) || pokemon.Tours_Confusion == 4) { // Si il sort de sa confusion
             console.log(`${pokemon.nom} n'est plus confus`)
             pokemon.Confusion = false
             pokemon.Tours_Confusion = 0
             return true
-        } else if (Calcul_Probabilite(33)) {
+        } else if (Calcul_Probabilite(33)) { // Si le pokemon se blesse dans sa confusion
             pokemon.PV_Actuel -= Calcul_Degats_Confusion(pokemon)
             pokemon.Tours_Confusion += 1
             console.log(`${pokemon.nom} se blesse dans sa confusion`)
             return false
-        } else {
+        } else { // Si la confusion ne s'applique pas
             return true
         }
     }
@@ -81,17 +79,17 @@ export function Peut_Attaquer(pokemon, capacite) {
 export function Statut_Fin_Round(Jeu) {
     let pokemon1 = Jeu.equipes[0].pokemons[Jeu.index_pokemon1]
     let pokemon2 = Jeu.equipes[1].pokemons[Jeu.index_pokemon2]
-    if (pokemon1.Statut == Statut.BRULURE) {
+    if (pokemon1.Statut == Statut.BRULURE) { // Applique les dégats de brulure - Pokemon gauche
         pokemon1.PV_Actuel -= Calcul_Degats_Brulure(pokemon1)
         console.log(`${pokemon1.nom} subit des dégats de brulure`)
-    } else if (pokemon1.Statut == Statut.EMPOISONNEMENT) {
+    } else if (pokemon1.Statut == Statut.EMPOISONNEMENT) { // Applique les dégats de poison - Pokemon gauche
         pokemon1.PV_Actuel -= Calcul_Degats_Empoisonnement(pokemon1)
         console.log(`${pokemon1.nom} subit des dégats d'empoisonnement`)
     }
-    if (pokemon2.Statut == Statut.BRULURE) {
+    if (pokemon2.Statut == Statut.BRULURE) { // Applique les dégats de brulure - Pokemon droite
         pokemon2.PV_Actuel -= Calcul_Degats_Brulure(pokemon2)
         console.log(`${pokemon2.nom} subit des dégats de brulure`)
-    } else if (pokemon2.Statut == Statut.EMPOISONNEMENT) {
+    } else if (pokemon2.Statut == Statut.EMPOISONNEMENT) { // Applique les dégats de poison - Pokemon gauche
         pokemon2.PV_Actuel -= Calcul_Degats_Empoisonnement(pokemon2)
         console.log(`${pokemon2.nom} subit des dégats d'empoisonnement`)
     }
@@ -99,10 +97,10 @@ export function Statut_Fin_Round(Jeu) {
     pokemon2.Peur = false
     pokemon1.Check_KO()
     pokemon2.Check_KO()
-    if (pokemon1.KO) {
+    if (pokemon1.KO) { // Si le pokemon de gauche tombe KO
         console.log(`${pokemon1.nom} est KO`)
     }
-    if (pokemon2.KO) {
+    if (pokemon2.KO) { // Si le pokemon de droite tombe KO
         console.log(`${pokemon2.nom} est KO`)
     }
     MAJ_PV_Actuel_Pokemon(pokemon1, Jeu.index_pokemon1, pokemon2, Jeu.equipes[1])
@@ -114,18 +112,18 @@ export function Statut_Fin_Round(Jeu) {
  * @param {Object} statut Statut à appliquer au pokemon
  */
 export function Appliquer_Statut(pokemon, statut) {
-    if (pokemon.Statut == Statut.Aucun) {
-        if (statut == Statut.BRULURE && (pokemon.type1 != Types.FEU && pokemon.type2 != Types.FEU)) {
+    if (pokemon.Statut == Statut.Aucun) { // On vérifie que le pokemon n'a pas déjà un statut
+        if (statut == Statut.BRULURE && (pokemon.type1 != Types.FEU && pokemon.type2 != Types.FEU)) { // Si le pokemon peut être brulé
             pokemon.Statut = Statut.BRULURE
             Effet_Brulure(pokemon)
-        } else if (statut == Statut.GEL && (pokemon.type1 != Types.GLACE && pokemon.type2 != Types.GLACE)) {
+        } else if (statut == Statut.GEL && (pokemon.type1 != Types.GLACE && pokemon.type2 != Types.GLACE)) { // Si le pokemon peut être Gelé
             pokemon.Statut = Statut.GEL
-        } else if (statut == Statut.PARALYSIE && (pokemon.type1 != Types.ELECTRICK && pokemon.type2 != Types.ELECTRICK)) {
+        } else if (statut == Statut.PARALYSIE && (pokemon.type1 != Types.ELECTRICK && pokemon.type2 != Types.ELECTRICK)) { // Si le pokemon peut être Paralysé
             pokemon.Statut = Statut.PARALYSIE
             Effet_Paralysie(pokemon)
-        } else if (statut == Statut.EMPOISONNEMENT && ((pokemon.type1 != Types.POISON && pokemon.type2 != Types.POISON) && (pokemon.type1 != Types.ACIER && pokemon.type2 != Types.ACIER))) {
+        } else if (statut == Statut.EMPOISONNEMENT && ((pokemon.type1 != Types.POISON && pokemon.type2 != Types.POISON) && (pokemon.type1 != Types.ACIER && pokemon.type2 != Types.ACIER))) { // SI le pokemon peut être empoisonné
             pokemon.Statut = Statut.EMPOISONNEMENT
-        } else if (statut == Statut.SOMMEIL) {
+        } else if (statut == Statut.SOMMEIL) { // Faire dormir le pokemon
             pokemon.Statut = Statut.SOMMEIL
         }
     }
@@ -152,7 +150,7 @@ export function Appliquer_Peur(pokemon) {
  * @param {Pokemon} pokemon Instance de pokemon
  */
 function Effet_Brulure(pokemon) {
-    pokemon.Attaque_Actuel = Math.trunc(pokemon.Attaque_Actuel / 2)
+    pokemon.Attaque = Math.trunc(pokemon.Attaque / 2)
 }
 
 /**
@@ -160,7 +158,7 @@ function Effet_Brulure(pokemon) {
  * @param {Pokemon} pokemon Instance de pokemon
  */
 function Effet_Paralysie(pokemon) {
-    pokemon.Vitesse_Actuel = Math.trunc(pokemon.Vitesse_Actuel / 2)
+    pokemon.Vitesse = Math.trunc(pokemon.Vitesse / 2)
 }
 
 /**
@@ -191,33 +189,7 @@ function Calcul_Degats_Empoisonnement(pokemon) {
  */
 function Calcul_Degats_Confusion(pokemon) {
     let Degats = 40
-    Degats = Degats * (40 * pokemon.Attaque_Actuel / 50.0)
-    Degats = (Degats / pokemon.Defense_Actuel) + 2.0
+    Degats = Degats * (40 * (pokemon.Attaque * Statistiques[pokemon.Attaque_Niveau]) / 50.0)
+    Degats = (Degats / (pokemon.Defense * Statistiques[pokemon.Defense_Niveau])) + 2.0
     return Math.trunc(Degats)
-}
-
-/**
- * Fait baisser la précision d'un pokemon passé en paramètre
- * @param {Pokemon} pokemon Instance de pokemon
- */
-export function Baisser_Precision(pokemon) {
-    if (pokemon.Precision > -5) {
-        console.log(`La Précision de ${pokemon.nom} diminue !`)
-        pokemon.Precision -= 1
-    } else {
-        console.log(`La Précision de ${pokemon.nom} ne peut plus diminuer !`)
-    }
-}
-
-/**
- * Fait augmenter la précision d'un pokemon passé en paramètre
- * @param {Pokemon} pokemon Instance de pokemon
- */
-export function Augmenter_Precision(pokemon) {
-    if (pokemon.Precision < 6) {
-        console.log(`La Précision de ${pokemon.nom} augmente !`)
-        pokemon.Precision += 1
-    } else {
-        console.log(`La Précision de ${pokemon.nom} ne peut plus augmenter !`)
-    }
 }

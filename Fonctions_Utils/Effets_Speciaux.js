@@ -30,7 +30,7 @@ export function Chance_Effet_Supplementaire(Chance) {
  */
 export function Baisser_Stat(pokemon, stat) {
     console.log(`${stat} de ${pokemon.nom} diminue !`)
-    pokemon[stat + '_Actuel'] = Math.trunc(pokemon[stat + '_Actuel'] / 1.3)
+    pokemon[stat + '_Niveau'] -= 1
 }
 
 /**
@@ -40,7 +40,7 @@ export function Baisser_Stat(pokemon, stat) {
  */
 export function Augmenter_Stat(pokemon, stat) {
     console.log(`${stat} de ${pokemon.nom} augmente !`)
-    pokemon[stat + '_Actuel'] = Math.trunc(pokemon[stat + '_Actuel'] * 1.3)
+    pokemon[stat + '_Niveau'] += 1
 }
 
 /**
@@ -53,30 +53,4 @@ export function Degat_de_Recul(pokemon, degats, pourcentage) {
     pokemon.PV_Actuel = Math.trunc(pokemon.PV_Actuel - (degats * pourcentage))
     console.log(`${pokemon.nom} subit des dégâts de recul`)
     pokemon.Check_KO()
-}
-
-/**
- * Fait augmenter la chance de critique d'un pokemon passé en paramètre
- * @param {Pokemon} pokemon Instance de pokemon
- */
-export function Augmenter_Chances_Critique(pokemon) {
-    if (pokemon.chance_Critique < 4) {
-        console.log(`Les chances de critique de ${pokemon.nom} augmentent !`)
-        pokemon.chance_Critique +=1
-    } else {
-        console.log(`Les chances de critique de ${pokemon.nom} ne peuvent plus augmenter !`)
-    }
-}
-
-/**
- * Fait augmenter la chance de critique d'un pokemon passé en paramètre
- * @param {Pokemon} pokemon Instance de pokemon
- */
-export function Baisser_Chances_Critique(pokemon) {
-    if (pokemon.chance_Critique > 1) {
-        console.log(`Les chances de critique de ${pokemon.nom} Diminuent !`)
-        pokemon.chance_Critique -=1
-    } else {
-        console.log(`Les chances de critique de ${pokemon.nom} ne peuvent plus diminuer !`)
-    }
 }

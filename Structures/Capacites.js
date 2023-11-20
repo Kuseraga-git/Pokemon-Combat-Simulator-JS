@@ -1,8 +1,9 @@
 import { Categorie } from "./Categories.js"
 import { Types } from "./Types.js"
-import { Infliger_Degats, Calcul_Degats, Check_Precision } from "../Fonctions_Utils/Offensif.js"
+import { Infliger_Degats, Calcul_Degats } from "../Fonctions_Utils/Offensif.js"
 import { Chance_Effet_Supplementaire, Baisser_Stat, Degat_de_Recul, Soigner_PV, Augmenter_Stat } from "../Fonctions_Utils/Effets_Speciaux.js"
-import { Appliquer_Confusion, Appliquer_Peur, Appliquer_Statut, Baisser_Precision, Calcul_Probabilite } from "../Fonctions_Utils/Alterations.js"
+import { Appliquer_Confusion, Appliquer_Peur, Appliquer_Statut, Calcul_Probabilite } from "../Fonctions_Utils/Alterations.js"
+import { Baisser_Precision, Check_Precision } from "./Precision.js"
 import { Statut } from "./Statut.js"
 
 export const Capacites = {
