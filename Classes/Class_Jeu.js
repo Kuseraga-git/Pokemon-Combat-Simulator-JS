@@ -24,14 +24,14 @@ export class Jeu {
 
     /**
      * Détermine l'ordre des actions et le déroulée d'une partie
-     * @param {number} choix1 Chiffre symbolisant le choix du joueur (0, 1, 2, 3 == capacité pokemon, 4 == changement de pokemon actif)
+     * @param {number} choix1 Chiffre symbolisant le choix du joueur (0, 1, 2, 3 === capacité pokemon, 4 === changement de pokemon actif)
      * @param {number} [index_nouveau_pokemon1=0] Chiffre symbolisant l'index du nouveau pokemon actif
      */
     Ordre_Action(choix1, index_nouveau_pokemon1 = 0) {
 
         /* choix1 :
-        **  0, 1, 2, 3 == capacité pokemon du joueur
-        **  4 == changement de pokemon sur le pokemon, l'index du poke choisi est envoyé dans index_nouveau_pokemon
+        **  0, 1, 2, 3 === capacité pokemon du joueur
+        **  4 === changement de pokemon sur le pokemon, l'index du poke choisi est envoyé dans index_nouveau_pokemon
         **/
 
         let pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
@@ -39,16 +39,16 @@ export class Jeu {
         const valeur_aleatoire = Math.floor(Math.random() * 4);
 
         // SI changement de pokemon
-        if (choix1 == 4){
+        if (choix1 === 4){
             if (pokemon1.KO) { // SI le pokemon actif est KO
-                if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
+                if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO === false && index_nouveau_pokemon1 != this.index_pokemon1){
                     pokemon1.Tours_Poison = 0
                     this.index_pokemon1 = index_nouveau_pokemon1
                     pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
                     pokemon1.Appel()
                 }
             } else { // SI le pokemon actif n'est pas KO
-                if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
+                if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO === false && index_nouveau_pokemon1 != this.index_pokemon1){
                     pokemon1.Tours_Poison = 0
                     this.index_pokemon1 = index_nouveau_pokemon1
                     pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
@@ -56,12 +56,12 @@ export class Jeu {
                     pokemon2.capacites[valeur_aleatoire].Effet(pokemon1, pokemon2)
                 }
             }
-        } else if (pokemon1.KO == false && pokemon2.KO == false) { // SI les 2 pokemons ne sont pas KO
+        } else if (pokemon1.KO === false && pokemon2.KO === false) { // SI les 2 pokemons ne sont pas KO
             if (pokemon1.Vitesse * Statistiques[pokemon1.Vitesse_Niveau] >= pokemon2.Vitesse * Statistiques[pokemon2.Vitesse_Niveau]) { // SI pokemon joueur + Rapide
                 if (Peut_Attaquer(pokemon1, pokemon1.capacites[choix1])) {
                     pokemon1.capacites[choix1].Effet(pokemon2, pokemon1)
                 }
-                if (pokemon2.KO == false && pokemon1.KO == false) {
+                if (pokemon2.KO === false && pokemon1.KO === false) {
                     if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
                         pokemon2.capacites[valeur_aleatoire].Effet(pokemon1, pokemon2)
                     }
@@ -70,7 +70,7 @@ export class Jeu {
                 if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
                     pokemon2.capacites[valeur_aleatoire].Effet(pokemon1, pokemon2)
                 }
-                if (pokemon2.KO == false && pokemon1.KO == false) {
+                if (pokemon2.KO === false && pokemon1.KO === false) {
                     if (Peut_Attaquer(pokemon1, pokemon1.capacites[choix1])) {
                         pokemon1.capacites[choix1].Effet(pokemon2, pokemon1)
                     }
@@ -81,7 +81,7 @@ export class Jeu {
         if (this.equipes[0].Check_Equipe_KO() && this.equipes[1].Check_Equipe_KO()) { // SI les 2 équipes sont KO
             setTimeout(alert, 500, `Egalité !!!`);
         } else if (pokemon2.KO) { // SI pokemon adverse est KO
-            if (this.equipes[1].Check_Equipe_KO() == false) { // SI l'équipe adverse a encore des pokemons jouables
+            if (this.equipes[1].Check_Equipe_KO() === false) { // SI l'équipe adverse a encore des pokemons jouables
                 this.index_pokemon2 += 1
                 pokemon2 = this.equipes[1].pokemons[this.index_pokemon2]
                 affichePokemon2(pokemon2)

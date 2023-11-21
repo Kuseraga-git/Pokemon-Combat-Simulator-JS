@@ -11,18 +11,12 @@ import { Statut } from "../Structures/Statut.js"
  * @param {Equipe} equipe2 - Equipe du joueur de droite
  */
 export function MAJ_PV_Actuel_Pokemon(pokemon1, index, pokemon2, equipe2) {
-    let PKM1 = document.getElementById("PV1")
-    PKM1.textContent = `PV: ${pokemon1.PV_Actuel} / ${pokemon1.PV_Max}`
-    PKM1 = document.getElementById(`equipe1-${index}`)
-    PKM1.textContent = `PV: ${pokemon1.PV_Actuel} / ${pokemon1.PV_Max}`
-    PKM1 = document.getElementById(`equipe1-${index}-statut`)
-    PKM1.src = pokemon1.Statut.image
-    PKM1 = document.getElementById(`pkm-statut-1`)
-    PKM1.src = pokemon1.Statut.image
-    let PKM2 = document.getElementById("PV2")
-    PKM2.textContent = `PV: ${pokemon2.PV_Actuel} / ${pokemon2.PV_Max}`
-    PKM2 = document.getElementById(`pkm-statut-2`)
-    PKM2.src = pokemon2.Statut.image
+    document.getElementById("PV1").textContent = `PV: ${pokemon1.PV_Actuel} / ${pokemon1.PV_Max}`
+    document.getElementById(`equipe1-${index}`).textContent = `PV: ${pokemon1.PV_Actuel} / ${pokemon1.PV_Max}`
+    document.getElementById(`equipe1-${index}-statut`).src = pokemon1.Statut.image
+    document.getElementById(`pkm-statut-1`).src = pokemon1.Statut.image
+    document.getElementById("PV2").textContent = `PV: ${pokemon2.PV_Actuel} / ${pokemon2.PV_Max}`
+    document.getElementById(`pkm-statut-2`).src = pokemon2.Statut.image
     afficherEquipe2(equipe2)
 }
 
@@ -109,8 +103,7 @@ export function afficherEquipe1(equipe, jeu) {
     const pokemon_card = document.querySelectorAll(".equipe1-pokemon-card");
     for (const [index, element] of pokemon_card.entries()) {
         element.addEventListener("click", function(event) {
-            const boutonsCapa = document.getElementById("capa-list1");
-            boutonsCapa.innerHTML = ``
+            document.getElementById("capa-list1").innerHTML = ``;
             jeu.Ordre_Action(4, index)
             affichePokemon1(jeu.equipes[0].pokemons[jeu.index_pokemon1], jeu)
         })
@@ -146,9 +139,8 @@ export function afficherEquipe2(equipe) {
  * @param {Jeu} jeu Instance du jeu
  */
 export function affichePokemon1(pokemon1, jeu) {
-    const pokemonContainer = document.getElementById("pokemon1");
     const cartePokemon = genererCartePokemonCombat(pokemon1, 1);
-    pokemonContainer.innerHTML = cartePokemon;
+    document.getElementById("pokemon1").innerHTML = cartePokemon;
     const boutonsCapa = document.getElementById("capa-list1");
     for (const element of pokemon1.capacites) {
         boutonsCapa.innerHTML += genererCapacitePokemon(element)
@@ -166,7 +158,6 @@ export function affichePokemon1(pokemon1, jeu) {
  * @param {Pokemon} pokemon2 
  */
 export function affichePokemon2(pokemon2) {
-    const pokemonContainer = document.getElementById("pokemon2");
     const cartePokemon = genererCartePokemonCombat(pokemon2, 2);
-    pokemonContainer.innerHTML = cartePokemon;
+    document.getElementById("pokemon2").innerHTML = cartePokemon;
 }

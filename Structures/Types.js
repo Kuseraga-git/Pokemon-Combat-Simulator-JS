@@ -29,75 +29,75 @@ export const Types = {
  */
 export function Calcul_Table_des_Types(type_attaque, type1, type2 = "Aucun") {
     let resultat = 1.0
-    if (type_attaque == "Acier") {
+    if (type_attaque === "Acier") {
         resultat = check_Acier(type1, resultat)
         resultat = check_Acier(type2, resultat)
     }
-    if (type_attaque == "Combat") {
+    if (type_attaque === "Combat") {
         resultat = check_Combat(type1, resultat)
         resultat = check_Combat(type2, resultat)
     }
-    if (type_attaque == "Dragon") {
+    if (type_attaque === "Dragon") {
         resultat = check_Dragon(type1, resultat)
         resultat = check_Dragon(type2, resultat)
     }
-    if (type_attaque == "Eau") {
+    if (type_attaque === "Eau") {
         resultat = check_Eau(type1, resultat)
         resultat = check_Eau(type2, resultat)
     }
-    if (type_attaque == "Electrick") {
+    if (type_attaque === "Electrick") {
         resultat = check_Electrick(type1, resultat)
         resultat = check_Electrick(type2, resultat)
     }
-    if (type_attaque == "Fée") {
+    if (type_attaque === "Fée") {
         resultat = check_Fee(type1, resultat)
         resultat = check_Fee(type2, resultat)
     }
-    if (type_attaque == "Feu") {
+    if (type_attaque === "Feu") {
         resultat = check_Feu(type1, resultat)
         resultat = check_Feu(type2, resultat)
     }
-    if (type_attaque == "Glace") {
+    if (type_attaque === "Glace") {
         resultat = check_Glace(type1, resultat)
         resultat = check_Glace(type2, resultat)
     }
-    if (type_attaque == "Insecte") {
+    if (type_attaque === "Insecte") {
         resultat = check_Insecte(type1, resultat)
         resultat = check_Insecte(type2, resultat)
     }
-    if (type_attaque == "Normal") {
+    if (type_attaque === "Normal") {
         resultat = check_Normal(type1, resultat)
         resultat = check_Normal(type2, resultat)
     }
-    if (type_attaque == "Plante") {
+    if (type_attaque === "Plante") {
         resultat = check_Plante(type1, resultat)
         resultat = check_Plante(type2, resultat)
     }
-    if (type_attaque == "Poison") {
+    if (type_attaque === "Poison") {
         resultat = check_Poison(type1, resultat)
         resultat = check_Poison(type2, resultat)
     }
-    if (type_attaque == "Psy") {
+    if (type_attaque === "Psy") {
         resultat = check_Psy(type1, resultat)
         resultat = check_Psy(type2, resultat)
     }
-    if (type_attaque == "Roche") {
+    if (type_attaque === "Roche") {
         resultat = check_Roche(type1, resultat)
         resultat = check_Roche(type2, resultat)
     }
-    if (type_attaque == "Sol") {
+    if (type_attaque === "Sol") {
         resultat = check_Sol(type1, resultat)
         resultat = check_Sol(type2, resultat)
     }
-    if (type_attaque == "Spectre") {
+    if (type_attaque === "Spectre") {
         resultat = check_Spectre(type1, resultat)
         resultat = check_Spectre(type2, resultat)
     }
-    if (type_attaque == "Ténèbres") {
+    if (type_attaque === "Ténèbres") {
         resultat = check_Tenebre(type1, resultat)
         resultat = check_Tenebre(type2, resultat)
     }
-    if (type_attaque == "Vol") {
+    if (type_attaque === "Vol") {
         resultat = check_Vol(type1, resultat)
         resultat = check_Vol(type2, resultat)
     }
@@ -166,9 +166,8 @@ function check_Acier(type, resultat) {
         case "Vol":
             resultat = resultat
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -236,9 +235,8 @@ function check_Combat(type, resultat) {
         case "Vol":
             resultat = resultat / 2.0
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -306,9 +304,8 @@ function check_Dragon(type, resultat) {
         case "Vol":
             resultat = resultat
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -376,9 +373,8 @@ function check_Eau(type, resultat) {
         case "Vol":
             resultat = resultat
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -446,9 +442,8 @@ function check_Electrick(type, resultat) {
         case "Vol":
             resultat = resultat * 2.0
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -516,9 +511,8 @@ function check_Fee(type, resultat) {
         case "Vol":
             resultat = resultat
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -586,9 +580,8 @@ function check_Feu(type, resultat) {
         case "Vol":
             resultat = resultat
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -656,9 +649,8 @@ function check_Glace(type, resultat) {
         case "Vol":
             resultat = resultat * 2.0
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -726,9 +718,8 @@ function check_Insecte(type, resultat) {
         case "Vol":
             resultat = resultat / 2.0
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -796,9 +787,8 @@ function check_Normal(type, resultat) {
         case "Vol":
             resultat = resultat
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -866,9 +856,8 @@ function check_Plante(type, resultat) {
         case "Vol":
             resultat = resultat / 2.0
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -936,9 +925,8 @@ function check_Poison(type, resultat) {
         case "Vol":
             resultat = resultat
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -1006,9 +994,8 @@ function check_Psy(type, resultat) {
         case "Vol":
             resultat = resultat
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -1076,9 +1063,8 @@ function check_Roche(type, resultat) {
         case "Vol":
             resultat = resultat * 2.0
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -1146,9 +1132,8 @@ function check_Sol(type, resultat) {
         case "Vol":
             resultat = resultat * 0.0
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -1216,9 +1201,8 @@ function check_Spectre(type, resultat) {
         case "Vol":
             resultat = resultat
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -1286,9 +1270,8 @@ function check_Tenebre(type, resultat) {
         case "Vol":
             resultat = resultat
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
@@ -1356,9 +1339,8 @@ function check_Vol(type, resultat) {
         case "Vol":
             resultat = resultat
             break;
-        case "Aucun":
-            resultat = resultat
         default:
+            resultat = resultat
             break;
     }
     return(resultat)
