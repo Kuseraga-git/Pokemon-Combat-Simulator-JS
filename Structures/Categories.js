@@ -1,5 +1,5 @@
 export const Categorie = {
-    PHYSIQUE : "Phys",
-    SPECIAL : "Spe",
-    STATUS : "Status"
+    PHYSIQUE: "Phys",
+    SPECIAL: "Spe",
+    STATUS: "Status"
 }

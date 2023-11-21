@@ -7,12 +7,12 @@ import { Baisser_Precision, Check_Precision } from "./Precision.js"
 import { Statut } from "./Statut.js"
 
 export const Capacites = {
-    ELECTACLE : {
-        Nom_capa : "Electacle",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.ELECTRICK,
-        Puissance : 120,
-        Precision : 100,
+    ELECTACLE: {
+        Nom_capa: "Electacle",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.ELECTRICK,
+        Puissance: 120,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -28,12 +28,12 @@ export const Capacites = {
             }
         }
     },
-    CALINERIE : {
-        Nom_capa : "Câlinerie",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.FEE,
-        Puissance : 90,
-        Precision : 90,
+    CALINERIE: {
+        Nom_capa: "Câlinerie",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.FEE,
+        Puissance: 90,
+        Precision: 90,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -43,7 +43,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
                     Baisser_Stat(adversaire, "Attaque")
                 }
             } else {
@@ -51,12 +51,12 @@ export const Capacites = {
             }
         }
     },
-    CASSE_BRIQUE : {
-        Nom_capa : "Casse-Brique",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.COMBAT,
-        Puissance : 75,
-        Precision : 100,
+    CASSE_BRIQUE: {
+        Nom_capa: "Casse-Brique",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.COMBAT,
+        Puissance: 75,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -71,12 +71,12 @@ export const Capacites = {
             }
         }
     },
-    QUEUE_DE_FER : {
-        Nom_capa : "Queue de Fer",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.ACIER,
-        Puissance : 100,
-        Precision : 75,
+    QUEUE_DE_FER: {
+        Nom_capa: "Queue de Fer",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.ACIER,
+        Puissance: 100,
+        Precision: 75,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -86,7 +86,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(30)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(30)) {
                     Baisser_Stat(adversaire, "Defense")
                 }
             } else {
@@ -94,12 +94,12 @@ export const Capacites = {
             }
         }
     },
-    MEGA_SANGSUE : {
-        Nom_capa : "Méga-Sangsue",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.PLANTE,
-        Puissance : 75,
-        Precision : 100,
+    MEGA_SANGSUE: {
+        Nom_capa: "Méga-Sangsue",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.PLANTE,
+        Puissance: 75,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -115,12 +115,12 @@ export const Capacites = {
             }
         }
     },
-    SEISME : {
-        Nom_capa : "Seisme",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.SOL,
-        Puissance : 100,
-        Precision : 100,
+    SEISME: {
+        Nom_capa: "Seisme",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.SOL,
+        Puissance: 100,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -135,12 +135,12 @@ export const Capacites = {
             }
         }
     },
-    BOMB_BEURK : {
-        Nom_capa : "Bombe Beurk",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.POISON,
-        Puissance : 90,
-        Precision : 100,
+    BOMB_BEURK: {
+        Nom_capa: "Bombe Beurk",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.POISON,
+        Puissance: 90,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -150,7 +150,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(30)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(30)) {
                     Appliquer_Statut(adversaire, Statut.EMPOISONNEMENT)
                 }
             } else {
@@ -158,12 +158,12 @@ export const Capacites = {
             }
         }
     },
-    TEMPETE_VERTE : {
-        Nom_capa : "Tempête verte",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.PLANTE,
-        Puissance : 130,
-        Precision : 90,
+    TEMPETE_VERTE: {
+        Nom_capa: "Tempête verte",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.PLANTE,
+        Puissance: 130,
+        Precision: 90,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -180,12 +180,12 @@ export const Capacites = {
             }
         }
     },
-    SURF : {
-        Nom_capa : "Surf",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.EAU,
-        Puissance : 90,
-        Precision : 100,
+    SURF: {
+        Nom_capa: "Surf",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.EAU,
+        Puissance: 90,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -200,12 +200,12 @@ export const Capacites = {
             }
         }
     },
-    BLIZZARD : {
-        Nom_capa : "Blizzard",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.GLACE,
-        Puissance : 120,
-        Precision : 70,
+    BLIZZARD: {
+        Nom_capa: "Blizzard",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.GLACE,
+        Puissance: 120,
+        Precision: 70,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -215,7 +215,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(10)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(10)) {
                     Appliquer_Statut(adversaire, Statut.GEL)
                 }
             } else {
@@ -223,12 +223,12 @@ export const Capacites = {
             }
         }
     },
-    PSYCHO : {
-        Nom_capa : "Psycho",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.PSY,
-        Puissance : 90,
-        Precision : 100,
+    PSYCHO: {
+        Nom_capa: "Psycho",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.PSY,
+        Puissance: 90,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -238,7 +238,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
                     Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
@@ -246,12 +246,12 @@ export const Capacites = {
             }
         }
     },
-    POUVOIR_ANTIQUE : {
-        Nom_capa : "Pouvoir Antique",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.ROCHE,
-        Puissance : 60,
-        Precision : 100,
+    POUVOIR_ANTIQUE: {
+        Nom_capa: "Pouvoir Antique",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.ROCHE,
+        Puissance: 60,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -274,12 +274,12 @@ export const Capacites = {
             }
         }
     },
-    DEFLAGRATION : {
-        Nom_capa : "Déflagration",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.FEU,
-        Puissance : 110,
-        Precision : 85,
+    DEFLAGRATION: {
+        Nom_capa: "Déflagration",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.FEU,
+        Puissance: 110,
+        Precision: 85,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -289,7 +289,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(10)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(10)) {
                     Appliquer_Statut(adversaire, Statut.BRULURE)
                 }
             } else {
@@ -297,12 +297,12 @@ export const Capacites = {
             }
         }
     },
-    VENT_VIOLENT : {
-        Nom_capa : "Vent Violent",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.VOL,
-        Puissance : 120,
-        Precision : 70,
+    VENT_VIOLENT: {
+        Nom_capa: "Vent Violent",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.VOL,
+        Puissance: 120,
+        Precision: 70,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -312,7 +312,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(30)){
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(30)){
                     Appliquer_Confusion(adversaire)
                 }
             } else {
@@ -320,12 +320,12 @@ export const Capacites = {
             }
         }
     },
-    DRACO_CHOC : {
-        Nom_capa : "Draco-Choc",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.DRAGON,
-        Puissance : 85,
-        Precision : 100,
+    DRACO_CHOC: {
+        Nom_capa: "Draco-Choc",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.DRAGON,
+        Puissance: 85,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -340,12 +340,12 @@ export const Capacites = {
             }
         }
     },
-    EXPLOFORCE : {
-        Nom_capa : "Exploforce",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.COMBAT,
-        Puissance : 120,
-        Precision : 70,
+    EXPLOFORCE: {
+        Nom_capa: "Exploforce",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.COMBAT,
+        Puissance: 120,
+        Precision: 70,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -355,7 +355,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
                     Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
@@ -363,12 +363,12 @@ export const Capacites = {
             }
         }
     },
-    MEGAFOUET : {
-        Nom_capa : "Mégafouet",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.PLANTE,
-        Puissance : 120,
-        Precision : 85,
+    MEGAFOUET: {
+        Nom_capa: "Mégafouet",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.PLANTE,
+        Puissance: 120,
+        Precision: 85,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -384,11 +384,11 @@ export const Capacites = {
         }
     },
     DAMOCLES :{
-        Nom_capa : "Damoclès",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.NORMAL,
-        Puissance : 120,
-        Precision : 100,
+        Nom_capa: "Damoclès",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.NORMAL,
+        Puissance: 120,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -404,12 +404,12 @@ export const Capacites = {
             }
         }
     },
-    EBOULEMENT : {
-        Nom_capa : "Eboulement",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.ROCHE,
-        Puissance : 80,
-        Precision : 90,
+    EBOULEMENT: {
+        Nom_capa: "Eboulement",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.ROCHE,
+        Puissance: 80,
+        Precision: 90,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -419,7 +419,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(30)){
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(30)){
                     Appliquer_Peur(adversaire)
                 }
             } else {
@@ -427,12 +427,12 @@ export const Capacites = {
             }
         }
     },
-    HYDROCANON : {
-        Nom_capa : "Hydrocanon",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.EAU,
-        Puissance : 120,
-        Precision : 85,
+    HYDROCANON: {
+        Nom_capa: "Hydrocanon",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.EAU,
+        Puissance: 120,
+        Precision: 85,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -447,12 +447,12 @@ export const Capacites = {
             }
         }
     },
-    LUMINOCANON : {
-        Nom_capa : "Luminocanon",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.ACIER,
-        Puissance : 80,
-        Precision : 100,
+    LUMINOCANON: {
+        Nom_capa: "Luminocanon",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.ACIER,
+        Puissance: 80,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -462,7 +462,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
                     Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
@@ -470,12 +470,12 @@ export const Capacites = {
             }
         }
     },
-    LASER_GLACE : {
-        Nom_capa : "Laser Glace",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.GLACE,
-        Puissance : 90,
-        Precision : 100,
+    LASER_GLACE: {
+        Nom_capa: "Laser Glace",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.GLACE,
+        Puissance: 90,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -485,7 +485,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(10)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(10)) {
                     Appliquer_Statut(adversaire, Statut.GEL)
                 }
             } else {
@@ -493,12 +493,12 @@ export const Capacites = {
             }
         }
     },
-    AURASPHERE : {
-        Nom_capa : "Aurasphère",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.COMBAT,
-        Puissance : 80,
-        Precision : 200,
+    AURASPHERE: {
+        Nom_capa: "Aurasphère",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.COMBAT,
+        Puissance: 80,
+        Precision: 200,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
@@ -509,12 +509,12 @@ export const Capacites = {
             adversaire.Check_KO()
         }
     },
-    POUVOIR_LUNAIRE : {
-        Nom_capa : "Pouvoir Lunaire",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.FEE,
-        Puissance : 95,
-        Precision : 100,
+    POUVOIR_LUNAIRE: {
+        Nom_capa: "Pouvoir Lunaire",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.FEE,
+        Puissance: 95,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -524,7 +524,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(30)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(30)) {
                     Baisser_Stat(adversaire, "Spe_Attaque")
                 }
             } else {
@@ -532,12 +532,12 @@ export const Capacites = {
             }
         }
     },
-    TRIPLATTAQUE : {
-        Nom_capa : "Triplattaque",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.NORMAL,
-        Puissance : 80,
-        Precision : 100,
+    TRIPLATTAQUE: {
+        Nom_capa: "Triplattaque",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.NORMAL,
+        Puissance: 80,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -547,7 +547,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(20)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(20)) {
                     switch (Math.floor(Math.random() * 3)) {
                         case 0:
                             Appliquer_Statut(adversaire, Statut.BRULURE)
@@ -558,6 +558,8 @@ export const Capacites = {
                         case 2:
                             Appliquer_Statut(adversaire, Statut.GEL)
                             break;
+                        default:
+                            break;
                     }
                 }
             } else {
@@ -565,12 +567,12 @@ export const Capacites = {
             }
         }
     },
-    LANCE_FLAMME : {
-        Nom_capa : "Lance Flamme",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.FEU,
-        Puissance : 90,
-        Precision : 100,
+    LANCE_FLAMME: {
+        Nom_capa: "Lance Flamme",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.FEU,
+        Puissance: 90,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -580,7 +582,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(10)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(10)) {
                     Appliquer_Statut(adversaire, Statut.BRULURE)
                 }
             } else {
@@ -588,12 +590,12 @@ export const Capacites = {
             }
         }
     },
-    TONNERRE : {
-        Nom_capa : "Tonnerre",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.ELECTRICK,
-        Puissance : 90,
-        Precision : 100,
+    TONNERRE: {
+        Nom_capa: "Tonnerre",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.ELECTRICK,
+        Puissance: 90,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -603,7 +605,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(10)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(10)) {
                     Appliquer_Statut(adversaire, Statut.PARALYSIE)
                 }
             } else {
@@ -611,12 +613,12 @@ export const Capacites = {
             }
         }
     },
-    VIBROBSCUR : {
-        Nom_capa : "Vibrobscur",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.TENEBRE,
-        Puissance : 80,
-        Precision : 100,
+    VIBROBSCUR: {
+        Nom_capa: "Vibrobscur",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.TENEBRE,
+        Puissance: 80,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -626,7 +628,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(20)){
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(20)){
                     Appliquer_Peur(adversaire)
                 }
             } else {
@@ -634,12 +636,12 @@ export const Capacites = {
             }
         }
     },
-    BALLOMBRE : {
-        Nom_capa : "Ball'Ombre",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.SPECTRE,
-        Puissance : 80,
-        Precision : 100,
+    BALLOMBRE: {
+        Nom_capa: "Ball'Ombre",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.SPECTRE,
+        Puissance: 80,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -649,7 +651,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(20)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(20)) {
                     Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
@@ -657,12 +659,12 @@ export const Capacites = {
             }
         }
     },
-    ECO_SPHERE : {
-        Nom_capa : "Eco-Sphère",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.PLANTE,
-        Puissance : 90,
-        Precision : 100,
+    ECO_SPHERE: {
+        Nom_capa: "Eco-Sphère",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.PLANTE,
+        Puissance: 90,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -672,7 +674,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
                     Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
@@ -680,12 +682,12 @@ export const Capacites = {
             }
         }
     },
-    DRACO_METEORE : {
-        Nom_capa : "Draco Météore",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.DRAGON,
-        Puissance : 130,
-        Precision : 90,
+    DRACO_METEORE: {
+        Nom_capa: "Draco Météore",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.DRAGON,
+        Puissance: 130,
+        Precision: 90,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -702,12 +704,12 @@ export const Capacites = {
             }
         }
     },
-    COUP_VICTOIRE : {
-        Nom_capa : "Coup Victoire",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.FEU,
-        Puissance : 180,
-        Precision : 95,
+    COUP_VICTOIRE: {
+        Nom_capa: "Coup Victoire",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.FEU,
+        Puissance: 180,
+        Precision: 95,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -725,12 +727,12 @@ export const Capacites = {
             }
         }
     },
-    FLAMME_BLEUE : {
-        Nom_capa : "Flamme Bleue",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.FEU,
-        Puissance : 130,
-        Precision : 85,
+    FLAMME_BLEUE: {
+        Nom_capa: "Flamme Bleue",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.FEU,
+        Puissance: 130,
+        Precision: 85,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -740,7 +742,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(20)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(20)) {
                     Appliquer_Statut(adversaire, Statut.BRULURE)
                 }
             } else {
@@ -748,12 +750,12 @@ export const Capacites = {
             }
         }
     },
-    OCROUPI : {
-        Nom_capa : "Ocroupi",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.EAU,
-        Puissance : 90,
-        Precision : 85,
+    OCROUPI: {
+        Nom_capa: "Ocroupi",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.EAU,
+        Puissance: 90,
+        Precision: 85,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -763,7 +765,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(30)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(30)) {
                     Baisser_Precision(adversaire)
                 }
             } else {
@@ -771,12 +773,12 @@ export const Capacites = {
             }
         }
     },
-    COUP_CROIX : {
-        Nom_capa : "Coup Croix",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.COMBAT,
-        Puissance : 100,
-        Precision : 80,
+    COUP_CROIX: {
+        Nom_capa: "Coup Croix",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.COMBAT,
+        Puissance: 100,
+        Precision: 80,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -791,12 +793,12 @@ export const Capacites = {
             }
         }
     },
-    BOURDON : {
-        Nom_capa : "Bourdon",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.INSECTE,
-        Puissance : 90,
-        Precision : 100,
+    BOURDON: {
+        Nom_capa: "Bourdon",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.INSECTE,
+        Puissance: 90,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -806,7 +808,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
                     Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
@@ -814,12 +816,12 @@ export const Capacites = {
             }
         }
     },
-    MACHOUILLE : {
-        Nom_capa : "Machouille",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.TENEBRE,
-        Puissance : 80,
-        Precision : 100,
+    MACHOUILLE: {
+        Nom_capa: "Machouille",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.TENEBRE,
+        Puissance: 80,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -829,7 +831,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Chance_Effet_Supplementaire(20)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(20)) {
                     Baisser_Stat(adversaire, "Defense")
                 }
             } else {
@@ -837,12 +839,12 @@ export const Capacites = {
             }
         }
     },
-    HYDRO_QUEUE : {
-        Nom_capa : "Hydro Queue",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.EAU,
-        Puissance : 90,
-        Precision : 90,
+    HYDRO_QUEUE: {
+        Nom_capa: "Hydro Queue",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.EAU,
+        Puissance: 90,
+        Precision: 90,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -857,34 +859,12 @@ export const Capacites = {
             }
         }
     },
-    DESTRUCTION : {
-        Nom_capa : "Destruction",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.NORMAL,
-        Puissance : 200,
-        Precision : 100,
-        Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            if (Check_Precision(Precision, pokemon)) {
-                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
-                Infliger_Degats(adversaire, tmp[0])
-                if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
-                }
-                adversaire.Check_KO()
-                pokemon.PV_Actuel = 0
-                pokemon.Check_KO()
-            } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
-            }
-        }
-    },
-    EXPLOSION : {
-        Nom_capa : "Explosion",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.NORMAL,
-        Puissance : 250,
-        Precision : 100,
+    DESTRUCTION: {
+        Nom_capa: "Destruction",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.NORMAL,
+        Puissance: 200,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -901,12 +881,34 @@ export const Capacites = {
             }
         }
     },
-    ULTIMAWASHI : {
-        Nom_capa : "Ultimawashi",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.NORMAL,
-        Puissance : 120,
-        Precision : 75,
+    EXPLOSION: {
+        Nom_capa: "Explosion",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.NORMAL,
+        Puissance: 250,
+        Precision: 100,
+        Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
+            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            if (Check_Precision(Precision, pokemon)) {
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    console.log("COUP CRITIQUE !!!")
+                }
+                adversaire.Check_KO()
+                pokemon.PV_Actuel = 0
+                pokemon.Check_KO()
+            } else {
+                console.log(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
+    ULTIMAWASHI: {
+        Nom_capa: "Ultimawashi",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.NORMAL,
+        Puissance: 120,
+        Precision: 75,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -921,12 +923,12 @@ export const Capacites = {
             }
         }
     },
-    SURPUISSANCE : {
-        Nom_capa : "Surpuissance",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.COMBAT,
-        Puissance : 120,
-        Precision : 100,
+    SURPUISSANCE: {
+        Nom_capa: "Surpuissance",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.COMBAT,
+        Puissance: 120,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -944,11 +946,11 @@ export const Capacites = {
         }
     },
     FATAL_FOUDRE:{
-        Nom_capa : "Fatal Foudre",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.ELECTRICK,
-        Puissance : 110,
-        Precision : 70,
+        Nom_capa: "Fatal Foudre",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.ELECTRICK,
+        Puissance: 110,
+        Precision: 70,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -958,7 +960,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(30)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(30)) {
                     Appliquer_Statut(adversaire, Statut.PARALYSIE)
                 }
             } else {
@@ -967,11 +969,11 @@ export const Capacites = {
         }
     } ,
     FRACASS_TETE:{
-        Nom_capa : "Fracass'Tête",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.ROCHE,
-        Puissance : 150,
-        Precision : 80,
+        Nom_capa: "Fracass'Tête",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.ROCHE,
+        Puissance: 150,
+        Precision: 80,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -988,11 +990,11 @@ export const Capacites = {
         }
     },
     DETRICANON:{
-        Nom_capa : "Détricanon",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.POISON,
-        Puissance : 120,
-        Precision : 80,
+        Nom_capa: "Détricanon",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.POISON,
+        Puissance: 120,
+        Precision: 80,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -1010,12 +1012,12 @@ export const Capacites = {
             }
         }
     },
-    OURAGAN : {
-        Nom_capa : "Ouragan",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.DRAGON,
-        Puissance : 40,
-        Precision : 100,
+    OURAGAN: {
+        Nom_capa: "Ouragan",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.DRAGON,
+        Puissance: 40,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -1025,7 +1027,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(20)){
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(20)){
                     Appliquer_Peur(adversaire)
                 }
             } else {
@@ -1033,18 +1035,18 @@ export const Capacites = {
             }
         }
     },
-    TORGNOLE : {
-        Nom_capa : "Torgnole",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.NORMAL,
-        Puissance : 25,
-        Precision : 100,
+    TORGNOLE: {
+        Nom_capa: "Torgnole",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.NORMAL,
+        Puissance: 25,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let i = 0
                 const randint = Math.floor(Math.random() * 4) + 1
-                for (i; i <= randint && adversaire.KO == false ;i++){
+                for (i; i <= randint && adversaire.KO === false ;i++){
                     let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                     Infliger_Degats(adversaire, tmp[0])
                     if (tmp[1]) {
@@ -1058,17 +1060,17 @@ export const Capacites = {
             }
         }
     },
-    DOUBLE_LASER : {
-        Nom_capa : "Double Laser",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.PSY,
-        Puissance : 40,
-        Precision : 100,
+    DOUBLE_LASER: {
+        Nom_capa: "Double Laser",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.PSY,
+        Puissance: 40,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let i = 0
-                for (i; i<2 && adversaire.KO == false ;i++){
+                for (i; i<2 && adversaire.KO === false ;i++){
                     let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                     Infliger_Degats(adversaire, tmp[0])
                     if (tmp[1]) {
@@ -1082,12 +1084,12 @@ export const Capacites = {
             }
         }
     },
-    BANG_SONIQUE : {
-        Nom_capa : "Bang Sonique",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.NORMAL,
-        Puissance : 140,
-        Precision : 100,
+    BANG_SONIQUE: {
+        Nom_capa: "Bang Sonique",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.NORMAL,
+        Puissance: 140,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -1102,12 +1104,12 @@ export const Capacites = {
             }
         }
     },
-    OVERDRIVE : {
-        Nom_capa : "Overdrive",
-        Categorie : Categorie.SPECIAL,
-        Type : Types.ELECTRICK,
-        Puissance : 80,
-        Precision : 100,
+    OVERDRIVE: {
+        Nom_capa: "Overdrive",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.ELECTRICK,
+        Puissance: 80,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -1122,12 +1124,12 @@ export const Capacites = {
             }
         }
     },
-    BOUTEFEU : {
-        Nom_capa : "Boutefeu",
-        Categorie : Categorie.PHYSIQUE,
-        Type : Types.FEU,
-        Puissance : 120,
-        Precision : 100,
+    BOUTEFEU: {
+        Nom_capa: "Boutefeu",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.FEU,
+        Puissance: 120,
+        Precision: 100,
         Effet(adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
@@ -1137,7 +1139,7 @@ export const Capacites = {
                     console.log("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
-                if (adversaire.KO == false && tmp[0] > 0 && Calcul_Probabilite(10)) {
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(10)) {
                     Appliquer_Statut(adversaire, Statut.BRULURE)
                 }
                 Degat_de_Recul(pokemon, tmp[0], 0.3)
@@ -1147,12 +1149,12 @@ export const Capacites = {
             }
         }
     },
-    TREMPETTE : {
-        Nom_capa : "Trempette",
-        Categorie : Categorie.STATUS,
-        Type : Types.EAU,
-        Puissance : 0,
-        Precision : 100,
+    TREMPETTE: {
+        Nom_capa: "Trempette",
+        Categorie: Categorie.STATUS,
+        Type: Types.EAU,
+        Puissance: 0,
+        Precision: 100,
         Effet(adversaire, pokemon) {
             console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             console.log(`Il ne se passe rien ...`)

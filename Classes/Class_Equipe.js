@@ -35,7 +35,7 @@ export class Equipe {
 
     Check_Equipe_KO() {
         for (const pokemon of this.pokemons) {
-            if (pokemon.KO == false) {
+            if (pokemon.KO === false) {
                 return false
             }
         }

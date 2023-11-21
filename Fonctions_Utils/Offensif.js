@@ -14,9 +14,9 @@ import { Calcul_Table_des_Types } from "../Structures/Types.js"
  * @returns {number} Renvoit les dégats infligé par la capacité au pokemon adverse
  */
 export function Calcul_Degats(Categorie, adversaire, pokemon, Puissance, Type, chance_Critique) {
-    if (Categorie == "Phys") {
+    if (Categorie === "Phys") {
         return (Calcul_Degats_Physique(adversaire, pokemon, Puissance, Type, chance_Critique))
-    } else if (Categorie == "Spe") {
+    } else if (Categorie === "Spe") {
         return (Calcul_Degats_Speciaux(adversaire, pokemon, Puissance, Type, chance_Critique))
     }
 }
@@ -36,9 +36,9 @@ function Calcul_Degats_Physique(adversaire, pokemon, Puissance, Type, chance_Cri
     Degats = Degats * (Puissance * (pokemon.Attaque * Statistiques[pokemon.Attaque_Niveau]) / 50.0)
     Degats = (Degats / (adversaire.Defense * Statistiques[adversaire.Defense_Niveau])) + 2.0
     Degats = Degats * critique
-    Degats = Degats * ((pokemon.type1 == Type || pokemon.type2 == Type) ? 1.5 : 1.0)
+    Degats = Degats * ((pokemon.type1 === Type || pokemon.type2 === Type) ? 1.5 : 1.0)
     Degats = Degats * Calcul_Table_des_Types(Type, adversaire.type1, adversaire.type2)
-    return [Math.trunc(Degats), (critique == 2.0)]
+    return [Math.trunc(Degats), (critique === 2.0)]
 }
 
 /**
@@ -56,9 +56,9 @@ function Calcul_Degats_Speciaux(adversaire, pokemon, Puissance, Type, chance_Cri
     Degats = Degats * (Puissance * (pokemon.Spe_Attaque * Statistiques[pokemon.Spe_Attaque_Niveau]) / 50.0)
     Degats = (Degats / (adversaire.Spe_Defense * Statistiques[adversaire.Spe_Defense_Niveau])) + 2.0
     Degats = Degats * critique
-    Degats = Degats * ((pokemon.type1 == Type || pokemon.type2 == Type) ? 1.5 : 1.0)
+    Degats = Degats * ((pokemon.type1 === Type || pokemon.type2 === Type) ? 1.5 : 1.0)
     Degats = Degats * Calcul_Table_des_Types(Type, adversaire.type1, adversaire.type2)
-    return [Math.trunc(Degats), (critique == 2.0)]
+    return [Math.trunc(Degats), (critique === 2.0)]
 }
 
 /**

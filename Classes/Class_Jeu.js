@@ -24,14 +24,14 @@ export class Jeu {
 
     /**
      * Détermine l'ordre des actions et le déroulée d'une partie
-     * @param {number} choix1 Chiffre symbolisant le choix du joueur (0, 1, 2, 3 == capacité pokemon, 4 == changement de pokemon actif)
+     * @param {number} choix1 Chiffre symbolisant le choix du joueur (0, 1, 2, 3 === capacité pokemon, 4 === changement de pokemon actif)
      * @param {number} [index_nouveau_pokemon1=0] Chiffre symbolisant l'index du nouveau pokemon actif
      */
     Ordre_Action(choix1, index_nouveau_pokemon1 = 0) {
 
         /* choix1 :
-        **  0, 1, 2, 3 == capacité pokemon du joueur
-        **  4 == changement de pokemon sur le pokemon, l'index du poke choisi est envoyé dans index_nouveau_pokemon
+        **  0, 1, 2, 3 === capacité pokemon du joueur
+        **  4 === changement de pokemon sur le pokemon, l'index du poke choisi est envoyé dans index_nouveau_pokemon
         **/
        
         /* Initialisez 3 variables :
@@ -50,9 +50,9 @@ export class Jeu {
 
 
         // SI changement de pokemon
-        if (choix1 == 4){
+        if (choix1 === 4){
             if (pokemon1.KO) { // SI le pokemon actif est KO
-                if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
+                if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO === false && index_nouveau_pokemon1 != this.index_pokemon1){
                     // SI le nouveau Pokémon n'est pas KO et n'est pas le même que celui sur le terrain
                     
                     /* Vous avez 3 étapes à réaliser :
@@ -65,7 +65,7 @@ export class Jeu {
 
                 }
             } else { // SI le pokemon actif n'est pas KO
-                if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO == false && index_nouveau_pokemon1 != this.index_pokemon1){
+                if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO === false && index_nouveau_pokemon1 != this.index_pokemon1){
                     // SI le nouveau Pokémon n'est pas KO et n'est pas le même que celui sur le terrain
 
                     /* Vous avez 4 étapes à réaliser :
@@ -80,14 +80,13 @@ export class Jeu {
 
                 }
             } 
-        } else if (pokemon1.KO == false && pokemon2.KO == false) { // SI les 2 pokemons ne sont pas KO
+        } else if (pokemon1.KO === false && pokemon2.KO === false) { // SI les 2 pokemons ne sont pas KO
             if (pokemon1.Vitesse * Statistiques[pokemon1.Vitesse_Niveau] >= pokemon2.Vitesse * Statistiques[pokemon2.Vitesse_Niveau]) { // SI pokemon joueur + Rapide
                 if (Peut_Attaquer(pokemon1, pokemon1.capacites[choix1])) {
                     // Vous devez faire attaquer le Pokémon du joueur 1 avec l'attaque choisir - Codez en dessous
 
                 }
-
-                if (pokemon2.KO == false && pokemon1.KO == false) { // Si les 2 Pokémons ne sont pas KO
+                if (pokemon2.KO === false && pokemon1.KO === false) {
                     if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
                         // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire - Codez en dessous
 
@@ -100,7 +99,7 @@ export class Jeu {
 
                 }
 
-                if (pokemon2.KO == false && pokemon1.KO == false) { // Si les 2 Pokémons ne sont pas KO
+                if (pokemon2.KO === false && pokemon1.KO === false) { // Si les 2 Pokémons ne sont pas KO
                     if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
                         // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire - Codez en dessous
 
@@ -115,7 +114,7 @@ export class Jeu {
         if (this.equipes[0].Check_Equipe_KO() && this.equipes[1].Check_Equipe_KO()) { // SI les 2 équipes sont KO
             setTimeout(alert, 500, `Egalité !!!`); // Permet au programme, après 1/2 seconde, d'afficher un message.
         } else if (pokemon2.KO) { // SI pokemon adverse est KO
-            if (this.equipes[1].Check_Equipe_KO() == false) { // SI l'équipe adverse a encore des pokemons jouables
+            if (this.equipes[1].Check_Equipe_KO() === false) { // SI l'équipe adverse a encore des pokemons jouables
                 /*
                 ** La partie continue ! Il vous reste 3 étapes à réaliser :
                 ** - Augmenter l'index_pokemon2 de 1 pour passer au Pokémon suivant

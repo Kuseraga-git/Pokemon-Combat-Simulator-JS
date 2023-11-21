@@ -56,10 +56,10 @@ export class Pokemon {
         this.Vitesse_Niveau = 0
         this.Confusion = false
         this.Peur = false
-        if (this.Statut == Statut.PARALYSIE) {
+        if (this.Statut === Statut.PARALYSIE) {
             this.Vitesse = Math.trunc(this.Vitesse / 2)
         }
-        if (this.Statut == Statut.BRULURE) {
+        if (this.Statut === Statut.BRULURE) {
             this.Attaque = Math.trunc(this.Attaque / 2)
         }
     }
@@ -67,10 +67,10 @@ export class Pokemon {
     Reinitialiser_Statut() {
         this.Tours_Poison = 0
         this.Tours_Sommeil = 0
-        if (this.Statut == Statut.PARALYSIE) {
+        if (this.Statut === Statut.PARALYSIE) {
             this.Vitesse *= 2
         }
-        if (this.Statut == Statut.BRULURE) {
+        if (this.Statut === Statut.BRULURE) {
             this.Attaque *= 2
         }
         this.Statut = Statut.Aucun
