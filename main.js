@@ -6,12 +6,12 @@ import { affichageGeneral } from "./Fonctions_Utils/Affichage.js"; // To remove
 // ###                      INITIALISATION                       ###
 // #################################################################
 
-let Partie = new Jeu()
-let equipe1 = new Equipe("Leaf", 1)
+const Partie = new Jeu()
+const equipe1 = new Equipe("Leaf", 1)
 equipe1.Creer_Equipe_Leaf()
 Partie.Ajouter_Dresseur(equipe1)
 
-let equipe2 = new Equipe("Red", 2)
+const equipe2 = new Equipe("Red", 2)
 equipe2.Creer_Equipe_Red()
 Partie.Ajouter_Dresseur(equipe2)
 
