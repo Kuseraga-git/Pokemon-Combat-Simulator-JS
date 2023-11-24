@@ -1,6 +1,12 @@
+import { Jeu } from "../Classes/Class_Jeu.js";
 import { Meteo } from "../Structures/Meteo.js";
 import { Types } from "../Structures/Types.js";
 
+/**
+ * Applique un effet météo
+ * @param {Jeu} Jeu Instance de Jeu
+ * @param {Object} nouvelle_Meteo Météo contenu dans la structure Meteo
+ */
 export function Appliquer_meteo(Jeu, nouvelle_Meteo) {
     if (Jeu.Meteo != nouvelle_Meteo) {
         Meteo_neutre(Jeu, nouvelle_Meteo);
@@ -23,6 +29,11 @@ export function Appliquer_meteo(Jeu, nouvelle_Meteo) {
     }
 }
 
+/**
+ * Rétablit un météo normale, sans effets
+ * @param {Jeu} Jeu Instance de Jeu
+ * @param {Object} nouvelle_Meteo Météo contenu dans la structure Meteo
+ */
 export function Meteo_neutre(Jeu, nouvelle_Meteo = Meteo.Aucun) {
     if (Jeu.Meteo != Meteo.Aucun && nouvelle_Meteo == Meteo.Aucun){
         console.log(`La météo redevient calme !`)
@@ -42,18 +53,30 @@ export function Meteo_neutre(Jeu, nouvelle_Meteo = Meteo.Aucun) {
     Jeu.Tours_Meteo = 0;
 }
 
+/**
+ * Applique le soleil
+ * @param {Jeu} Jeu Instance de Jeu
+ */
 function Appliquer_Soleil(Jeu) {
     document.getElementById("meteo").src = "../Images_Meteo/Soleil.png";
     Jeu.Meteo = Meteo.SOLEIL;
     Jeu.Tours_Meteo = 5;
 }
 
+/**
+ * Applique la pluie
+ * @param {Jeu} Jeu Instance de Jeu
+ */
 function Appliquer_Pluie(Jeu) {
     document.getElementById("meteo").src = "../Images_Meteo/Pluie.png";
     Jeu.Meteo = Meteo.PLUIE;
     Jeu.Tours_Meteo = 5;
 }
 
+/**
+ * Applique les effets de la tempête de sable
+ * @param {Jeu} Jeu Instance de Jeu
+ */
 function Appliquer_Tempete_de_sable(Jeu) {
     document.getElementById("meteo").src = "../Images_Meteo/Tempête_de_sable.png";
     Jeu.Meteo = Meteo.TEMPETE_DE_SABLE;
@@ -66,6 +89,10 @@ function Appliquer_Tempete_de_sable(Jeu) {
     }
 }
 
+/**
+ * Retire les effets de la tempête de sable
+ * @param {Jeu} Jeu Instance de Jeu
+ */
 function Enlever_Tempete_de_sable(Jeu) {
     if (Jeu.equipes[0].pokemons[Jeu.index_pokemon1].type1 === Types.ROCHE || Jeu.equipes[0].pokemons[Jeu.index_pokemon1].type2 === Types.ROCHE) {
         Jeu.equipes[0].pokemons[Jeu.index_pokemon1].Spe_Defense_Niveau -= 1;
@@ -75,6 +102,10 @@ function Enlever_Tempete_de_sable(Jeu) {
     }
 }
 
+/**
+ * Applique les effets de la grêle
+ * @param {Jeu} Jeu Instance de Jeu
+ */
 function Appliquer_Grele(Jeu) {
     document.getElementById("meteo").src = "../Images_Meteo/Grêle.png";
     Jeu.Meteo = Meteo.GRELE;
@@ -87,6 +118,10 @@ function Appliquer_Grele(Jeu) {
     }
 }
 
+/**
+ * Retire les effets de la grêle
+ * @param {Jeu} Jeu Instance de Jeu
+ */
 function Enlever_Grele(Jeu) {
     if (Jeu.equipes[0].pokemons[Jeu.index_pokemon1].type1 === Types.GLACE || Jeu.equipes[0].pokemons[Jeu.index_pokemon1].type2 === Types.GLACE) {
         Jeu.equipes[0].pokemons[Jeu.index_pokemon1].Defense_Niveau -= 1;
@@ -96,6 +131,10 @@ function Enlever_Grele(Jeu) {
     }
 }
 
+/**
+ * S'occupe du traitement et du calcule des dégâts de météo
+ * @param {Jeu} Jeu Instance de Jeu
+ */
 export function Degats_Meteo(Jeu) {
     if (Jeu.Tours_Meteo > 0) {
         const pokemon1 = Jeu.equipes[0].pokemons[Jeu.index_pokemon1]
