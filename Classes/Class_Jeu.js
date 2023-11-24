@@ -56,7 +56,7 @@ export class Jeu {
                     this.index_pokemon1 = index_nouveau_pokemon1
                     pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
                     pokemon1.Appel(this)
-                    pokemon2.capacites[valeur_aleatoire].Effet(pokemon1, pokemon2)
+                    pokemon2.capacites[valeur_aleatoire].Effet(this, pokemon1, pokemon2)
                 }
             }
         } else if (pokemon1.KO === false && pokemon2.KO === false) { // SI les 2 pokemons ne sont pas KO
