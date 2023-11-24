@@ -164,4 +164,22 @@ export const Pokedex = {
             Capacites.ECO_SPHERE,
         ]
     },
+    MORPHEO: {
+        Nom: "Morpheo",
+        Type1: Types.ROCHE,
+        Type2: Types.GLACE,
+        PV_Max: 1000,
+        Attaque: 251,
+        Defense: 1000,
+        Spe_Attaque: 394,
+        Spe_Defense: 1000,
+        Vitesse: 350,
+        Image: '../Images_Pokemon/Ectoplasma.png',
+        Capacites: [
+            Capacites.BLIZZARD,
+            Capacites.POUVOIR_ANTIQUE,
+            Capacites.TEMPETE_DE_SABLE,
+            Capacites.GRELE,
+        ]
+    }
 }

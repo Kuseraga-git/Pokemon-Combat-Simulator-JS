@@ -1,4 +1,7 @@
+import { Meteo } from "../Structures/Meteo.js"
 import { Statut } from "../Structures/Statut.js"
+import { Types } from "../Structures/Types.js"
+import { Jeu } from "./Class_Jeu.js"
 
 export class Pokemon {
     /**
@@ -35,9 +38,14 @@ export class Pokemon {
         this.image = pokemon.Image
     }
 
-    Appel() {
+    /**
+     * 
+     * @param {Jeu} Jeu Instance de la partie (de Jeu)
+     */
+    Appel(Jeu) {
         console.log(`Je te choisis ${this.nom} !!!`)
         this.Reinitialisation_Stats()
+        this.Bonus_Meteo(Jeu)
     }
 
     Check_KO() {
@@ -74,5 +82,21 @@ export class Pokemon {
             this.Attaque *= 2
         }
         this.Statut = Statut.Aucun
+    }
+
+    /**
+     * 
+     * @param {Jeu} Jeu Instance de la partie (de Jeu)
+     */
+    Bonus_Meteo(Jeu) {
+        if (Jeu.Meteo === Meteo.TEMPETE_DE_SABLE) {
+            if (this.type1 === Types.ROCHE || this.type2 === Types.ROCHE) {
+                this.Spe_Defense += this.Spe_Defense * 3/2
+            }
+        } else if (Jeu.Meteo === Meteo.GRELE) {
+            if (this.type1 === Types.GLACE || this.type2 === Types.GLACE) {
+                this.Defense += this.Defense * 3/2
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@ import { Statistiques } from "../Structures/Statistiques.js";
 import { Statut } from "../Structures/Statut.js";
 import { Types } from "../Structures/Types.js";
 import { MAJ_PV_Actuel_Pokemon } from "./Affichage.js";
+import { Degats_Meteo } from "./Effets_Meteo.js";
 
 /**
  * Permet de calculer la probabilité de déclencher un statut
@@ -95,6 +96,7 @@ export function Statut_Fin_Round(Jeu) {
     }
     pokemon1.Peur = false
     pokemon2.Peur = false
+    Degats_Meteo(Jeu)
     pokemon1.Check_KO()
     pokemon2.Check_KO()
     if (pokemon1.KO) { // Si le pokemon de gauche tombe KO
