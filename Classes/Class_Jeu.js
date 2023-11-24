@@ -1,5 +1,6 @@
 import { affichePokemon2 } from "../Fonctions_Utils/Affichage.js"
 import { Peut_Attaquer, Statut_Fin_Round } from "../Fonctions_Utils/Alterations.js"
+import { Meteo } from "../Structures/Meteo.js"
 import { Statistiques } from "../Structures/Statistiques.js"
 import { Equipe } from "./Class_Equipe.js"
 
@@ -12,6 +13,8 @@ export class Jeu {
         this.equipes = []
         this.index_pokemon1 = 0
         this.index_pokemon2 = 0
+        this.Meteo = Meteo.Aucun
+        this.Tours_Meteo = 0
     }
 
     /**
