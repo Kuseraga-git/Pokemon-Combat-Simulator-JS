@@ -1287,4 +1287,90 @@ export const Capacites = {
             console.log(`Il commence à grêler !`)
         }
     },
+    AURORE: {
+        Nom_capa: "Aurore",
+        Categorie: Categorie.STATUS,
+        Type: Types.NORMAL,
+        Effet(Jeu, adversaire, pokemon) {
+            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
+            if (pokemon.PV_Actuel == pokemon.PV_Max) {
+                console.log(`${pokemon.nom} a déjà tous ses PV !`)
+            } else {
+                let soins = 1/2
+                switch (Jeu.Meteo) {
+                    case Meteo.SOLEIL:
+                        soins = 2/3
+                        break
+                    case Meteo.PLUIE || Meteo.TEMPETE_DE_SABLE || Meteo.GRELE:
+                        soins = 1/4
+                        break
+                    default:
+                        break
+                }
+                Soigner_PV(pokemon, pokemon.PV_Max * soins)
+            }
+        }
+    },
+    RAYON_LUNE: {
+        Nom_capa: "Rayon Lune",
+        Categorie: Categorie.STATUS,
+        Type: Types.FEE,
+        Effet(Jeu, adversaire, pokemon) {
+            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
+            if (pokemon.PV_Actuel == pokemon.PV_Max) {
+                console.log(`${pokemon.nom} a déjà tous ses PV !`)
+            } else {
+                let soins = 1/2
+                switch (Jeu.Meteo) {
+                    case Meteo.SOLEIL:
+                        soins = 2/3
+                        break
+                    case Meteo.PLUIE || Meteo.TEMPETE_DE_SABLE || Meteo.GRELE:
+                        soins = 1/4
+                        break
+                    default:
+                        break
+                }
+                Soigner_PV(pokemon, pokemon.PV_Max * soins)
+            }
+        }
+    },
+    SYNTHESE: {
+        Nom_capa: "Synthèse",
+        Categorie: Categorie.STATUS,
+        Type: Types.PLANTE,
+        Effet(Jeu, adversaire, pokemon) {
+            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
+            if (pokemon.PV_Actuel == pokemon.PV_Max) {
+                console.log(`${pokemon.nom} a déjà tous ses PV !`)
+            } else {
+                let soins = 1/2
+                switch (Jeu.Meteo) {
+                    case Meteo.SOLEIL:
+                        soins = 2/3
+                        break
+                    case Meteo.PLUIE || Meteo.TEMPETE_DE_SABLE || Meteo.GRELE:
+                        soins = 1/4
+                        break
+                    default:
+                        break
+                }
+                Soigner_PV(pokemon, pokemon.PV_Max * soins)
+            }
+        }
+    },
+    CROISSANCE: {
+        Nom_capa: "Croissance",
+        Categorie: Categorie.STATUS,
+        Type: Types.NORMAL,
+        Effet(Jeu, adversaire, pokemon) {
+            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
+            Augmenter_Stat(pokemon, "Attaque")
+            Augmenter_Stat(pokemon, "Spe_Attaque")
+            if (Jeu.Meteo == Meteo.SOLEIL) {
+                Augmenter_Stat(pokemon, "Attaque")
+                Augmenter_Stat(pokemon, "Spe_Attaque")
+            }
+        }
+    },
 }
