@@ -119,10 +119,9 @@ export class Jeu {
         } else if (pokemon2.KO) { // SI pokemon adverse est KO
             if (this.equipes[1].Check_Equipe_KO() === false) { // SI l'équipe adverse a encore des pokemons jouables
                 /*
-                ** La partie continue ! Il vous reste 3 étapes à réaliser :
+                ** La partie continue ! Il vous reste 2 étapes à réaliser :
                 ** - Augmenter l'index_pokemon2 de 1 pour passer au Pokémon suivant
                 ** - Afficher le Pokemon du joueur 2
-                ** - Mettre à jour les PV des Pokémons
                 ** Codez en dessous
                 **/
 
