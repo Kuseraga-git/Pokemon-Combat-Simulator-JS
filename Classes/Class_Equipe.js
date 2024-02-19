@@ -28,7 +28,7 @@ export class Equipe {
 
     Creer_Equipe_Leaf() {
         console.log("L'équipe de Leaf a été crée !")
-        this.pokemons.push(new Pokemon(Pokedex.MORPHEO))
+        this.pokemons.push(new Pokemon(Pokedex.MELODELFE))
         this.pokemons.push(new Pokemon(Pokedex.ECTOPLASMA))
         this.pokemons.push(new Pokemon(Pokedex.TORTANK))
     }

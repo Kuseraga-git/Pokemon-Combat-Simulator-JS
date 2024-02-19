@@ -15,6 +15,7 @@ export class Jeu {
         this.index_pokemon2 = 0
         this.Meteo = Meteo.Aucun
         this.Tours_Meteo = 0
+        this.nbTours = 1
     }
 
     /**
@@ -23,6 +24,14 @@ export class Jeu {
      */
     Ajouter_Dresseur(equipe) {
         this.equipes.push(equipe)
+    }
+
+    /**
+     * Affiche le nombre de tour actuel de la partie
+     */
+    Nouveau_Tour() {
+        console.log(`========================${this.nbTours}========================`);
+        this.nbTours+=1;
     }
 
     /**
@@ -58,7 +67,8 @@ export class Jeu {
                 if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO === false && index_nouveau_pokemon1 != this.index_pokemon1){
                     // SI le nouveau Pokémon n'est pas KO et n'est pas le même que celui sur le terrain
                     
-                    /* Vous avez 3 étapes à réaliser :
+                    /* Vous avez 4 étapes à réaliser :
+                    ** - Appeler la fonction Nouveau_Tour()
                     ** - Remettre le compteur des tours de poison à 0
                     ** - Changer l'index du Pokémon actif (et ce que cela implique)
                     ** - Déclencher la fonction "Appel()" du Pokémon
@@ -71,7 +81,8 @@ export class Jeu {
                 if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO === false && index_nouveau_pokemon1 != this.index_pokemon1){
                     // SI le nouveau Pokémon n'est pas KO et n'est pas le même que celui sur le terrain
 
-                    /* Vous avez 4 étapes à réaliser :
+                    /* Vous avez 5 étapes à réaliser :
+                    ** - Appeler la fonction Nouveau_Tour()
                     ** - Remettre le compteur des tours de poison à 0
                     ** - Changer l'index du Pokémon actif (et ce que cela implique)
                     ** - Déclencher la fonction "Appel()" du Pokémon
@@ -84,6 +95,7 @@ export class Jeu {
                 }
             } 
         } else if (pokemon1.KO === false && pokemon2.KO === false) { // SI les 2 pokemons ne sont pas KO
+            this.Nouveau_Tour();
             if (pokemon1.Vitesse * Statistiques[pokemon1.Vitesse_Niveau] >= pokemon2.Vitesse * Statistiques[pokemon2.Vitesse_Niveau]) { // SI pokemon joueur + Rapide
                 if (Peut_Attaquer(pokemon1, pokemon1.capacites[choix1])) {
                     // Vous devez faire attaquer le Pokémon du joueur 1 avec l'attaque choisir - Codez en dessous
