@@ -15,6 +15,7 @@ export class Jeu {
         this.index_pokemon2 = 0
         this.Meteo = Meteo.Aucun
         this.Tours_Meteo = 0
+        this.nbTours = 1
     }
 
     /**
@@ -23,6 +24,14 @@ export class Jeu {
      */
     Ajouter_Dresseur(equipe) {
         this.equipes.push(equipe)
+    }
+
+    /**
+     * Affiche le nombre de tour actuel de la partie
+     */
+    Nouveau_Tour() {
+        console.log(`========================${this.nbTours}========================`);
+        this.nbTours+=1;
     }
 
     /**
@@ -36,15 +45,16 @@ export class Jeu {
         **  0, 1, 2, 3 === capacité pokemon du joueur
         **  4 === changement de pokemon sur le pokemon, l'index du poke choisi est envoyé dans index_nouveau_pokemon
         **/
-
-        let pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
-        let pokemon2 = this.equipes[1].pokemons[this.index_pokemon2]
-        const valeur_aleatoire = Math.floor(Math.random() * 4);
-
-        // SI changement de pokemon
-        if (choix1 === 4){
-            if (pokemon1.KO) { // SI le pokemon actif est KO
-                if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO === false && index_nouveau_pokemon1 != this.index_pokemon1){
+       
+       let pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
+       let pokemon2 = this.equipes[1].pokemons[this.index_pokemon2]
+       const valeur_aleatoire = Math.floor(Math.random() * 4);
+       
+       // SI changement de pokemon
+       if (choix1 === 4){
+           if (pokemon1.KO) { // SI le pokemon actif est KO
+            if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO === false && index_nouveau_pokemon1 != this.index_pokemon1){
+                    this.Nouveau_Tour();
                     pokemon1.Tours_Poison = 0
                     this.index_pokemon1 = index_nouveau_pokemon1
                     pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
@@ -52,6 +62,7 @@ export class Jeu {
                 }
             } else { // SI le pokemon actif n'est pas KO
                 if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO === false && index_nouveau_pokemon1 != this.index_pokemon1){
+                    this.Nouveau_Tour();
                     pokemon1.Tours_Poison = 0
                     this.index_pokemon1 = index_nouveau_pokemon1
                     pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
@@ -60,6 +71,7 @@ export class Jeu {
                 }
             }
         } else if (pokemon1.KO === false && pokemon2.KO === false) { // SI les 2 pokemons ne sont pas KO
+            this.Nouveau_Tour();
             if (pokemon1.Vitesse * Statistiques[pokemon1.Vitesse_Niveau] >= pokemon2.Vitesse * Statistiques[pokemon2.Vitesse_Niveau]) { // SI pokemon joueur + Rapide
                 if (Peut_Attaquer(pokemon1, pokemon1.capacites[choix1])) {
                     pokemon1.capacites[choix1].Effet(this, pokemon2, pokemon1)
