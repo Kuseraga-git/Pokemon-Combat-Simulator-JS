@@ -21,9 +21,9 @@ export class Equipe {
 
     Creer_Equipe_Blue() {
         console.log("L'équipe de Blue a été crée !")
-        this.pokemons.push(new Pokemon(Pokedex.TAUROS))
-        this.pokemons.push(new Pokemon(Pokedex.NOADKOKO))
-        this.pokemons.push(new Pokemon(Pokedex.DRACAUFEU))
+        this.pokemons.push(new Pokemon(Pokedex.MELMESHADOW))
+        this.pokemons.push(new Pokemon(Pokedex.TORNRAM))
+        this.pokemons.push(new Pokemon(Pokedex.DRAMDRA))
     }
 
     Creer_Equipe_Leaf() {

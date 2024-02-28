@@ -4,7 +4,7 @@ import { Pokemon } from "../Classes/Class_Pokemon.js"
 import { Statut } from "../Structures/Statut.js"
 
 /**
- * Fait la mise à jour des infos affichés sur la page web.
+ * Met à jour l'affichage des PV du Pokémon du joueur (pokemon1), de l'adversaire (pokemon2) et dans l'équipe (index)
  * @param {Pokemon} pokemon1 - Pokemon du joueur de gauche
  * @param {number} index - Index du pokemon actif du joueur
  * @param {Pokemon} pokemon2 - Pokemon du joueur de droite
@@ -21,7 +21,7 @@ export function MAJ_PV_Actuel_Pokemon(pokemon1, index, pokemon2, equipe2) {
 }
 
 /**
- * Fait le premier affichage d'initialisation
+ * Utilise les information contenu dans l'instance de Jeu pour afficher le pokémon actif du joueur, de l'adversaire et l'équipe du joueur
  * @param {Jeu} Jeu Instance du Jeu
  */
 export function affichageGeneral(Jeu){
@@ -32,7 +32,7 @@ export function affichageGeneral(Jeu){
 }
 
 /**
- * Génère une carte pokemon standard.
+ * Génère l'affichage d'un pokémon dans la liste de l'équipe
  * @param {Pokemon} pokemon - Pokemon à afficher
  * @param {number} pkm_index - Index du pokemon
  * @param {Pokemon} equipe - Equipe du pokemon
@@ -43,11 +43,11 @@ export function genererCartePokemon(pokemon, pkm_index, equipe, index) {
     return `
         <button class="equipe${index}-pokemon-card">
             <div class="${equipe.dresseur}">
-                <h5 class="card-title">${pokemon.nom}</h5>
+                <h3 class="card-title">${pokemon.nom}</h5>
                 <p id="equipe${index}-${pkm_index}" class="card-text">PV: ${pokemon.PV_Actuel} / ${pokemon.PV_Max}</p>
                 <p class="card-text">Type 1: ${pokemon.type1}</p>
                 <p class="card-text">Type 2: ${pokemon.type2}</p>
-                <p class="card-text"><img id="equipe${index}-${pkm_index}-statut" class="statut-box" src="${pokemon.Statut.image}"></img></p>
+                <p class="card-text-status"><img id="equipe${index}-${pkm_index}-statut" class="statut-box" src="${pokemon.Statut.image}"></img></p>
                 <ul>
                     <li>${pokemon.capacites[0].Nom_capa}</li>
                     <li>${pokemon.capacites[1].Nom_capa}</li>
@@ -60,7 +60,7 @@ export function genererCartePokemon(pokemon, pkm_index, equipe, index) {
 }
 
 /**
- * Génère une carte pokemon de combat.
+ * Génère l'affichage d'un pokemon actif, l'index permet de savoir si le pokemon appartient à l'équipe de gauche (index == 1) ou de droite (index == 2)
  * @param {Pokemon} pokemon 
  * @param {number} index 
  * @returns {InnerHTML}
@@ -81,7 +81,7 @@ export function genererCartePokemonCombat(pokemon, index) {
 }
 
 /**
- * Génère l'affichage d'une capacité pokemon
+ * Génère l'affichage d'une capacité du pokémon de l'équipe 1
  * @param {Object} capacite La capacité à afficher 
  * @returns 
  */
@@ -90,7 +90,7 @@ export function genererCapacitePokemon(capacite) {
 }
 
 /**
- * Permet d'afficher l'équipe du joueur
+ * Déclenche les fonctions pour afficher les pokémons de l'équipe 1
  * @param {Equipe} equipe Instance de l'équipe à afficher
  * @param {Jeu} jeu Instance du jeu
  */
@@ -134,7 +134,7 @@ export function afficherEquipe2(equipe) {
 }
 
 /**
- * Permet d'afficher le pokemon actif du joueur
+ * Déclenche les fonctions pour afficher le pokemon actif du joueur 1 et ses capacités
  * @param {Pokemon} pokemon1 Instance du pokemon actif du joueur
  * @param {Jeu} jeu Instance du jeu
  */
@@ -154,7 +154,7 @@ export function affichePokemon1(pokemon1, jeu) {
 }
 
 /**
- * Permet d'afficher le pokemon actif de l'adverse
+ * Déclenche les fonctions pour afficher le pokémon actif de l'adversaire
  * @param {Pokemon} pokemon2 
  */
 export function affichePokemon2(pokemon2) {

@@ -1,22 +1,24 @@
 import { Equipe } from "./Classes/Class_Equipe.js";
 import { Jeu } from "./Classes/Class_Jeu.js";
-import { affichageGeneral } from "./Fonctions_Utils/Affichage.js"; // To remove
+import { affichageGeneral } from "./Fonctions_Utils/Affichage.js";
+import { Meteo } from "./Structures/Meteo.js";
 
 // #################################################################
 // ###                      INITIALISATION                       ###
 // #################################################################
 
-const Partie = new Jeu()
-const equipe1 = new Equipe("Leaf", 1)
-equipe1.Creer_Equipe_Leaf()
-Partie.Ajouter_Dresseur(equipe1)
-
-const equipe2 = new Equipe("Red", 2)
+// Vous devez initialiser une instance de jeu - Codez en dessous
+const jeu = new Jeu()
+const equipe1 = new Equipe("Oscar")
+const equipe2 = new Equipe("Jean")
+equipe1.Creer_Equipe_Blue()
 equipe2.Creer_Equipe_Red()
-Partie.Ajouter_Dresseur(equipe2)
+jeu.Ajouter_Dresseur(equipe1)
+jeu.Ajouter_Dresseur(equipe2)
 
 // #################################################################
 // ###                         AFFICHAGE                         ###
 // #################################################################
 
-affichageGeneral(Partie)
+// Vous devez utiliser la/les fonction/fonctions d'affichage sur l'écran - Codez en dessous
+affichageGeneral(jeu)
