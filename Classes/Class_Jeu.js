@@ -47,7 +47,7 @@ export class Jeu {
         **/
        
         /* Initialisez 3 variables :
-        ** Vous trouverez juste ne dessous 3 variables déclaré mais sans valeurs, assignez leur une valeur en suivant les indications donnés
+        ** Vous trouverez juste en dessous 3 variables déclaré mais sans valeurs, assignez leur une valeur en suivant les indications donnés
         **/
  
         // Cette variable doit contenir le pokemon actif (sur le terrain) du joueur 1
@@ -116,7 +116,7 @@ export class Jeu {
 
                 if (pokemon2.KO === false && pokemon1.KO === false) { // Si les 2 Pokémons ne sont pas KO
                     if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
-                        // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire - Codez en dessous
+                        // Vous devez faire attaquer le Pokémon du joueur 1 avec l'attaque choisir - Codez en dessous
 
                     }
                 }
