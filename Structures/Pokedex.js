@@ -164,4 +164,76 @@ export const Pokedex = {
             Capacites.ECO_SPHERE,
         ]
     },
+    MELMESHADOW: {
+        Nom: "Melmeshadow",
+        Type1: Types.FEU,
+        Type2: Types.SPECTRE,
+        PV_Max: 360,
+        Attaque: 293,
+        Defense: 280,
+        Spe_Attaque: 348,
+        Spe_Defense: 295,
+        Vitesse: 328,
+        Image: '../Images_Pokemon/Melmeshadow.png',
+        Capacites: [
+            Capacites.LANCE_FLAMME,
+            Capacites.VIBROBSCUR,
+            Capacites.MEGA_SANGSUE,
+            Capacites.VENT_VIOLENT,
+        ]
+    },
+    MEOWSPRIT: {
+        Nom: "Meowsprit",
+        Type1: Types.PSY,
+        Type2: Types.PSY,
+        PV_Max: 275,
+        Attaque: 293,
+        Defense: 300,
+        Spe_Attaque: 373,
+        Spe_Defense: 200,
+        Vitesse: 428,
+        Image: '../Images_Pokemon/Meowsprit.png',
+        Capacites: [
+            Capacites.FATAL_FOUDRE,
+            Capacites.DEFLAGRATION,
+            Capacites.PSYCHO,
+            Capacites.POUVOIR_ANTIQUE,
+        ]
+    },
+    TORNRAM: {
+        Nom: "Tornram",
+        Type1: Types.VOL,
+        Type2: Types.DRAGON,
+        PV_Max: 425,
+        Attaque: 293,
+        Defense: 300,
+        Spe_Attaque: 373,
+        Spe_Defense: 200,
+        Vitesse: 428,
+        Image: '../Images_Pokemon/Tornram.png',
+        Capacites: [
+            Capacites.FATAL_FOUDRE,
+            Capacites.DEFLAGRATION,
+            Capacites.PSYCHO,
+            Capacites.POUVOIR_ANTIQUE,
+        ]
+    },
+    DRAMDRA: {
+        Nom: "Dramdra",
+        Type1: Types.DRAGON,
+        Type2: Types.NORMAL,
+        PV_Max: 325,
+        Attaque: 350,
+        Defense: 300,
+        Spe_Attaque: 600,
+        Spe_Defense: 200,
+        Vitesse: 248,
+        Image: '../Images_Pokemon/Dramdra.png',
+        Capacites: [
+            Capacites.SEISME,
+            Capacites.EXPLOFORCE,
+            Capacites.DAMOCLES,
+            Capacites.HYDROCANON,
+        ]
+    },
 }

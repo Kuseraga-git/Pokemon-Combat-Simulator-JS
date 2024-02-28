@@ -43,11 +43,11 @@ export function genererCartePokemon(pokemon, pkm_index, equipe, index) {
     return `
         <button class="equipe${index}-pokemon-card">
             <div class="${equipe.dresseur}">
-                <h5 class="card-title">${pokemon.nom}</h5>
+                <h3 class="card-title">${pokemon.nom}</h5>
                 <p id="equipe${index}-${pkm_index}" class="card-text">PV: ${pokemon.PV_Actuel} / ${pokemon.PV_Max}</p>
                 <p class="card-text">Type 1: ${pokemon.type1}</p>
                 <p class="card-text">Type 2: ${pokemon.type2}</p>
-                <p class="card-text"><img id="equipe${index}-${pkm_index}-statut" class="statut-box" src="${pokemon.Statut.image}"></img></p>
+                <p class="card-text-status"><img id="equipe${index}-${pkm_index}-statut" class="statut-box" src="${pokemon.Statut.image}"></img></p>
                 <ul>
                     <li>${pokemon.capacites[0].Nom_capa}</li>
                     <li>${pokemon.capacites[1].Nom_capa}</li>
