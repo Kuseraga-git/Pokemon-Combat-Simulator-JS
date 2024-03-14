@@ -47,7 +47,7 @@ export class Jeu {
         **/
        
         /* Initialisez 3 variables :
-        ** Vous trouverez juste ne dessous 3 variables déclaré mais sans valeurs, assignez leur une valeur en suivant les indications donnés
+        ** Vous trouverez juste en dessous 3 variables déclaré mais sans valeurs, assignez leur une valeur en suivant les indications donnés
         **/
  
         // Cette variable doit contenir le pokemon actif (sur le terrain) du joueur 1
