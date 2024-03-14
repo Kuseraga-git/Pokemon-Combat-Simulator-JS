@@ -52,7 +52,7 @@ export const Pokedex = {
         Capacites: [
             Capacites.SURF,
             Capacites.BLIZZARD,
-            Capacites.PSYCHO,
+            Capacites.PSYKO,
             Capacites.POUVOIR_ANTIQUE,
         ]
     },

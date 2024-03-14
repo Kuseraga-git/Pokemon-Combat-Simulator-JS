@@ -84,39 +84,53 @@ export class Jeu {
                     /* Vous avez 5 étapes à réaliser :
                     ** - Appeler la fonction Nouveau_Tour()
                     ** - Remettre le compteur des tours de poison à 0
-                    ** - Changer l'index du Pokémon actif (et ce que cela implique)
+                    ** - Changer l'index du Pokémon actif (Pensez à modifier la valeur de pokemon1)
                     ** - Déclencher la fonction "Appel()" du Pokémon
-                    ** - Faire attaquer le Pokémon adverse
                     ** Codez en dessous
                     **/
 
+                    
+                    if (Peut_Attaquer(this, pokemon2, pokemon2.capacites[valeur_aleatoire], pokemon1, valeur_aleatoire)) {
+                        // Vous devez faire attaquer le pokemon du joueur 2 avec une attaque aléatoire
+                        // Vous devez ensuite diminuer les PP correspondant
+                        // Codez en dessous
+                        
 
+                    }
 
                 }
             } 
         } else if (pokemon1.KO === false && pokemon2.KO === false) { // SI les 2 pokemons ne sont pas KO
             this.Nouveau_Tour();
             if (pokemon1.Vitesse * Statistiques[pokemon1.Vitesse_Niveau] >= pokemon2.Vitesse * Statistiques[pokemon2.Vitesse_Niveau]) { // SI pokemon joueur + Rapide
-                if (Peut_Attaquer(pokemon1, pokemon1.capacites[choix1])) {
-                    // Vous devez faire attaquer le Pokémon du joueur 1 avec l'attaque choisir - Codez en dessous
+                if (Peut_Attaquer(this, pokemon1, pokemon1.capacites[choix1], pokemon2, choix1)) {
+                    // Vous devez faire attaquer le Pokémon du joueur 1 avec l'attaque choisie
+                    // Vous devez ensuite diminuer les PP correspondant
+                    // Codez en dessous
 
                 }
                 if (pokemon2.KO === false && pokemon1.KO === false) {
-                    if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
-                        // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire - Codez en dessous
+                    if (Peut_Attaquer(this, pokemon2, pokemon2.capacites[valeur_aleatoire], pokemon1, valeur_aleatoire)) {
+                        // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire
+                        // Vous devez ensuite diminuer les PP correspondant
+                        // Codez en dessous
 
                     }
 
                 }
             } else { // SI pokemon adverse + Rapide
-                if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
-                    // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire - Codez en dessous
+                if (Peut_Attaquer(this, pokemon2, pokemon2.capacites[valeur_aleatoire], pokemon1, valeur_aleatoire)) {
+                    // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire
+                    // Vous devez ensuite diminuer les PP correspondant
+                        // Codez en dessous
 
                 }
 
                 if (pokemon2.KO === false && pokemon1.KO === false) { // Si les 2 Pokémons ne sont pas KO
-                    if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
-                        // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire - Codez en dessous
+                    if (Peut_Attaquer(this, pokemon1, pokemon1.capacites[choix1], pokemon2, choix1)) {
+                        // Vous devez faire attaquer le Pokémon du joueur 1 avec l'attaque choisie
+                        // Vous devez ensuite diminuer les PP correspondant
+                        // Codez en dessous
 
                     }
                 }

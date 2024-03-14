@@ -35,6 +35,7 @@ export class Pokemon {
         this.Tours_Confusion = 0
         this.Peur = false
         this.capacites = pokemon.Capacites
+        this.PP = [pokemon.Capacites[0].PP, pokemon.Capacites[1].PP, pokemon.Capacites[2].PP, pokemon.Capacites[3].PP]
         this.image = pokemon.Image
     }
 
