@@ -67,27 +67,34 @@ export class Jeu {
                     this.index_pokemon1 = index_nouveau_pokemon1
                     pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
                     pokemon1.Appel(this)
-                    pokemon2.capacites[valeur_aleatoire].Effet(this, pokemon1, pokemon2)
+                    if (Peut_Attaquer(this, pokemon2, pokemon2.capacites[valeur_aleatoire], pokemon1, valeur_aleatoire)) {
+                        pokemon2.capacites[valeur_aleatoire].Effet(this, pokemon1, pokemon2)
+                        pokemon2.PP[valeur_aleatoire] -= 1
+                    }
                 }
             }
         } else if (pokemon1.KO === false && pokemon2.KO === false) { // SI les 2 pokemons ne sont pas KO
             this.Nouveau_Tour();
             if (pokemon1.Vitesse * Statistiques[pokemon1.Vitesse_Niveau] >= pokemon2.Vitesse * Statistiques[pokemon2.Vitesse_Niveau]) { // SI pokemon joueur + Rapide
-                if (Peut_Attaquer(pokemon1, pokemon1.capacites[choix1])) {
+                if (Peut_Attaquer(this, pokemon1, pokemon1.capacites[choix1], pokemon2, choix1)) {
                     pokemon1.capacites[choix1].Effet(this, pokemon2, pokemon1)
+                    pokemon1.PP[choix1] -= 1
                 }
                 if (pokemon2.KO === false && pokemon1.KO === false) {
-                    if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
+                    if (Peut_Attaquer(this, pokemon2, pokemon2.capacites[valeur_aleatoire], pokemon1, valeur_aleatoire)) {
                         pokemon2.capacites[valeur_aleatoire].Effet(this, pokemon1, pokemon2)
+                        pokemon2.PP[valeur_aleatoire] -= 1
                     }
                 }
             } else { // SI pokemon adverse + Rapide
-                if (Peut_Attaquer(pokemon2, pokemon2.capacites[valeur_aleatoire])) {
+                if (Peut_Attaquer(this, pokemon2, pokemon2.capacites[valeur_aleatoire], pokemon1, valeur_aleatoire)) {
                     pokemon2.capacites[valeur_aleatoire].Effet(this, pokemon1, pokemon2)
+                    pokemon2.PP[valeur_aleatoire] -= 1
                 }
                 if (pokemon2.KO === false && pokemon1.KO === false) {
-                    if (Peut_Attaquer(pokemon1, pokemon1.capacites[choix1])) {
+                    if (Peut_Attaquer(this, pokemon1, pokemon1.capacites[choix1], pokemon2, choix1)) {
                         pokemon1.capacites[choix1].Effet(this, pokemon2, pokemon1)
+                        pokemon1.PP[choix1] -= 1
                     }
                 }
             }
