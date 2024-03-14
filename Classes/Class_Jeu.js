@@ -69,8 +69,8 @@ export class Jeu {
                     
                     /* Vous avez 4 étapes à réaliser :
                     ** - Appeler la fonction Nouveau_Tour()
-                    ** - Remettre le compteur des tours de poison à 0
-                    ** - Changer l'index du Pokémon actif (et ce que cela implique)
+                    ** - Remettre le compteur des tours de poison du pokemon 1 à 0
+                    ** - Changer l'index du Pokémon actif (Pensez à modifier la valeur de pokemon1)
                     ** - Déclencher la fonction "Appel()" du Pokémon
                     ** Codez en dessous
                     **/
@@ -89,15 +89,14 @@ export class Jeu {
                     ** Codez en dessous
                     **/
 
-                    
+
                     if (Peut_Attaquer(this, pokemon2, pokemon2.capacites[valeur_aleatoire], pokemon1, valeur_aleatoire)) {
                         // Vous devez faire attaquer le pokemon du joueur 2 avec une attaque aléatoire
                         // Vous devez ensuite diminuer les PP correspondant
                         // Codez en dessous
-                        
+
 
                     }
-
                 }
             } 
         } else if (pokemon1.KO === false && pokemon2.KO === false) { // SI les 2 pokemons ne sont pas KO
@@ -108,6 +107,7 @@ export class Jeu {
                     // Vous devez ensuite diminuer les PP correspondant
                     // Codez en dessous
 
+
                 }
                 if (pokemon2.KO === false && pokemon1.KO === false) {
                     if (Peut_Attaquer(this, pokemon2, pokemon2.capacites[valeur_aleatoire], pokemon1, valeur_aleatoire)) {
@@ -115,14 +115,15 @@ export class Jeu {
                         // Vous devez ensuite diminuer les PP correspondant
                         // Codez en dessous
 
-                    }
 
+                    }
                 }
             } else { // SI pokemon adverse + Rapide
                 if (Peut_Attaquer(this, pokemon2, pokemon2.capacites[valeur_aleatoire], pokemon1, valeur_aleatoire)) {
                     // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire
                     // Vous devez ensuite diminuer les PP correspondant
-                        // Codez en dessous
+                    // Codez en dessous
+
 
                 }
 
@@ -131,6 +132,7 @@ export class Jeu {
                         // Vous devez faire attaquer le Pokémon du joueur 1 avec l'attaque choisie
                         // Vous devez ensuite diminuer les PP correspondant
                         // Codez en dessous
+
 
                     }
                 }
@@ -146,11 +148,10 @@ export class Jeu {
             if (this.equipes[1].Check_Equipe_KO() === false) { // SI l'équipe adverse a encore des pokemons jouables
                 /*
                 ** La partie continue ! Il vous reste 2 étapes à réaliser :
-                ** - Augmenter l'index_pokemon2 de 1 pour passer au Pokémon suivant
+                ** - Augmenter l'index_pokemon2 de 1 pour passer au Pokémon suivant (Pensez à modifier la valeur de pokemon2)
                 ** - Afficher le Pokemon du joueur 2
                 ** Codez en dessous
                 **/
-
 
 
             } else { // SI l'équipe adverse n'a plus de Pokémons jouables
