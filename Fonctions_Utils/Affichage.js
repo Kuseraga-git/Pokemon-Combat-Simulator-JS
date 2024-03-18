@@ -85,8 +85,8 @@ export function genererCartePokemonCombat(pokemon, index) {
  * @param {Object} capacite La capacité à afficher 
  * @returns 
  */
-export function genererCapacitePokemon(capacite) {
-    return `<li><button class="capa">${capacite.Nom_capa}</button></li>`;
+export function genererCapacitePokemon(capacite, nb_PP, index) {
+    return `<li class="list_Capa"><button class="capa">${capacite.Nom_capa} <span class="PP_Capa"><span id="PPCapa${index}">${nb_PP}</span>/${capacite.PP}</span></button></li>`;
 }
 
 /**
@@ -142,13 +142,14 @@ export function affichePokemon1(pokemon1, jeu) {
     const cartePokemon = genererCartePokemonCombat(pokemon1, 1);
     document.getElementById("pokemon1").innerHTML = cartePokemon;
     const boutonsCapa = document.getElementById("capa-list1");
-    for (const element of pokemon1.capacites) {
-        boutonsCapa.innerHTML += genererCapacitePokemon(element)
+    for (const [index, element] of pokemon1.capacites.entries()) {
+        boutonsCapa.innerHTML += genererCapacitePokemon(element, pokemon1.PP[index], index)
     }
     const Capacites = document.querySelectorAll(".capa");
     for (const [index, element] of Capacites.entries()) {
         element.addEventListener("click", function(event) {
             jeu.Ordre_Action(index)
+            document.getElementById(`PPCapa${index}`).textContent = pokemon1.PP[index]
         })
     }
 }
