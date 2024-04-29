@@ -100,4 +100,15 @@ export class Pokemon {
             }
         }
     }
+
+    /**
+     * 
+     * @param {Jeu} Jeu Instance de la partie (de Jeu) 
+     * @param {Pokemon} adversaire Instance du pokemon adverse
+     * @param {Number} index_capacite Index de la capacité à utiliser
+     */
+    Lancer_Capacite(Jeu, adversaire, index_capacite) {
+        this.capacites[index_capacite].Effet(Jeu, adversaire, this)
+        this.PP[index_capacite] -= 1
+    }
 }

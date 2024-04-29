@@ -54,7 +54,6 @@ export class Jeu {
        if (choix1 === 4){
            if (pokemon1.KO) { // SI le pokemon actif est KO
             if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO === false && index_nouveau_pokemon1 != this.index_pokemon1){
-                    this.Nouveau_Tour();
                     pokemon1.Tours_Poison = 0
                     this.index_pokemon1 = index_nouveau_pokemon1
                     pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
@@ -68,8 +67,7 @@ export class Jeu {
                     pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
                     pokemon1.Appel(this)
                     if (Peut_Attaquer(this, pokemon2, pokemon2.capacites[valeur_aleatoire], pokemon1, valeur_aleatoire)) {
-                        pokemon2.capacites[valeur_aleatoire].Effet(this, pokemon1, pokemon2)
-                        pokemon2.PP[valeur_aleatoire] -= 1
+                        pokemon2.Lancer_Capacite(this, pokemon1, valeur_aleatoire)
                     }
                 }
             }
@@ -77,24 +75,20 @@ export class Jeu {
             this.Nouveau_Tour();
             if (pokemon1.Vitesse * Statistiques[pokemon1.Vitesse_Niveau] >= pokemon2.Vitesse * Statistiques[pokemon2.Vitesse_Niveau]) { // SI pokemon joueur + Rapide
                 if (Peut_Attaquer(this, pokemon1, pokemon1.capacites[choix1], pokemon2, choix1)) {
-                    pokemon1.capacites[choix1].Effet(this, pokemon2, pokemon1)
-                    pokemon1.PP[choix1] -= 1
+                    pokemon1.Lancer_Capacite(this, pokemon2, choix1)
                 }
                 if (pokemon2.KO === false && pokemon1.KO === false) {
                     if (Peut_Attaquer(this, pokemon2, pokemon2.capacites[valeur_aleatoire], pokemon1, valeur_aleatoire)) {
-                        pokemon2.capacites[valeur_aleatoire].Effet(this, pokemon1, pokemon2)
-                        pokemon2.PP[valeur_aleatoire] -= 1
+                        pokemon2.Lancer_Capacite(this, pokemon1, valeur_aleatoire)
                     }
                 }
             } else { // SI pokemon adverse + Rapide
                 if (Peut_Attaquer(this, pokemon2, pokemon2.capacites[valeur_aleatoire], pokemon1, valeur_aleatoire)) {
-                    pokemon2.capacites[valeur_aleatoire].Effet(this, pokemon1, pokemon2)
-                    pokemon2.PP[valeur_aleatoire] -= 1
+                    pokemon2.Lancer_Capacite(this, pokemon1, valeur_aleatoire)
                 }
                 if (pokemon2.KO === false && pokemon1.KO === false) {
                     if (Peut_Attaquer(this, pokemon1, pokemon1.capacites[choix1], pokemon2, choix1)) {
-                        pokemon1.capacites[choix1].Effet(this, pokemon2, pokemon1)
-                        pokemon1.PP[choix1] -= 1
+                        pokemon1.Lancer_Capacite(this, pokemon2, choix1)
                     }
                 }
             }
