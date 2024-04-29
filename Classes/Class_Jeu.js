@@ -92,7 +92,6 @@ export class Jeu {
 
                     if (Peut_Attaquer(this, pokemon2, pokemon2.capacites[valeur_aleatoire], pokemon1, valeur_aleatoire)) {
                         // Vous devez faire attaquer le pokemon du joueur 2 avec une attaque aléatoire
-                        // Vous devez ensuite diminuer les PP correspondant
                         // Codez en dessous
 
 
@@ -104,7 +103,6 @@ export class Jeu {
             if (pokemon1.Vitesse * Statistiques[pokemon1.Vitesse_Niveau] >= pokemon2.Vitesse * Statistiques[pokemon2.Vitesse_Niveau]) { // SI pokemon joueur + Rapide
                 if (Peut_Attaquer(this, pokemon1, pokemon1.capacites[choix1], pokemon2, choix1)) {
                     // Vous devez faire attaquer le Pokémon du joueur 1 avec l'attaque choisie
-                    // Vous devez ensuite diminuer les PP correspondant
                     // Codez en dessous
 
 
@@ -112,7 +110,6 @@ export class Jeu {
                 if (pokemon2.KO === false && pokemon1.KO === false) {
                     if (Peut_Attaquer(this, pokemon2, pokemon2.capacites[valeur_aleatoire], pokemon1, valeur_aleatoire)) {
                         // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire
-                        // Vous devez ensuite diminuer les PP correspondant
                         // Codez en dessous
 
 
@@ -121,7 +118,6 @@ export class Jeu {
             } else { // SI pokemon adverse + Rapide
                 if (Peut_Attaquer(this, pokemon2, pokemon2.capacites[valeur_aleatoire], pokemon1, valeur_aleatoire)) {
                     // Vous devez faire attaquer le Pokémon du joueur 2 avec une attaque aléatoire
-                    // Vous devez ensuite diminuer les PP correspondant
                     // Codez en dessous
 
 
@@ -130,7 +126,6 @@ export class Jeu {
                 if (pokemon2.KO === false && pokemon1.KO === false) { // Si les 2 Pokémons ne sont pas KO
                     if (Peut_Attaquer(this, pokemon1, pokemon1.capacites[choix1], pokemon2, choix1)) {
                         // Vous devez faire attaquer le Pokémon du joueur 1 avec l'attaque choisie
-                        // Vous devez ensuite diminuer les PP correspondant
                         // Codez en dessous
 
 
