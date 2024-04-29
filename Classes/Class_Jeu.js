@@ -81,9 +81,9 @@ export class Jeu {
                 if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO === false && index_nouveau_pokemon1 != this.index_pokemon1){
                     // SI le nouveau Pokémon n'est pas KO et n'est pas le même que celui sur le terrain
 
-                    /* Vous avez 5 étapes à réaliser :
+                    /* Vous avez 4 étapes à réaliser :
                     ** - Appeler la fonction Nouveau_Tour()
-                    ** - Remettre le compteur des tours de poison à 0
+                    ** - Remettre le compteur des tours de poison du pokemon 1 à 0
                     ** - Changer l'index du Pokémon actif (Pensez à modifier la valeur de pokemon1)
                     ** - Déclencher la fonction "Appel()" du Pokémon
                     ** Codez en dessous
