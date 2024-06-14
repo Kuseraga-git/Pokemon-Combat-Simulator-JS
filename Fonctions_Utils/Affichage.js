@@ -86,7 +86,7 @@ export function genererCartePokemonCombat(pokemon, index) {
  * @returns 
  */
 export function genererCapacitePokemon(capacite, nb_PP, index) {
-    return `<li class="list_Capa"><button class="capa">${capacite.Nom_capa} <span class="PP_Capa"><span id="PPCapa${index}">${nb_PP}</span>/${capacite.PP}</span></button></li>`;
+    return `<li class="list_Capa"><button class="capa ${capacite.Type}">${capacite.Nom_capa} <span class="PP_Capa"><span id="PPCapa${index}">${nb_PP}</span>/${capacite.PP}</span><img class="cat_Capa" src="../Images_Catégories/${capacite.Categorie}.png"/></button></li>`;
 }
 
 /**
