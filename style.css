@@ -22,12 +22,26 @@
     height: 30%;
 }
 
+li {
+    margin-bottom: 5px;
+}
+
 .capa {
-    width: 150%;
+    width: 175%;
+    padding: 10px 10px;
     text-align: left;
+    border-radius: 15px;
+    border: none;
+}
+
+.cat_Capa {
+    float: right;
+    width: 20px;
 }
 
 .PP_Capa {
+    text-align: end;
+    width: 15%;
     float: right;
 }
 
@@ -67,4 +81,101 @@
 
 #equipe1 {
     margin-top: 3%;
+}
+
+button {
+    background: none;
+    color: inherit;
+    outline: none;
+    box-shadow: none;
+}
+
+.Acier {
+    background-color: #60A2B9;
+    color: #000;
+}
+
+.Combat {
+    background-color: #FF8100;
+    color: #000;
+}
+
+.Dragon {
+    background-color: #4F60E2;
+    color: #000;
+}
+
+.Eau {
+    background-color: #2481EF;
+    color: #000;
+}
+
+.Electrick {
+    background-color: #FAC100;
+    color: #000;
+}
+
+.Fée {
+    background-color: #EF70EF;
+    color: #000;
+}
+
+.Feu {
+    background-color: #E72324;
+    color: #000;
+}
+
+.Glace {
+    background-color: #3DD9FF;
+    color: #000;
+}
+
+.Insecte {
+    background-color: #92A212;
+    color: #000;
+}
+
+.Normal {
+    background-color: #A0A2A0;
+    color: #000;
+}
+
+.Plante {
+    background-color: #3DA224;
+    color: #000;
+}
+
+.Poison {
+    background-color: #923FCC;
+    color: #000;
+}
+
+.Psy {
+    background-color: #EF3F7A;
+    color: #000;
+}
+
+.Roche {
+    background-color: #B0AA82;
+    color: #000;
+}
+
+.Sol {
+    background-color: #92501B;
+    color: #000;
+}
+
+.Spectre {
+    background-color: #703F70;
+    color: #000;
+}
+
+.Ténèbres {
+    background-color: #4F3F3D;
+    color: #fff;
+}
+
+.Vol {
+    background-color: #82BAEF;
+    color: #000;
 }
