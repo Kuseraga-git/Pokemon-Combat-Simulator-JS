@@ -18,8 +18,10 @@
 
 .pokemon-image {
     flex: 1;
-    width: 30%;
-    height: 30%;
+    max-height: 350px;
+    max-width: 350px;
+    /* width: 30%;
+    height: 30%; */
 }
 
 li {
@@ -34,7 +36,20 @@ li {
     border: none;
 }
 
+.capa_mini {
+    width: 90%;
+    padding: 10px 10px;
+    text-align: left;
+    border-radius: 15px;
+    border: none;
+}
+
 .cat_Capa {
+    float: right;
+    width: 20px;
+}
+
+.cat_Capa_mini {
     float: right;
     width: 20px;
 }
@@ -42,6 +57,12 @@ li {
 .PP_Capa {
     text-align: end;
     width: 15%;
+    float: right;
+}
+
+.PP_Capa_mini {
+    text-align: end;
+    width: 20%;
     float: right;
 }
 
@@ -54,8 +75,26 @@ li {
     flex: 1; /* Le contenu de cette div occupera l'espace disponible (largeur flexible) */
 }
 
+ul {
+    list-style-type: none; /* Retirer la puce */
+    padding-left: 0; /* Retirer le padding gauche si nécessaire */
+}
+
+.Team_Type {
+    width: 50%;
+}
+
+.equipe1-pokemon-card {
+    width: 15%;
+    height: 110%;
+}
+
 .pokeball {
     width: 100px;
+}
+
+.card-text-mini {
+    height: 20px;
 }
 
 .statut-box {
@@ -80,7 +119,7 @@ li {
 }
 
 #equipe1 {
-    margin-top: 3%;
+    margin-top: 1%;
 }
 
 button {

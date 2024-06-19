@@ -17,6 +17,10 @@ export function MAJ_PV_Actuel_Pokemon(pokemon1, index, pokemon2, equipe2) {
     document.getElementById(`pkm-statut-1`).src = pokemon1.Statut.image
     document.getElementById("PV2").textContent = `PV: ${pokemon2.PV_Actuel} / ${pokemon2.PV_Max}`
     document.getElementById(`pkm-statut-2`).src = pokemon2.Statut.image
+    document.getElementById(`${index}PPCapa0`).textContent = pokemon1.PP[0]
+    document.getElementById(`${index}PPCapa1`).textContent = pokemon1.PP[1]
+    document.getElementById(`${index}PPCapa2`).textContent = pokemon1.PP[2]
+    document.getElementById(`${index}PPCapa3`).textContent = pokemon1.PP[3]
     afficherEquipe2(equipe2)
 }
 
@@ -45,19 +49,21 @@ export function genererCartePokemon(pokemon, pkm_index, equipe, index) {
             <div class="${equipe.dresseur}">
                 <h5 class="card-title">${pokemon.nom}</h5>
                 <p id="equipe${index}-${pkm_index}" class="card-text">PV: ${pokemon.PV_Actuel} / ${pokemon.PV_Max}</p>
-                <p class="card-text">Type 1: ${pokemon.type1}</p>
-                <p class="card-text">Type 2: ${pokemon.type2}</p>
-                <p class="card-text"><img id="equipe${index}-${pkm_index}-statut" class="statut-box" src="${pokemon.Statut.image}"></img></p>
+                <img class="Team_Type" src="../Images_Types/Type_${pokemon.type1}.png"/>
+                <img class="Team_Type" src="../Images_Types/Type_${pokemon.type2}.png"/>
+                <p class="card-text-mini"><img id="equipe${index}-${pkm_index}-statut" class="statut-box" src="${pokemon.Statut.image}"></img></p>
                 <ul>
-                    <li>${pokemon.capacites[0].Nom_capa}</li>
-                    <li>${pokemon.capacites[1].Nom_capa}</li>
-                    <li>${pokemon.capacites[2].Nom_capa}</li>
-                    <li>${pokemon.capacites[3].Nom_capa}</li>
+                    <li class="list_Capa_mini"><div class="capa_mini ${pokemon.capacites[0].Type}">${pokemon.capacites[0].Nom_capa} <span class="PP_Capa_mini"><span id="${pkm_index}PPCapa${'0'}">${pokemon.PP[0]}</span>/${pokemon.capacites[0].PP}</span><img class="cat_Capa_mini" src="../Images_Catégories/${pokemon.capacites[0].Categorie}.png"/></div></li>
+                    <li class="list_Capa_mini"><div class="capa_mini ${pokemon.capacites[1].Type}">${pokemon.capacites[1].Nom_capa} <span class="PP_Capa_mini"><span id="${pkm_index}PPCapa${'1'}">${pokemon.PP[1]}</span>/${pokemon.capacites[1].PP}</span><img class="cat_Capa_mini" src="../Images_Catégories/${pokemon.capacites[1].Categorie}.png"/></div></li>
+                    <li class="list_Capa_mini"><div class="capa_mini ${pokemon.capacites[2].Type}">${pokemon.capacites[2].Nom_capa} <span class="PP_Capa_mini"><span id="${pkm_index}PPCapa${'2'}">${pokemon.PP[2]}</span>/${pokemon.capacites[2].PP}</span><img class="cat_Capa_mini" src="../Images_Catégories/${pokemon.capacites[2].Categorie}.png"/></div></li>
+                    <li class="list_Capa_mini"><div class="capa_mini ${pokemon.capacites[3].Type}">${pokemon.capacites[3].Nom_capa} <span class="PP_Capa_mini"><span id="${pkm_index}PPCapa${'3'}">${pokemon.PP[3]}</span>/${pokemon.capacites[3].PP}</span><img class="cat_Capa_mini" src="../Images_Catégories/${pokemon.capacites[3].Categorie}.png"/></div></li>
                 </ul>
             </div>
         </button>
     `;
 }
+{/*  */}
+
 
 /**
  * Génère l'affichage d'un pokemon actif, l'index permet de savoir si le pokemon appartient à l'équipe de gauche (index == 1) ou de droite (index == 2)
@@ -71,14 +77,15 @@ export function genererCartePokemonCombat(pokemon, index) {
             <div class="pokemon-infos">
                 <h5 class="card-title">${pokemon.nom}</h5>
                 <p class="card-text" id="PV${index}">PV: ${pokemon.PV_Actuel} / ${pokemon.PV_Max}</p>
-                <p class="card-text">Type 1: ${pokemon.type1}</p>
-                <p class="card-text">Type 2: ${pokemon.type2}</p>
+                <img class="Pokemon_Type" src="../Images_Types/Type_${pokemon.type1}.png"/>
+                <img class="Pokemon_Type" src="../Images_Types/Type_${pokemon.type2}.png"/>
                 <p class="card-text">Statut: <img id="pkm-statut-${index}" class="statut-box" src="${pokemon.Statut.image}"></img></p>
             </div>
             <img class="pokemon-image" src="${pokemon.image}" alt="${pokemon.nom}" />
         </div>
     `;
 }
+
 
 /**
  * Génère l'affichage d'une capacité du pokémon de l'équipe 1
@@ -144,6 +151,9 @@ export function affichePokemon1(pokemon1, jeu) {
     const boutonsCapa = document.getElementById("capa-list1");
     for (const [index, element] of pokemon1.capacites.entries()) {
         boutonsCapa.innerHTML += genererCapacitePokemon(element, pokemon1.PP[index], index)
+    }
+    if (pokemon1.type2 !== "Aucun") {
+
     }
     const Capacites = document.querySelectorAll(".capa");
     for (const [index, element] of Capacites.entries()) {
