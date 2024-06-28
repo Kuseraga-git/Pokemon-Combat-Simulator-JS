@@ -2,6 +2,7 @@ import { Pokemon } from "../Classes/Class_Pokemon.js"
 import { Critique } from "../Structures/Critique.js"
 import { Statistiques } from "../Structures/Statistiques.js"
 import { Calcul_Table_des_Types } from "../Structures/Types.js"
+import { ecrire_dans_Zone_de_Texte } from "./Affichage.js"
 
 /**
  * Fait le calcul des dégats à infliger par une capacité
@@ -68,5 +69,5 @@ function Calcul_Degats_Speciaux(adversaire, pokemon, Puissance, Type, chance_Cri
  */
 export function Infliger_Degats(pokemon, total) {
     pokemon.PV_Actuel -= total
-    console.log(`L'adversaire a subit ${total} points de dégats !`)
+    ecrire_dans_Zone_de_Texte(`L'adversaire a subit ${total} points de dégats !`)
 }

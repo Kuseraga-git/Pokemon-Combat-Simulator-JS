@@ -1,4 +1,5 @@
 import { Pokemon } from "../Classes/Class_Pokemon.js"
+import { ecrire_dans_Zone_de_Texte } from "../Fonctions_Utils/Affichage.js"
 
 export const Precision = {
     '-6': 3/9,
@@ -22,10 +23,10 @@ export const Precision = {
  */
 export function Baisser_Precision(pokemon) {
     if (pokemon.Precision > -5) {
-        console.log(`La Précision de ${pokemon.nom} diminue !`)
+        ecrire_dans_Zone_de_Texte(`La Précision de ${pokemon.nom} diminue !`)
         pokemon.Precision -= 1
     } else {
-        console.log(`La Précision de ${pokemon.nom} ne peut plus diminuer !`)
+        ecrire_dans_Zone_de_Texte(`La Précision de ${pokemon.nom} ne peut plus diminuer !`)
     }
 }
 
@@ -35,10 +36,10 @@ export function Baisser_Precision(pokemon) {
  */
 export function Augmenter_Precision(pokemon) {
     if (pokemon.Precision < 6) {
-        console.log(`La Précision de ${pokemon.nom} augmente !`)
+        ecrire_dans_Zone_de_Texte(`La Précision de ${pokemon.nom} augmente !`)
         pokemon.Precision += 1
     } else {
-        console.log(`La Précision de ${pokemon.nom} ne peut plus augmenter !`)
+        ecrire_dans_Zone_de_Texte(`La Précision de ${pokemon.nom} ne peut plus augmenter !`)
     }
 }
 

@@ -1,4 +1,4 @@
-import { affichePokemon2 } from "../Fonctions_Utils/Affichage.js"
+import { affichePokemon2, ecrire_dans_Zone_de_Texte, reset_Zone_de_Texte } from "../Fonctions_Utils/Affichage.js"
 import { Peut_Attaquer, Statut_Fin_Round } from "../Fonctions_Utils/Alterations.js"
 import { Meteo } from "../Structures/Meteo.js"
 import { Statistiques } from "../Structures/Statistiques.js"
@@ -30,7 +30,8 @@ export class Jeu {
      * Affiche le nombre de tour actuel de la partie
      */
     Nouveau_Tour() {
-        console.log(`========================${this.nbTours}========================`);
+        reset_Zone_de_Texte()
+        ecrire_dans_Zone_de_Texte(`========================${this.nbTours}========================`)
         this.nbTours+=1;
     }
 
@@ -76,7 +77,7 @@ export class Jeu {
                     **/
 
 
-                }
+                } else {return}
             } else { // SI le pokemon actif n'est pas KO
                 if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO === false && index_nouveau_pokemon1 != this.index_pokemon1){
                     // SI le nouveau Pokémon n'est pas KO et n'est pas le même que celui sur le terrain
@@ -132,10 +133,10 @@ export class Jeu {
                     }
                 }
             }
-            // Appelez la fonction qui déclenche les effets de statut à la fin du tour - Codez en dessous
+        } else {return}
+        // Appelez la fonction qui déclenche les effets de statut à la fin du tour - Codez en dessous
 
 
-        }
         // Les conditions en dessous s'occupent de vérifier si une condition de victoire a été effectué ou si le jeu doit continuer
         if (this.equipes[0].Check_Equipe_KO() && this.equipes[1].Check_Equipe_KO()) { // SI les 2 équipes sont KO
             setTimeout(alert, 500, `Egalité !!!`); // Permet au programme, après 1/2 seconde, d'afficher un message.

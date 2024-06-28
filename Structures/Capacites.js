@@ -7,6 +7,7 @@ import { Baisser_Precision, Check_Precision } from "./Precision.js"
 import { Statut } from "./Statut.js"
 import { Appliquer_meteo } from "../Fonctions_Utils/Effets_Meteo.js"
 import { Meteo } from "./Meteo.js"
+import { ecrire_dans_Zone_de_Texte } from "../Fonctions_Utils/Affichage.js"
 
 export const Capacites = {
     ELECTACLE: {
@@ -17,17 +18,17 @@ export const Capacites = {
         Precision: 100,
         PP: 15,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 Degat_de_Recul(pokemon, tmp[0], 0.3)
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -39,19 +40,19 @@ export const Capacites = {
         Precision: 90,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
                     Baisser_Stat(adversaire, "Attaque")
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -63,16 +64,16 @@ export const Capacites = {
         Precision: 100,
         PP: 15,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -84,19 +85,19 @@ export const Capacites = {
         Precision: 75,
         PP: 15,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(30)) {
                     Baisser_Stat(adversaire, "Defense")
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -108,17 +109,17 @@ export const Capacites = {
         Precision: 100,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 Soigner_PV(pokemon, Math.trunc(tmp[0] / 2))
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -130,16 +131,16 @@ export const Capacites = {
         Precision: 100,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -151,19 +152,19 @@ export const Capacites = {
         Precision: 100,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(30)) {
                     Appliquer_Statut(adversaire, Statut.EMPOISONNEMENT)
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -175,18 +176,18 @@ export const Capacites = {
         Precision: 90,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 Baisser_Stat(pokemon, "Spe_Attaque")
                 Baisser_Stat(pokemon, "Spe_Attaque")
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -198,7 +199,7 @@ export const Capacites = {
         Precision: 100,
         PP: 15,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             switch (Jeu.Meteo) {
                 case Meteo.PLUIE:
                     Puissance *= (3/2)
@@ -212,11 +213,11 @@ export const Capacites = {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -228,19 +229,19 @@ export const Capacites = {
         Precision: 70,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Jeu.Meteo === Meteo.GRELE || Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(10)) {
                     Appliquer_Statut(adversaire, Statut.GEL)
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -252,19 +253,19 @@ export const Capacites = {
         Precision: 100,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
                     Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -276,12 +277,12 @@ export const Capacites = {
         Precision: 100,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
@@ -293,7 +294,7 @@ export const Capacites = {
                 }
                 
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -305,7 +306,7 @@ export const Capacites = {
         Precision: 85,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             switch (Jeu.Meteo) {
                 case Meteo.SOLEIL:
                     Puissance *= (3/2)
@@ -319,14 +320,14 @@ export const Capacites = {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(10)) {
                     Appliquer_Statut(adversaire, Statut.BRULURE)
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -338,7 +339,7 @@ export const Capacites = {
         Precision: 70,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Jeu.Meteo === Meteo.SOLEIL) {
                 Precision = 50
             }
@@ -346,14 +347,14 @@ export const Capacites = {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(30)){
                     Appliquer_Confusion(adversaire)
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -365,16 +366,16 @@ export const Capacites = {
         Precision: 100,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -386,19 +387,19 @@ export const Capacites = {
         Precision: 70,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
                     Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -410,16 +411,16 @@ export const Capacites = {
         Precision: 85,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -431,17 +432,17 @@ export const Capacites = {
         Precision: 100,
         PP: 15,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 Degat_de_Recul(pokemon, tmp[0], 0.3)
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -453,19 +454,19 @@ export const Capacites = {
         Precision: 90,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(30)){
                     Appliquer_Peur(adversaire)
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -477,7 +478,7 @@ export const Capacites = {
         Precision: 85,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             switch (Jeu.Meteo) {
                 case Meteo.PLUIE:
                     Puissance *= (3/2)
@@ -491,11 +492,11 @@ export const Capacites = {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -507,19 +508,19 @@ export const Capacites = {
         Precision: 100,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
                     Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -531,19 +532,19 @@ export const Capacites = {
         Precision: 100,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(10)) {
                     Appliquer_Statut(adversaire, Statut.GEL)
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -554,11 +555,11 @@ export const Capacites = {
         Puissance: 80,
         PP: 20,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
             Infliger_Degats(adversaire, tmp[0])
             if (tmp[1]) {
-                console.log("COUP CRITIQUE !!!")
+                ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
             }
             adversaire.Check_KO()
         }
@@ -571,19 +572,19 @@ export const Capacites = {
         Precision: 100,
         PP: 15,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(30)) {
                     Baisser_Stat(adversaire, "Spe_Attaque")
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -595,12 +596,12 @@ export const Capacites = {
         Precision: 100,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(20)) {
@@ -619,7 +620,7 @@ export const Capacites = {
                     }
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -631,7 +632,7 @@ export const Capacites = {
         Precision: 100,
         PP: 15,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             switch (Jeu.Meteo) {
                 case Meteo.SOLEIL:
                     Puissance *= (3/2)
@@ -645,14 +646,14 @@ export const Capacites = {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(10)) {
                     Appliquer_Statut(adversaire, Statut.BRULURE)
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -664,19 +665,19 @@ export const Capacites = {
         Precision: 100,
         PP: 15,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(10)) {
                     Appliquer_Statut(adversaire, Statut.PARALYSIE)
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -688,19 +689,19 @@ export const Capacites = {
         Precision: 100,
         PP: 15,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(20)){
                     Appliquer_Peur(adversaire)
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -712,19 +713,19 @@ export const Capacites = {
         Precision: 100,
         PP: 15,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(20)) {
                     Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -736,19 +737,19 @@ export const Capacites = {
         Precision: 100,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
                     Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -760,18 +761,18 @@ export const Capacites = {
         Precision: 90,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                     let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                     Infliger_Degats(adversaire, tmp[0])
                     if (tmp[1]) {
-                        console.log("COUP CRITIQUE !!!")
+                        ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                     }
                     Baisser_Stat(pokemon, "Spe_Attaque")
                     Baisser_Stat(pokemon, "Spe_Attaque")
                     adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -783,7 +784,7 @@ export const Capacites = {
         Precision: 95,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             switch (Jeu.Meteo) {
                 case Meteo.SOLEIL:
                     Puissance *= (3/2)
@@ -797,14 +798,14 @@ export const Capacites = {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 Baisser_Stat(pokemon, "Defense")
                 Baisser_Stat(pokemon, "Spe_Defense")
                 Baisser_Stat(pokemon, "Vitesse")
                 adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -816,7 +817,7 @@ export const Capacites = {
         Precision: 85,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             switch (Jeu.Meteo) {
                 case Meteo.SOLEIL:
                     Puissance *= (3/2)
@@ -830,14 +831,14 @@ export const Capacites = {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(20)) {
                     Appliquer_Statut(adversaire, Statut.BRULURE)
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -849,7 +850,7 @@ export const Capacites = {
         Precision: 85,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             switch (Jeu.Meteo) {
                 case Meteo.PLUIE:
                     Puissance *= (3/2)
@@ -863,14 +864,14 @@ export const Capacites = {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(30)) {
                     Baisser_Precision(adversaire)
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -882,16 +883,16 @@ export const Capacites = {
         Precision: 80,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique + 1)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -903,19 +904,19 @@ export const Capacites = {
         Precision: 100,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
                     Baisser_Stat(adversaire, "Spe_Defense")
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -927,19 +928,19 @@ export const Capacites = {
         Precision: 100,
         PP: 15,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(20)) {
                     Baisser_Stat(adversaire, "Defense")
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -951,7 +952,7 @@ export const Capacites = {
         Precision: 90,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             switch (Jeu.Meteo) {
                 case Meteo.PLUIE:
                     Puissance *= (3/2)
@@ -965,11 +966,11 @@ export const Capacites = {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -981,18 +982,18 @@ export const Capacites = {
         Precision: 100,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 pokemon.PV_Actuel = 0
                 pokemon.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1004,18 +1005,18 @@ export const Capacites = {
         Precision: 100,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 pokemon.PV_Actuel = 0
                 pokemon.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1027,16 +1028,16 @@ export const Capacites = {
         Precision: 75,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1048,18 +1049,18 @@ export const Capacites = {
         Precision: 100,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 Baisser_Stat(adversaire, "Attaque")
                 Baisser_Stat(adversaire, "Defense")
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1071,7 +1072,7 @@ export const Capacites = {
         Precision: 70,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Jeu.Meteo === Meteo.SOLEIL) {
                 Precision = 50
             }
@@ -1079,14 +1080,14 @@ export const Capacites = {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(30)) {
                     Appliquer_Statut(adversaire, Statut.PARALYSIE)
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     } ,
@@ -1098,17 +1099,17 @@ export const Capacites = {
         Precision: 80,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 Degat_de_Recul(pokemon, tmp[0], 0.5)
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1120,19 +1121,19 @@ export const Capacites = {
         Precision: 80,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(30)) {
                     Appliquer_Statut(adversaire, Statut.EMPOISONNEMENT)
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1144,19 +1145,19 @@ export const Capacites = {
         Precision: 100,
         PP: 20,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(20)){
                     Appliquer_Peur(adversaire)
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1168,7 +1169,7 @@ export const Capacites = {
         Precision: 100,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let i = 0
                 const randint = Math.floor(Math.random() * 4) + 1
@@ -1176,13 +1177,13 @@ export const Capacites = {
                     let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                     Infliger_Degats(adversaire, tmp[0])
                     if (tmp[1]) {
-                        console.log("COUP CRITIQUE !!!")
+                        ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                     }
                     adversaire.Check_KO()
                 } 
-                console.log(`Touché ${i} fois !`)
+                ecrire_dans_Zone_de_Texte(`Touché ${i} fois !`)
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1194,20 +1195,20 @@ export const Capacites = {
         Precision: 100,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let i = 0
                 for (i; i<2 && adversaire.KO === false ;i++){
                     let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                     Infliger_Degats(adversaire, tmp[0])
                     if (tmp[1]) {
-                        console.log("COUP CRITIQUE !!!")
+                        ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                     }
                     adversaire.Check_KO()
                 } 
-                console.log(`Touché ${i} fois !`)
+                ecrire_dans_Zone_de_Texte(`Touché ${i} fois !`)
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1219,16 +1220,16 @@ export const Capacites = {
         Precision: 100,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1240,16 +1241,16 @@ export const Capacites = {
         Precision: 100,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1261,7 +1262,7 @@ export const Capacites = {
         Precision: 100,
         PP: 15,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             switch (Jeu.Meteo) {
                 case Meteo.SOLEIL:
                     Puissance *= (3/2)
@@ -1275,7 +1276,7 @@ export const Capacites = {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(10)) {
@@ -1284,7 +1285,7 @@ export const Capacites = {
                 Degat_de_Recul(pokemon, tmp[0], 0.3)
 
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1294,8 +1295,8 @@ export const Capacites = {
         Type: Types.EAU,
         PP: 40,
         Effet(Jeu, adversaire, pokemon) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
-            console.log(`Il ne se passe rien ...`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`Il ne se passe rien ...`)
         }
     },
     ZENITH: {
@@ -1304,9 +1305,9 @@ export const Capacites = {
         Type: Types.FEU,
         PP: 5,
         Effet(Jeu, adversaire, pokemon) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
             Appliquer_meteo(Jeu, Meteo.SOLEIL)
-            console.log(`Les rayons du soleil brillent !`)
+            ecrire_dans_Zone_de_Texte(`Les rayons du soleil brillent !`)
         }
     },
     DANSE_PLUIE: {
@@ -1315,9 +1316,9 @@ export const Capacites = {
         Type: Types.EAU,
         PP: 5,
         Effet(Jeu, adversaire, pokemon) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
             Appliquer_meteo(Jeu, Meteo.PLUIE)
-            console.log(`Il commence à pleuvoir !`)
+            ecrire_dans_Zone_de_Texte(`Il commence à pleuvoir !`)
         }
     },
     TEMPETE_DE_SABLE: {
@@ -1326,9 +1327,9 @@ export const Capacites = {
         Type: Types.SOL,
         PP: 5,
         Effet(Jeu, adversaire, pokemon) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
             Appliquer_meteo(Jeu, Meteo.TEMPETE_DE_SABLE)
-            console.log(`Une tempête de sable se prépare !`)
+            ecrire_dans_Zone_de_Texte(`Une tempête de sable se prépare !`)
         }
     },
     GRELE: {
@@ -1337,9 +1338,9 @@ export const Capacites = {
         Type: Types.GLACE,
         PP: 5,
         Effet(Jeu, adversaire, pokemon) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
             Appliquer_meteo(Jeu, Meteo.GRELE)
-            console.log(`Il commence à grêler !`)
+            ecrire_dans_Zone_de_Texte(`Il commence à grêler !`)
         }
     },
     AURORE: {
@@ -1348,9 +1349,9 @@ export const Capacites = {
         Type: Types.NORMAL,
         PP: 5,
         Effet(Jeu, adversaire, pokemon) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
             if (pokemon.PV_Actuel == pokemon.PV_Max) {
-                console.log(`${pokemon.nom} a déjà tous ses PV !`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} a déjà tous ses PV !`)
             } else {
                 let soins = 1/2
                 switch (Jeu.Meteo) {
@@ -1373,9 +1374,9 @@ export const Capacites = {
         Type: Types.FEE,
         PP: 5,
         Effet(Jeu, adversaire, pokemon) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
             if (pokemon.PV_Actuel == pokemon.PV_Max) {
-                console.log(`${pokemon.nom} a déjà tous ses PV !`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} a déjà tous ses PV !`)
             } else {
                 let soins = 1/2
                 switch (Jeu.Meteo) {
@@ -1398,9 +1399,9 @@ export const Capacites = {
         Type: Types.PLANTE,
         PP: 5,
         Effet(Jeu, adversaire, pokemon) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
             if (pokemon.PV_Actuel == pokemon.PV_Max) {
-                console.log(`${pokemon.nom} a déjà tous ses PV !`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} a déjà tous ses PV !`)
             } else {
                 let soins = 1/2
                 switch (Jeu.Meteo) {
@@ -1423,7 +1424,7 @@ export const Capacites = {
         Type: Types.NORMAL,
         PP: 20,
         Effet(Jeu, adversaire, pokemon) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
             Augmenter_Stat(pokemon, "Attaque")
             Augmenter_Stat(pokemon, "Spe_Attaque")
             if (Jeu.Meteo == Meteo.SOLEIL) {
@@ -1440,19 +1441,19 @@ export const Capacites = {
     //     Puissance: 30,
     //     Precision: 100,
     //     Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-    //         console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+    //         ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
     //         if (Check_Precision(Precision, pokemon)) {
     //             let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
     //             Infliger_Degats(adversaire, tmp[0])
     //             if (tmp[1]) {
-    //                 console.log("COUP CRITIQUE !!!")
+    //                 ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
     //             }
     //             adversaire.Check_KO()
     //             if (adversaire.KO === false && tmp[0] > 0) {
     //                 Appliquer_Statut(adversaire, Statut.EMPOISONNEMENT)
     //             }
     //         } else {
-    //             console.log(`${pokemon.nom} rate son attaque ...`)
+    //             ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
     //         }
     //     }
     // },
@@ -1462,9 +1463,9 @@ export const Capacites = {
         Type: Types.PSY,
         PP: 10,
         Effet(Jeu, adversaire, pokemon) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
             if (adversaire.PV_Actuel == adversaire.PV_Max) {
-                console.log(`${adversaire.nom} a déjà tous ses PV !`)
+                ecrire_dans_Zone_de_Texte(`${adversaire.nom} a déjà tous ses PV !`)
             } else {
                 Soigner_PV(adversaire, adversaire.PV_Max /2)
             }
@@ -1478,16 +1479,16 @@ export const Capacites = {
         Precision: 100,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1499,16 +1500,16 @@ export const Capacites = {
         Precision: 100,
         PP: 15,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1520,16 +1521,16 @@ export const Capacites = {
         Precision: 100,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1541,16 +1542,16 @@ export const Capacites = {
         Precision: 85,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1562,19 +1563,19 @@ export const Capacites = {
         Precision: 50,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0) {
                     Appliquer_Statut(adversaire, Statut.PARALYSIE)
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1584,7 +1585,7 @@ export const Capacites = {
         Type: Types.NORMAL,
         PP: 20,
         Effet(Jeu, adversaire, pokemon) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
             Augmenter_Stat(pokemon, "Attaque")
             Augmenter_Stat(pokemon, "Attaque")
             
@@ -1598,18 +1599,18 @@ export const Capacites = {
         Precision: 100,
         PP: 5,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 Baisser_Stat(pokemon, "Defense")
                 Baisser_Stat(pokemon, "Spe_Defense")
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1621,19 +1622,19 @@ export const Capacites = {
         Precision: 100,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
                 Infliger_Degats(adversaire, tmp[0])
                 if (tmp[1]) {
-                    console.log("COUP CRITIQUE !!!")
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
                 }
                 adversaire.Check_KO()
                 if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(10)) {
                     Appliquer_Statut(adversaire, Statut.SOMMEIL)
                 }
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1644,11 +1645,11 @@ export const Capacites = {
         Precision: 100,
         PP: 10,
         Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
-            console.log(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
             if (Check_Precision(Precision, pokemon)) {
                 Appliquer_Confusion(adversaire)
             } else {
-                console.log(`${pokemon.nom} rate son attaque ...`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
             }
         }
     },
@@ -1663,7 +1664,7 @@ export const Capacites = {
             let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
             Infliger_Degats(adversaire, tmp[0])
             if (tmp[1]) {
-                console.log("COUP CRITIQUE !!!")
+                ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
             }
             adversaire.Check_KO()
             Degat_de_Recul(pokemon, pokemon.PV_Max, 0.25)
