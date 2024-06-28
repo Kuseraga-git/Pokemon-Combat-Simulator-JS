@@ -117,6 +117,16 @@ ul {
     overflow: auto;
 }
 
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px; /* Optionnel : pour ajouter un peu de marge intérieure */
+    box-sizing: border-box;
+
+}
+
 .control-panel {
     float: left;
 }
@@ -126,8 +136,10 @@ ul {
 }
 
 #meteo {
-    margin-left: 3%;
-    height: 80%;
+    display: block;
+    width: 7%; /* Pour que l'image ne dépasse pas de son conteneur */
+    height: auto;
+    margin-top: 1%;
 }
 
 

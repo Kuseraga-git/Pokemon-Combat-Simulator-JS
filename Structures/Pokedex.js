@@ -142,7 +142,7 @@ export const Pokedex = {
         Capacites: [
             Capacites.POUVOIR_LUNAIRE,
             Capacites.TRIPLATTAQUE,
-            Capacites.LANCE_FLAMME,
+            Capacites.DANSE_PLUIE,
             Capacites.VIBROBSCUR,
         ]
     },
