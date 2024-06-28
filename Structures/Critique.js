@@ -1,4 +1,5 @@
 import { Pokemon } from "../Classes/Class_Pokemon.js"
+import { ecrire_dans_Zone_de_Texte } from "../Fonctions_Utils/Affichage.js"
 
 export const Critique = {
     1: 4.17,
@@ -13,10 +14,10 @@ export const Critique = {
  */
 export function Augmenter_Chances_Critique(pokemon) {
     if (pokemon.chance_Critique < 4) {
-        console.log(`Les chances de critique de ${pokemon.nom} augmentent !`)
+        ecrire_dans_Zone_de_Texte(`Les chances de critique de ${pokemon.nom} augmentent !`)
         pokemon.chance_Critique +=1
     } else {
-        console.log(`Les chances de critique de ${pokemon.nom} ne peuvent plus augmenter !`)
+        ecrire_dans_Zone_de_Texte(`Les chances de critique de ${pokemon.nom} ne peuvent plus augmenter !`)
     }
 }
 
@@ -26,9 +27,9 @@ export function Augmenter_Chances_Critique(pokemon) {
  */
 export function Baisser_Chances_Critique(pokemon) {
     if (pokemon.chance_Critique > 1) {
-        console.log(`Les chances de critique de ${pokemon.nom} Diminuent !`)
+        ecrire_dans_Zone_de_Texte(`Les chances de critique de ${pokemon.nom} Diminuent !`)
         pokemon.chance_Critique -=1
     } else {
-        console.log(`Les chances de critique de ${pokemon.nom} ne peuvent plus diminuer !`)
+        ecrire_dans_Zone_de_Texte(`Les chances de critique de ${pokemon.nom} ne peuvent plus diminuer !`)
     }
 }

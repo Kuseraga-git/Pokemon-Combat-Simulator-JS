@@ -1,6 +1,7 @@
 import { Jeu } from "../Classes/Class_Jeu.js";
 import { Meteo } from "../Structures/Meteo.js";
 import { Types } from "../Structures/Types.js";
+import { ecrire_dans_Zone_de_Texte } from "./Affichage.js";
 
 /**
  * Applique un effet météo
@@ -36,7 +37,7 @@ export function Appliquer_meteo(Jeu, nouvelle_Meteo) {
  */
 export function Meteo_neutre(Jeu, nouvelle_Meteo = Meteo.Aucun) {
     if (Jeu.Meteo != Meteo.Aucun && nouvelle_Meteo == Meteo.Aucun){
-        console.log(`La météo redevient calme !`)
+        ecrire_dans_Zone_de_Texte(`La météo redevient calme !`)
     }
     switch (Jeu.Meteo) {
         case Meteo.TEMPETE_DE_SABLE:
@@ -142,21 +143,21 @@ export function Degats_Meteo(Jeu) {
         const resist_sable = [Types.ROCHE, Types.ACIER, Types.SOL]
         if (Jeu.Meteo === Meteo.TEMPETE_DE_SABLE) {
             if (!(resist_sable.includes(pokemon1.type1) || resist_sable.includes(pokemon1.type2))) { // Check pokemon1 pas Roche/Acier/Sol
-                console.log(`${pokemon1.nom} subit des dégats de la tempête de sable !`)
+                ecrire_dans_Zone_de_Texte(`${pokemon1.nom} subit des dégats de la tempête de sable !`)
                 pokemon1.PV_Actuel -= Math.floor(pokemon1.PV_Actuel * 1/16)
             }
             if (!(resist_sable.includes(pokemon2.type1) || resist_sable.includes(pokemon2.type2))) { // Check pokemon2 pas Roche/Acier/Sol
-                console.log(`${pokemon2.nom} subit des dégats de la tempête de sable !`)
+                ecrire_dans_Zone_de_Texte(`${pokemon2.nom} subit des dégats de la tempête de sable !`)
                 pokemon2.PV_Actuel -= Math.floor(pokemon1.PV_Actuel * 1/16)
             }
         }
         if (Jeu.Meteo === Meteo.GRELE) {
             if (pokemon1.type1 != Types.GLACE && pokemon1.type2 != Types.GLACE) { // Check pokemon1 pas glace
-                console.log(`${pokemon1.nom} subit des dégats de la grêle !`)
+                ecrire_dans_Zone_de_Texte(`${pokemon1.nom} subit des dégats de la grêle !`)
                 pokemon2.PV_Actuel -= Math.floor(pokemon2.PV_Actuel * 1/16)
             }
             if (pokemon2.type1 != Types.GLACE && pokemon2.type2 != Types.GLACE) { // Check pokemon2 pas glace
-                console.log(`${pokemon2.nom} subit des dégats de la grêle !`)
+                ecrire_dans_Zone_de_Texte(`${pokemon2.nom} subit des dégats de la grêle !`)
                 pokemon2.PV_Actuel -= Math.floor(pokemon2.PV_Actuel * 1/16)
             }
         }

@@ -24,6 +24,16 @@ export function MAJ_PV_Actuel_Pokemon(pokemon1, index, pokemon2, equipe2) {
     afficherEquipe2(equipe2)
 }
 
+// Plus qu'à remplacer tous les consoles.log par ces fonctions
+
+export function reset_Zone_de_Texte() {
+    document.getElementById("zone-de-texte").innerHTML = ""
+}
+
+export function ecrire_dans_Zone_de_Texte(contenu) {
+    document.getElementById("zone-de-texte").innerHTML += `${contenu}<br>`
+}
+
 /**
  * Fait le premier affichage d'initialisation
  * @param {Jeu} Jeu Instance du Jeu

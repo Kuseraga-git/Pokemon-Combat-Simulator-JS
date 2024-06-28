@@ -1,3 +1,4 @@
+import { ecrire_dans_Zone_de_Texte } from "../Fonctions_Utils/Affichage.js"
 import { Meteo } from "../Structures/Meteo.js"
 import { Statut } from "../Structures/Statut.js"
 import { Types } from "../Structures/Types.js"
@@ -44,7 +45,7 @@ export class Pokemon {
      * @param {Jeu} Jeu Instance de la partie (de Jeu)
      */
     Appel(Jeu) {
-        console.log(`Je te choisis ${this.nom} !!!`)
+        ecrire_dans_Zone_de_Texte(`Je te choisis ${this.nom} !!!`)
         this.Reinitialisation_Stats()
         this.Bonus_Meteo(Jeu)
     }

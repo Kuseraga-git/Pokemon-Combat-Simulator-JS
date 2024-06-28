@@ -4,7 +4,7 @@ import { Capacites } from "../Structures/Capacites.js";
 import { Statistiques } from "../Structures/Statistiques.js";
 import { Statut } from "../Structures/Statut.js";
 import { Types } from "../Structures/Types.js";
-import { MAJ_PV_Actuel_Pokemon } from "./Affichage.js";
+import { MAJ_PV_Actuel_Pokemon, ecrire_dans_Zone_de_Texte } from "./Affichage.js";
 import { Degats_Meteo } from "./Effets_Meteo.js";
 
 /**
@@ -32,44 +32,44 @@ export function Peut_Attaquer(jeu, pokemon, capacite, adversaire, index_capacite
             return true
         } else if (pokemon.Statut === Statut.GEL){ // Si le pokemon est Gelé
             if (capacite.Type === Types.FEU || Calcul_Probabilite(20)) { // Mais se dégel
-                console.log(`${pokemon.nom} n'est plus ${pokemon.Statut.nom}`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} n'est plus ${pokemon.Statut.nom}`)
                 pokemon.Statut = Statut.Aucun
                 return true
             } else { // Si il ne se dégel pas
-                console.log(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut.nom}`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut.nom}`)
                 return false
             }
         } else if (pokemon.Statut === Statut.PARALYSIE) { // Si le pokemon est paralysé
             if (Calcul_Probabilite(75)) { // Si la paralysie ne s'applique pas
                 return true
             } else { // Si la paralysie s'applique
-                console.log(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut.nom}`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut.nom}`)
                 return false
             }
         } else if (pokemon.Statut === Statut.SOMMEIL) { // Si le pokemon dort
             if (Calcul_Probabilite(33) || pokemon.Tours_Sommeil === 3) { // Mais se réveil
-                console.log(`${pokemon.nom} n'est plus ${pokemon.Statut.nom}`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} n'est plus ${pokemon.Statut.nom}`)
                 pokemon.Statut = Statut.Aucun
                 pokemon.Tours_Sommeil = 0
                 return true
             } else { // Si il dort toujours
-                console.log(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut.nom}`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} ne peut pas attaquer, il est ${pokemon.Statut.nom}`)
                 pokemon.Tours_Sommeil += 1
                 return false
             }
         } else if (pokemon.Peur) { // Si le pokemon a peur
-            console.log(`La peur empêche ${pokemon.nom} d'attaquer !`)
+            ecrire_dans_Zone_de_Texte(`La peur empêche ${pokemon.nom} d'attaquer !`)
             return false
         } else if (pokemon.Confusion) { // Si le pokemon est confus
             if (Calcul_Probabilite(25) || pokemon.Tours_Confusion === 4) { // Si il sort de sa confusion
-                console.log(`${pokemon.nom} n'est plus confus`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} n'est plus confus`)
                 pokemon.Confusion = false
                 pokemon.Tours_Confusion = 0
                 return true
             } else if (Calcul_Probabilite(33)) { // Si le pokemon se blesse dans sa confusion
                 pokemon.PV_Actuel -= Calcul_Degats_Confusion(pokemon)
                 pokemon.Tours_Confusion += 1
-                console.log(`${pokemon.nom} se blesse dans sa confusion`)
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} se blesse dans sa confusion`)
                 return false
             } else { // Si la confusion ne s'applique pas
                 return true
@@ -77,11 +77,11 @@ export function Peut_Attaquer(jeu, pokemon, capacite, adversaire, index_capacite
         }
     } else {
         if (pokemon.PP[0] <= 0 && pokemon.PP[1] <= 0 && pokemon.PP[2] <= 0 && pokemon.PP[3] <= 0) {
-            console.log(`${pokemon.nom} n'a plus de PP dans ses capacités...`)
-            console.log(`${pokemon.nom} lutte désespérément !`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} n'a plus de PP dans ses capacités...`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lutte désespérément !`)
             Capacites.LUTTE.Effet(jeu, adversaire, pokemon)
         } else {
-            console.log(`${pokemon.nom} essai de lancer ${capacite.Nom_capa} mais n'a plus de PP pour cette capacité`)
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} essai de lancer ${capacite.Nom_capa} mais n'a plus de PP pour cette capacité`)
         }
         return (false)
     }
@@ -97,17 +97,17 @@ export function Statut_Fin_Round(Jeu) {
     let pokemon2 = Jeu.equipes[1].pokemons[Jeu.index_pokemon2]
     if (pokemon1.Statut === Statut.BRULURE) { // Applique les dégats de brulure - Pokemon gauche
         pokemon1.PV_Actuel -= Calcul_Degats_Brulure(pokemon1)
-        console.log(`${pokemon1.nom} subit des dégats de brulure`)
+        ecrire_dans_Zone_de_Texte(`${pokemon1.nom} subit des dégats de brulure`)
     } else if (pokemon1.Statut === Statut.EMPOISONNEMENT) { // Applique les dégats de poison - Pokemon gauche
         pokemon1.PV_Actuel -= Calcul_Degats_Empoisonnement(pokemon1)
-        console.log(`${pokemon1.nom} subit des dégats d'empoisonnement`)
+        ecrire_dans_Zone_de_Texte(`${pokemon1.nom} subit des dégats d'empoisonnement`)
     }
     if (pokemon2.Statut === Statut.BRULURE) { // Applique les dégats de brulure - Pokemon droite
         pokemon2.PV_Actuel -= Calcul_Degats_Brulure(pokemon2)
-        console.log(`${pokemon2.nom} subit des dégats de brulure`)
+        ecrire_dans_Zone_de_Texte(`${pokemon2.nom} subit des dégats de brulure`)
     } else if (pokemon2.Statut === Statut.EMPOISONNEMENT) { // Applique les dégats de poison - Pokemon gauche
         pokemon2.PV_Actuel -= Calcul_Degats_Empoisonnement(pokemon2)
-        console.log(`${pokemon2.nom} subit des dégats d'empoisonnement`)
+        ecrire_dans_Zone_de_Texte(`${pokemon2.nom} subit des dégats d'empoisonnement`)
     }
     pokemon1.Peur = false
     pokemon2.Peur = false
@@ -115,10 +115,10 @@ export function Statut_Fin_Round(Jeu) {
     pokemon1.Check_KO()
     pokemon2.Check_KO()
     if (pokemon1.KO) { // Si le pokemon de gauche tombe KO
-        console.log(`${pokemon1.nom} est KO`)
+        ecrire_dans_Zone_de_Texte(`${pokemon1.nom} est KO`)
     }
     if (pokemon2.KO) { // Si le pokemon de droite tombe KO
-        console.log(`${pokemon2.nom} est KO`)
+        ecrire_dans_Zone_de_Texte(`${pokemon2.nom} est KO`)
     }
     MAJ_PV_Actuel_Pokemon(pokemon1, Jeu.index_pokemon1, pokemon2, Jeu.equipes[1])
 }

@@ -1,4 +1,4 @@
-import { affichePokemon2 } from "../Fonctions_Utils/Affichage.js"
+import { affichePokemon2, ecrire_dans_Zone_de_Texte, reset_Zone_de_Texte } from "../Fonctions_Utils/Affichage.js"
 import { Peut_Attaquer, Statut_Fin_Round } from "../Fonctions_Utils/Alterations.js"
 import { Meteo } from "../Structures/Meteo.js"
 import { Statistiques } from "../Structures/Statistiques.js"
@@ -30,7 +30,8 @@ export class Jeu {
      * Affiche le nombre de tour actuel de la partie
      */
     Nouveau_Tour() {
-        console.log(`========================${this.nbTours}========================`);
+        reset_Zone_de_Texte()
+        ecrire_dans_Zone_de_Texte(`========================${this.nbTours}========================`)
         this.nbTours+=1;
     }
 
@@ -53,12 +54,12 @@ export class Jeu {
        // SI changement de pokemon
        if (choix1 === 4){
            if (pokemon1.KO) { // SI le pokemon actif est KO
-            if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO === false && index_nouveau_pokemon1 != this.index_pokemon1){
+                if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO === false && index_nouveau_pokemon1 != this.index_pokemon1){
                     pokemon1.Tours_Poison = 0
                     this.index_pokemon1 = index_nouveau_pokemon1
                     pokemon1 = this.equipes[0].pokemons[this.index_pokemon1]
                     pokemon1.Appel(this)
-                }
+                } else {return}
             } else { // SI le pokemon actif n'est pas KO
                 if (this.equipes[0].pokemons[index_nouveau_pokemon1].KO === false && index_nouveau_pokemon1 != this.index_pokemon1){
                     this.Nouveau_Tour();
@@ -92,7 +93,7 @@ export class Jeu {
                     }
                 }
             }
-        }
+        } else {return}
         Statut_Fin_Round(this)
         if (this.equipes[0].Check_Equipe_KO() && this.equipes[1].Check_Equipe_KO()) { // SI les 2 équipes sont KO
             setTimeout(alert, 500, `Egalité !!!`);
