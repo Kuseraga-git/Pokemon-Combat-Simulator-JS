@@ -1,11 +1,15 @@
-/* @font-face {
+@font-face {
     font-family: "myFirstFont";
-    src: "Pokemon Classic.ttf";
+    src: url("Pokemon Classic.ttf");
 }
 
-body {
+*,
+body,
+ul, li,
+input[type=button]
+{
     font-family: "myFirstFont";
-} */
+}
 
 .flex-container {
     display: flex;
@@ -13,6 +17,7 @@ body {
 
 .flex-child {
     flex: 1;
+    padding-left: 1%;
 }
 
 .flex-child:first-child {
@@ -24,7 +29,7 @@ body {
 }
 
 .pokemon-infos {
-    font-size: 25px;
+    font-size: 20px;
     flex: 1;
 }
 
@@ -36,11 +41,12 @@ body {
 
 li {
     margin-bottom: 5px;
+    font-size: 8px;
 }
 
 .capa {
-    width: 300px;
-    padding: 5px 5px;
+    width: 350px;
+    padding: 10px 10px;
     text-align: left;
     border-radius: 15px;
     border: none;
@@ -57,6 +63,7 @@ li {
 .cat_Capa {
     float: right;
     width: 20px;
+    margin-top: 5px;
 }
 
 .cat_Capa_mini {
@@ -66,13 +73,14 @@ li {
 
 .PP_Capa {
     text-align: end;
-    width: 15%;
+    width: 22%;
     float: right;
+    font-size: 12px;
 }
 
 .PP_Capa_mini {
     text-align: end;
-    width: 15%;
+    width: 20%;
     float: right;
 }
 
@@ -112,19 +120,33 @@ ul {
 }
 
 .equipe1-pokemon-card {
-    width: 33%;
+    width: 32%;
 }
 
 #equipe2 {
     float: right;
 }
 
+.flex-bottom-container {
+    display: flex;
+}
+
+.flex-bottom-child {
+    flex: 1;
+    padding-left: 0%;
+}
+
+.flex-bottom-child:first-child {
+    margin-right: 20px;
+} 
+
 #zone-de-texte {
     margin-top: 1%;
-    width: 400px;
+    width: 390px;
     border: 2px solid;
     overflow: auto;
     padding: 1em;
+    font-size: 15px;
 }
 
 .container {
@@ -143,9 +165,10 @@ ul {
 
 #aleatoire {
     background-color: #3DA224;
-    width: 80px;
+    width: auto;
     height: 100px;
-    padding: 5px 5px;
+    padding: 10px 10px;
+    font-size: 22px;
     text-align: center;
     border-radius: 15px;
     border: none;
@@ -162,6 +185,7 @@ ul {
     height: auto;
     margin: auto;
     margin-top: 1%;
+    margin-right: 30%;
 }
 
 
@@ -170,7 +194,6 @@ button {
     color: inherit;
     outline: none;
     box-shadow: none;
-    font-family: 'Pokemon Solid', sans-serif;
 }
 
 .Acier {
