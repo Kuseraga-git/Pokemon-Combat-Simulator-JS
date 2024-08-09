@@ -37,11 +37,16 @@ input[type=button]
     flex: 1;
     height: 325px;
     max-width: 350px;
+    margin-right: 1%;
 }
 
 li {
     margin-bottom: 5px;
     font-size: 8px;
+}
+
+.list_Capa {
+    margin-bottom: 8px;
 }
 
 .capa {
@@ -194,7 +199,20 @@ button {
     color: inherit;
     outline: none;
     box-shadow: none;
+    box-shadow: 0 5px #999;
 }
+  
+  button:hover {outline: auto;}
+
+  .equipe1-pokemon-card:hover {
+    background-color: #9a9a9a;
+}
+  
+  button:active {
+    box-shadow: 0 1px #666;
+    transform: translateY(4px);
+  }
+
 
 .Acier {
     background-color: #60A2B9;
