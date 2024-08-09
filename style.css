@@ -1,3 +1,12 @@
+/* @font-face {
+    font-family: "myFirstFont";
+    src: "Pokemon Classic.ttf";
+}
+
+body {
+    font-family: "myFirstFont";
+} */
+
 .flex-container {
     display: flex;
 }
@@ -115,12 +124,13 @@ ul {
     width: 400px;
     border: 2px solid;
     overflow: auto;
+    padding: 1em;
 }
 
 .container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content:space-between; */
     width: 100%;
     padding: 0 20px; /* Optionnel : pour ajouter un peu de marge intérieure */
     box-sizing: border-box;
@@ -131,6 +141,17 @@ ul {
     float: left;
 }
 
+#aleatoire {
+    background-color: #3DA224;
+    width: 80px;
+    height: 100px;
+    padding: 5px 5px;
+    text-align: center;
+    border-radius: 15px;
+    border: none;
+    margin-left: 1%;
+}
+
 .clear {
     clear: both;
 }
@@ -139,6 +160,7 @@ ul {
     display: block;
     width: 7%; /* Pour que l'image ne dépasse pas de son conteneur */
     height: auto;
+    margin: auto;
     margin-top: 1%;
 }
 
@@ -148,6 +170,7 @@ button {
     color: inherit;
     outline: none;
     box-shadow: none;
+    font-family: 'Pokemon Solid', sans-serif;
 }
 
 .Acier {

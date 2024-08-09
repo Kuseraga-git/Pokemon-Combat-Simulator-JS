@@ -31,7 +31,7 @@ export class Jeu {
      */
     Nouveau_Tour() {
         reset_Zone_de_Texte()
-        ecrire_dans_Zone_de_Texte(`========================${this.nbTours}========================`)
+        ecrire_dans_Zone_de_Texte(`Tour n°${this.nbTours}<br>`)
         this.nbTours+=1;
     }
 
