@@ -26,10 +26,17 @@ export function MAJ_PV_Actuel_Pokemon(pokemon1, index, pokemon2, equipe2) {
 
 // Plus qu'à remplacer tous les consoles.log par ces fonctions
 
+/**
+ * Réinitialise la zone de texte pour la rendre vide
+ */
 export function reset_Zone_de_Texte() {
     document.getElementById("zone-de-texte").innerHTML = ""
 }
 
+/**
+ * Ajoute du texte dans la zone de texte
+ * @param {string} contenu - Texte à ajouter dans la zone de texte
+ */
 export function ecrire_dans_Zone_de_Texte(contenu) {
     document.getElementById("zone-de-texte").innerHTML += `${contenu}<br>`
 }
@@ -172,6 +179,11 @@ export function affichePokemon1(pokemon1, jeu) {
             document.getElementById(`PPCapa${index}`).textContent = pokemon1.PP[index]
         })
     }
+    document.getElementById("aleatoire").addEventListener("click", function(event) {
+        let valeur_aleatoire = Math.floor(Math.random() * 4)
+        jeu.Ordre_Action(valeur_aleatoire)
+        document.getElementById(`PPCapa${valeur_aleatoire}`).textContent = pokemon1.PP[valeur_aleatoire]
+    })
 }
 
 /**
