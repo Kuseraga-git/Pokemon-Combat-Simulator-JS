@@ -11,10 +11,12 @@ import { Statut } from "../Structures/Statut.js"
  * @param {Equipe} equipe2 - Equipe du joueur de droite
  */
 export function MAJ_PV_Actuel_Pokemon(pokemon1, index, pokemon2, equipe2) {
+    document.getElementById("PV1-progress").value = pokemon1.PV_Actuel
     document.getElementById("PV1").textContent = `PV: ${pokemon1.PV_Actuel} / ${pokemon1.PV_Max}`
     document.getElementById(`equipe1-${index}`).textContent = `PV: ${pokemon1.PV_Actuel} / ${pokemon1.PV_Max}`
     document.getElementById(`equipe1-${index}-statut`).src = pokemon1.Statut.image
     document.getElementById(`pkm-statut-1`).src = pokemon1.Statut.image
+    document.getElementById("PV2-progress").value = pokemon2.PV_Actuel
     document.getElementById("PV2").textContent = `PV: ${pokemon2.PV_Actuel} / ${pokemon2.PV_Max}`
     document.getElementById(`pkm-statut-2`).src = pokemon2.Statut.image
     document.getElementById(`${index}PPCapa0`).textContent = pokemon1.PP[0]
@@ -23,8 +25,6 @@ export function MAJ_PV_Actuel_Pokemon(pokemon1, index, pokemon2, equipe2) {
     document.getElementById(`${index}PPCapa3`).textContent = pokemon1.PP[3]
     afficherEquipe2(equipe2)
 }
-
-// Plus qu'à remplacer tous les consoles.log par ces fonctions
 
 /**
  * Réinitialise la zone de texte pour la rendre vide
@@ -93,6 +93,7 @@ export function genererCartePokemonCombat(pokemon, index) {
         <div class="card" data-index="${index}">
             <div class="pokemon-infos">
                 <h5 class="card-title">${pokemon.nom}</h5>
+                <progress id="PV${index}-progress" value="${pokemon.PV_Actuel}" max="${pokemon.PV_Max}">${pokemon.PV_Actuel} / ${pokemon.PV_Max}</progress>
                 <p class="card-text" id="PV${index}">PV: ${pokemon.PV_Actuel} / ${pokemon.PV_Max}</p>
                 <img class="Pokemon_Type" src="../Images_Types/Type_${pokemon.type1}.png"/>
                 <img class="Pokemon_Type" src="../Images_Types/Type_${pokemon.type2}.png"/>

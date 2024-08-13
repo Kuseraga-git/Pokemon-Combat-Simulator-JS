@@ -11,6 +11,38 @@ input[type=button]
     font-family: "myFirstFont";
 }
 
+progress[value] {
+    --w: 250px; /* the width 75%*/
+    --color:  /* the progress color */
+      linear-gradient(#fff8,#fff0),
+      /* SI PV_Actuel < 25% "red" */
+      linear-gradient(red    0 0) 0 /calc(var(--w)*.25 - 100%) 1px,
+      /* SI PV_Actuel < 50% "orange" */
+      linear-gradient(orange 0 0) 0 /calc(var(--w)*.5 - 100%) 1px,
+      /* else "green" */
+      rgb(0, 155, 0);
+    --background: lightgrey; /* the background color */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    width: var(--w);
+    border-radius: 10em;
+    background: var(--background);
+  }
+  progress[value]::-webkit-progress-bar {
+    border-radius: 10em;
+    background: var(--background);
+  }
+  progress[value]::-webkit-progress-value {
+    border-radius: 10em;
+    background: var(--color);
+  }
+  progress[value]::-moz-progress-bar {
+    border-radius: 10em;
+    background: var(--color);
+  }
+
 .flex-container {
     display: flex;
 }
