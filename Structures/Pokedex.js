@@ -87,7 +87,7 @@ export const Pokedex = {
         Image: '../Images_Pokemon/Noadkoko.png',
         Capacites: [
             Capacites.MEGAFOUET,
-            Capacites.PSYCHO,
+            Capacites.PSYKO,
             Capacites.DAMOCLES,
             Capacites.POUVOIR_ANTIQUE,
         ]
