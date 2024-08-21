@@ -41,7 +41,7 @@ Projet en Js utilisant la POO
 
 Création simple et adaptative de nouveaux pokemons et compétences
 
-- Les capacités et les pokemons sont stockés dans des structures appelés par les objets.
+- Les capacités et les pokemons sont stockés dans des structures appelées par les objets.
 
 Le joueur peut :
 
