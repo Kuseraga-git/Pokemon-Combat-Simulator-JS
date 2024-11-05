@@ -1669,5 +1669,327 @@ export const Capacites = {
             adversaire.Check_KO()
             Degat_de_Recul(pokemon, pokemon.PV_Max, 0.25)
         }
-    }
+    },
+    PIETISOL: {
+        Nom_capa: "Piétisol",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.SOL,
+        Puissance: 60,
+        Precision: 100,
+        PP: 10,
+        Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            if (Check_Precision(Precision, pokemon)) {
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
+                }
+                adversaire.Check_KO()
+                if (adversaire.KO === false && tmp[0] > 0) {
+                    Baisser_Stat(adversaire, "Vitesse")
+                }
+            } else {
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
+    RONFLEMENT: {
+        Nom_capa: "Ronflement",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.NORMAL,
+        Puissance: 50,
+        Precision: 100,
+        PP: 15,
+        Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            if (Check_Precision(Precision, pokemon) && pokemon.Statut == Statut.SOMMEIL) {
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
+                }
+                adversaire.Check_KO()
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(20)) {
+                    Appliquer_Peur(adversaire)
+                }
+            } else {
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
+    // Manque le bypass du clonage
+    MEGAPHONE: {
+        Nom_capa: "Megaphone",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.NORMAL,
+        Puissance: 90,
+        Precision: 100,
+        PP: 10,
+        Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            if (Check_Precision(Precision, pokemon)) {
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
+                }
+                adversaire.Check_KO()
+            } else {
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
+    AQUA_BRECHE: {
+        Nom_capa: "Aqua Breche",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.EAU,
+        Puissance: 85,
+        Precision: 100,
+        PP: 10,
+        Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            switch (Jeu.Meteo) {
+                case Meteo.PLUIE:
+                    Puissance *= (3/2)
+                    break;
+                case Meteo.SOLEIL:
+                    Puissance *= (1/2)
+                default:
+                    break;
+            }
+            if (Check_Precision(Precision, pokemon)) {
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
+                }
+                adversaire.Check_KO()
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(20)) {
+                    Baisser_Stat(adversaire, "Defense")
+                }
+            } else {
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
+    LAME_DE_ROC: {
+        Nom_capa: "Lame De Roc",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.ROCHE,
+        Puissance: 100,
+        Precision: 80,
+        PP: 5,
+        Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            if (Check_Precision(Precision, pokemon)) {
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique + 1)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
+                }
+                adversaire.Check_KO()
+            } else {
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
+    DANSE_VICTOIRE: {
+        Nom_capa: "Danse Victoire",
+        Categorie: Categorie.STATUS,
+        Type: Types.COMBAT,
+        PP: 10,
+        Effet(Jeu, adversaire, pokemon) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
+            Augmenter_Stat(pokemon, "Attaque")
+            Augmenter_Stat(pokemon, "Defense")
+            Augmenter_Stat(pokemon, "Vitesse")
+        }
+    },
+    MORTIER_MATCHA: {
+        Nom_capa: "Mortier Matcha",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.PLANTE,
+        Puissance: 80,
+        Precision: 90,
+        PP: 15,
+        Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            if (Check_Precision(Precision, pokemon)) {
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
+                }
+                adversaire.Check_KO()
+                Soigner_PV(pokemon, Math.trunc(tmp[0] / 2))
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(20)) {
+                    Appliquer_Statut(adversaire, Statut.BRULURE)
+                }
+            } else {
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
+    JET_DE_VAPEUR: {
+        Nom_capa: "Jet de Vapeur",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.EAU,
+        Puissance: 110,
+        Precision: 95,
+        PP: 5,
+        Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            switch (Jeu.Meteo) {
+                case Meteo.PLUIE:
+                    Puissance *= (3/2)
+                    break;
+                case Meteo.SOLEIL:
+                    Puissance *= (1/2)
+                default:
+                    break;
+            }
+            if (Check_Precision(Precision, pokemon)) {
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
+                }
+                adversaire.Check_KO()
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(30)) {
+                    Appliquer_Statut(adversaire, Statut.BRULURE)
+                }
+            } else {
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
+    CHOC_EMOTIONEL: {
+        Nom_capa: "Choc Emotionel",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.FEE,
+        Puissance: 75,
+        Precision: 100,
+        PP: 15,
+        Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            if (Check_Precision(Precision, pokemon)) {
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
+                }
+                adversaire.Check_KO()
+                if (adversaire.KO === false && tmp[0] > 0) {
+                    Baisser_Stat(adversaire, "Spe_Attaque")
+                }
+            } else {
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
+    DOUCHE_FROIDE: {
+        Nom_capa: "Douche Froide",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.EAU,
+        Puissance: 50,
+        Precision: 100,
+        PP: 20,
+        Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            switch (Jeu.Meteo) {
+                case Meteo.PLUIE:
+                    Puissance *= (3/2)
+                    break;
+                case Meteo.SOLEIL:
+                    Puissance *= (1/2)
+                default:
+                    break;
+            }
+            if (Check_Precision(Precision, pokemon)) {
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, pokemon.PV_Actuel <= pokemon.PV_Max/2? Puissance *2 : Puissance, Type, pokemon.chance_Critique)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
+                }
+                adversaire.Check_KO()
+                if (adversaire.KO === false && tmp[0] > 0) {
+                    Baisser_Stat(adversaire, "Attaque")
+                }
+            } else {
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
+    SAUMURE: {
+        Nom_capa: "Saumure",
+        Categorie: Categorie.SPECIAL,
+        Type: Types.EAU,
+        Puissance: 65,
+        Precision: 100,
+        PP: 10,
+        Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            switch (Jeu.Meteo) {
+                case Meteo.PLUIE:
+                    Puissance *= (3/2)
+                    break;
+                case Meteo.SOLEIL:
+                    Puissance *= (1/2)
+                default:
+                    break;
+            }
+            if (Check_Precision(Precision, pokemon)) {
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, pokemon.PV_Actuel <= pokemon.PV_Max/2? Puissance *2 : Puissance, Type, pokemon.chance_Critique)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
+                }
+                adversaire.Check_KO()
+            } else {
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
+    POING_METEORE: {
+        Nom_capa: "Poing Meteore",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.ACIER,
+        Puissance: 90,
+        Precision: 90,
+        PP: 10,
+        Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            if (Check_Precision(Precision, pokemon)) {
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
+                }
+                adversaire.Check_KO()
+                if (adversaire.KO === false && tmp[0] > 0 && Chance_Effet_Supplementaire(20)) {
+                    Augmenter_Stat(pokemon, "Attaque")
+                }
+            } else {
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
+    STRIDO_SON: {
+        Nom_capa: "Strido-Son",
+        Categorie: Categorie.STATUS,
+        Type: Types.ACIER,
+        Precision: 85,
+        PP: 40,
+        Effet(Jeu, adversaire, pokemon, Type = this.Type, Precision = this.Precision) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            if (Check_Precision(Precision, pokemon)) {
+                Baisser_Stat(adversaire, "Spe_Defense")
+                Baisser_Stat(adversaire, "Spe_Defense")
+                Baisser_Stat(adversaire, "Spe_Defense")
+            } else {
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
 }
