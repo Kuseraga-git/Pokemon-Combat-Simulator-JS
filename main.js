@@ -1,6 +1,6 @@
 import { Equipe } from "./Classes/Class_Equipe.js";
 import { Jeu } from "./Classes/Class_Jeu.js";
-import { affichageGeneral } from "./Fonctions_Utils/Affichage.js"; // To remove
+import { affichageGeneral } from "./Fonctions_Utils/Affichage.js";
 
 // #################################################################
 // ###                      INITIALISATION                       ###
