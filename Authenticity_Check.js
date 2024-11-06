@@ -29,7 +29,12 @@ function Correct_Pokemon_Stats_Amount(pkmKey, pkmValue, amount) {
             bigestStat = statPannel[i]
         }
     }
-    updatePokedexFile(pkmKey, bigestStat, Pokedex[pkmKey][bigestStat] - amount);
+    if (Pokedex[pkmKey][bigestStat] - amount < 0) {
+        updatePokedexFile(pkmKey, "PV_Max", Pokedex[pkmKey].PV_Max * -1);
+        updatePokedexFile(pkmKey, "Vitesse", Pokedex[pkmKey].Vitesse * -1);
+    } else {
+        updatePokedexFile(pkmKey, bigestStat, Pokedex[pkmKey][bigestStat] - amount);
+    }
 }
 
 function updatePokedexFile(pokemonName, statToUpdate, newValue) {
