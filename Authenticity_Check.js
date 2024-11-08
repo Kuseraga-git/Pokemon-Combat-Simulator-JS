@@ -7,6 +7,7 @@ function Check_Pokemon_Validity() {
     for (const [key, value] of Object.entries(Pokedex)) {
         Check_Pokemon_Stats_Amount(key, value)
     }
+    console.log("My job is done ! Ready to battle !")
 }
 
 function Check_Pokemon_Stats_Amount(pkmKey, pkmValue) {
