@@ -7,12 +7,13 @@ import { affichageGeneral } from "./Fonctions_Utils/Affichage.js";
 // #################################################################
 
 const Partie = new Jeu()
-const equipe1 = new Equipe("Leaf", 1)
-equipe1.Creer_Equipe_Leaf()
-Partie.Ajouter_Dresseur(equipe1)
+const equipe1 = new Equipe("Leaf")
+const equipe2 = new Equipe("Red")
 
-const equipe2 = new Equipe("Red", 2)
+equipe1.Creer_Equipe_Leaf()
 equipe2.Creer_Equipe_Red()
+
+Partie.Ajouter_Dresseur(equipe1)
 Partie.Ajouter_Dresseur(equipe2)
 
 // #################################################################

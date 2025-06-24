@@ -7,11 +7,11 @@ import { ecrire_dans_Zone_de_Texte } from "./Affichage.js"
  * @param {number} total Total de points de vie à récupérer
  */
 export function Soigner_PV(pokemon, total) {
-    pokemon.PV_Actuel += total
+    pokemon.PV_Actuel = Math.floor(pokemon.PV_Actuel + total)
     if (pokemon.PV_Actuel > pokemon.PV_Max){
         pokemon.PV_Actuel = pokemon.PV_Max
     }
-    ecrire_dans_Zone_de_Texte(`${pokemon.nom} se soigne de ${total} points de vie !`)
+    ecrire_dans_Zone_de_Texte(`${pokemon.nom} se soigne de ${Math.floor(total)} points de vie !`)
 }
 
 /**
