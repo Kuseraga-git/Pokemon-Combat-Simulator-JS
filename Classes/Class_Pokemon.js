@@ -1,4 +1,8 @@
+import { ecrire_dans_Zone_de_Texte } from "../Fonctions_Utils/Affichage.js"
+import { Meteo } from "../Structures/Meteo.js"
 import { Statut } from "../Structures/Statut.js"
+import { Types } from "../Structures/Types.js"
+import { Jeu } from "./Class_Jeu.js"
 
 export class Pokemon {
     /**
@@ -32,12 +36,18 @@ export class Pokemon {
         this.Tours_Confusion = 0
         this.Peur = false
         this.capacites = pokemon.Capacites
+        this.PP = [pokemon.Capacites[0].PP, pokemon.Capacites[1].PP, pokemon.Capacites[2].PP, pokemon.Capacites[3].PP]
         this.image = pokemon.Image
     }
 
-    Appel() {
-        console.log(`Je te choisis ${this.nom} !!!`)
+    /**
+     * 
+     * @param {Jeu} Jeu Instance de la partie (de Jeu)
+     */
+    Appel(Jeu) {
+        ecrire_dans_Zone_de_Texte(`Je te choisis ${this.nom} !!!`)
         this.Reinitialisation_Stats()
+        this.Bonus_Meteo(Jeu)
     }
 
     Check_KO() {
@@ -56,10 +66,10 @@ export class Pokemon {
         this.Vitesse_Niveau = 0
         this.Confusion = false
         this.Peur = false
-        if (this.Statut == Statut.PARALYSIE) {
+        if (this.Statut === Statut.PARALYSIE) {
             this.Vitesse = Math.trunc(this.Vitesse / 2)
         }
-        if (this.Statut == Statut.BRULURE) {
+        if (this.Statut === Statut.BRULURE) {
             this.Attaque = Math.trunc(this.Attaque / 2)
         }
     }
@@ -67,12 +77,39 @@ export class Pokemon {
     Reinitialiser_Statut() {
         this.Tours_Poison = 0
         this.Tours_Sommeil = 0
-        if (this.Statut == Statut.PARALYSIE) {
+        if (this.Statut === Statut.PARALYSIE) {
             this.Vitesse *= 2
         }
-        if (this.Statut == Statut.BRULURE) {
+        if (this.Statut === Statut.BRULURE) {
             this.Attaque *= 2
         }
         this.Statut = Statut.Aucun
+    }
+
+    /**
+     * 
+     * @param {Jeu} Jeu Instance de la partie (de Jeu)
+     */
+    Bonus_Meteo(Jeu) {
+        if (Jeu.Meteo === Meteo.TEMPETE_DE_SABLE) {
+            if (this.type1 === Types.ROCHE || this.type2 === Types.ROCHE) {
+                this.Spe_Defense += this.Spe_Defense * 3/2
+            }
+        } else if (Jeu.Meteo === Meteo.GRELE) {
+            if (this.type1 === Types.GLACE || this.type2 === Types.GLACE) {
+                this.Defense += this.Defense * 3/2
+            }
+        }
+    }
+
+    /**
+     * 
+     * @param {Jeu} Jeu Instance de la partie (de Jeu) 
+     * @param {Pokemon} adversaire Instance du pokemon adverse
+     * @param {Number} index_capacite Index de la capacité à utiliser
+     */
+    Lancer_Capacite(Jeu, adversaire, index_capacite) {
+        this.capacites[index_capacite].Effet(Jeu, adversaire, this)
+        this.PP[index_capacite] -= 1
     }
 }

@@ -1,4 +1,5 @@
 import { Pokemon } from "../Classes/Class_Pokemon.js"
+import { ecrire_dans_Zone_de_Texte } from "./Affichage.js"
 
 /**
  * Permet de soigner le pokemon du total passé en paramètre
@@ -6,11 +7,11 @@ import { Pokemon } from "../Classes/Class_Pokemon.js"
  * @param {number} total Total de points de vie à récupérer
  */
 export function Soigner_PV(pokemon, total) {
-    pokemon.PV_Actuel += total
+    pokemon.PV_Actuel = Math.floor(pokemon.PV_Actuel + total)
     if (pokemon.PV_Actuel > pokemon.PV_Max){
         pokemon.PV_Actuel = pokemon.PV_Max
     }
-    console.log(`${pokemon.nom} se soigne de ${total} points de vie !`)
+    ecrire_dans_Zone_de_Texte(`${pokemon.nom} se soigne de ${Math.floor(total)} points de vie !`)
 }
 
 /**
@@ -29,7 +30,7 @@ export function Chance_Effet_Supplementaire(Chance) {
  * @param {string} stat Statistique à baisser
  */
 export function Baisser_Stat(pokemon, stat) {
-    console.log(`${stat} de ${pokemon.nom} diminue !`)
+    ecrire_dans_Zone_de_Texte(`${stat} de ${pokemon.nom} diminue !`)
     pokemon[stat + '_Niveau'] -= 1
 }
 
@@ -39,7 +40,7 @@ export function Baisser_Stat(pokemon, stat) {
  * @param {string} stat Statistique à augmenter
  */
 export function Augmenter_Stat(pokemon, stat) {
-    console.log(`${stat} de ${pokemon.nom} augmente !`)
+    ecrire_dans_Zone_de_Texte(`${stat} de ${pokemon.nom} augmente !`)
     pokemon[stat + '_Niveau'] += 1
 }
 
@@ -51,6 +52,6 @@ export function Augmenter_Stat(pokemon, stat) {
  */
 export function Degat_de_Recul(pokemon, degats, pourcentage) {
     pokemon.PV_Actuel = Math.trunc(pokemon.PV_Actuel - (degats * pourcentage))
-    console.log(`${pokemon.nom} subit des dégâts de recul`)
+    ecrire_dans_Zone_de_Texte(`${pokemon.nom} subit des dégâts de recul`)
     pokemon.Check_KO()
 }

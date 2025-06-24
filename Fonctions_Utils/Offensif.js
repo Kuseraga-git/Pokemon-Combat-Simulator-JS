@@ -2,6 +2,7 @@ import { Pokemon } from "../Classes/Class_Pokemon.js"
 import { Critique } from "../Structures/Critique.js"
 import { Statistiques } from "../Structures/Statistiques.js"
 import { Calcul_Table_des_Types } from "../Structures/Types.js"
+import { ecrire_dans_Zone_de_Texte } from "./Affichage.js"
 
 /**
  * Fait le calcul des dégats à infliger par une capacité
@@ -14,9 +15,9 @@ import { Calcul_Table_des_Types } from "../Structures/Types.js"
  * @returns {number} Renvoit les dégats infligé par la capacité au pokemon adverse
  */
 export function Calcul_Degats(Categorie, adversaire, pokemon, Puissance, Type, chance_Critique) {
-    if (Categorie == "Phys") {
+    if (Categorie === "Phys") {
         return (Calcul_Degats_Physique(adversaire, pokemon, Puissance, Type, chance_Critique))
-    } else if (Categorie == "Spe") {
+    } else if (Categorie === "Spe") {
         return (Calcul_Degats_Speciaux(adversaire, pokemon, Puissance, Type, chance_Critique))
     }
 }
@@ -36,9 +37,9 @@ function Calcul_Degats_Physique(adversaire, pokemon, Puissance, Type, chance_Cri
     Degats = Degats * (Puissance * (pokemon.Attaque * Statistiques[pokemon.Attaque_Niveau]) / 50.0)
     Degats = (Degats / (adversaire.Defense * Statistiques[adversaire.Defense_Niveau])) + 2.0
     Degats = Degats * critique
-    Degats = Degats * ((pokemon.type1 == Type || pokemon.type2 == Type) ? 1.5 : 1.0)
+    Degats = Degats * ((pokemon.type1 === Type || pokemon.type2 === Type) ? 1.5 : 1.0)
     Degats = Degats * Calcul_Table_des_Types(Type, adversaire.type1, adversaire.type2)
-    return [Math.trunc(Degats), (critique == 2.0)]
+    return [Math.trunc(Degats), (critique === 2.0)]
 }
 
 /**
@@ -56,9 +57,9 @@ function Calcul_Degats_Speciaux(adversaire, pokemon, Puissance, Type, chance_Cri
     Degats = Degats * (Puissance * (pokemon.Spe_Attaque * Statistiques[pokemon.Spe_Attaque_Niveau]) / 50.0)
     Degats = (Degats / (adversaire.Spe_Defense * Statistiques[adversaire.Spe_Defense_Niveau])) + 2.0
     Degats = Degats * critique
-    Degats = Degats * ((pokemon.type1 == Type || pokemon.type2 == Type) ? 1.5 : 1.0)
+    Degats = Degats * ((pokemon.type1 === Type || pokemon.type2 === Type) ? 1.5 : 1.0)
     Degats = Degats * Calcul_Table_des_Types(Type, adversaire.type1, adversaire.type2)
-    return [Math.trunc(Degats), (critique == 2.0)]
+    return [Math.trunc(Degats), (critique === 2.0)]
 }
 
 /**
@@ -68,5 +69,5 @@ function Calcul_Degats_Speciaux(adversaire, pokemon, Puissance, Type, chance_Cri
  */
 export function Infliger_Degats(pokemon, total) {
     pokemon.PV_Actuel -= total
-    console.log(`L'adversaire a subit ${total} points de dégats !`)
+    ecrire_dans_Zone_de_Texte(`L'adversaire a subit ${total} points de dégats !`)
 }

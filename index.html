@@ -3,19 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Pokemon</title>
         <link href="style.css" rel="stylesheet" />
     </head>
 <body>
     <div class="flex-container">
-        <div id="pokemon1" class="flex-child"></div>
-        <div id="pokemon2" class="flex-child"></div>
+        <div id="pokemon1" class="flex-child pokemons-affichage-haut"></div>
+        <div id="pokemon2" class="flex-child pokemons-affichage-haut"></div>
     </div>
-    <div id="equipe2"></div>
-    <div class="control-panel">
-        <ul id="capa-list1"></ul>
+    <div class="container">
+        <div class="control-panel">
+            <ul id="capa-list1"></ul>
+        </div>
+        <button id="aleatoire">Aleatoire</button>
+        <img id="meteo" src=""></img>
+        <div id="equipe2"></div>
     </div>
-    <div id="equipe1" class="clear" style="margin-top: 3%;"></div>
+    <div class="clear flex-bottom-container">
+        <div id="equipe1" class="flex-bottom-child"></div>
+        <div id="zone-de-texte" class="flex-bottom-child"></div>
+    </div>
     <script type="module" src="main.js"></script>
 </body>
 </html>
