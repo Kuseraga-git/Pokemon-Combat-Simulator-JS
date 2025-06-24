@@ -524,6 +524,78 @@ export const Capacites = {
             }
         }
     },
+    POING_FEU: {
+        Nom_capa: "Poing Feu",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.FEU,
+        Puissance: 75,
+        Precision: 100,
+        PP: 15,
+        Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            if (Check_Precision(Precision, pokemon)) {
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
+                }
+                adversaire.Check_KO()
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(10)) {
+                    Appliquer_Statut(adversaire, Statut.BRULURE)
+                }
+            } else {
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
+    POING_ECLAIR: {
+        Nom_capa: "Poing Eclair",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.ELECTRICK,
+        Puissance: 75,
+        Precision: 100,
+        PP: 15,
+        Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            if (Check_Precision(Precision, pokemon)) {
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
+                }
+                adversaire.Check_KO()
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(10)) {
+                    Appliquer_Statut(adversaire, Statut.PARALYSIE)
+                }
+            } else {
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
+    POING_GLACE: {
+        Nom_capa: "Poing Glace",
+        Categorie: Categorie.PHYSIQUE,
+        Type: Types.GLACE,
+        Puissance: 75,
+        Precision: 100,
+        PP: 15,
+        Effet(Jeu, adversaire, pokemon, Puissance = this.Puissance, Type = this.Type, Precision = this.Precision) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} au ${adversaire.nom} adverse`)
+            if (Check_Precision(Precision, pokemon)) {
+                let tmp = Calcul_Degats(this.Categorie, adversaire, pokemon, Puissance, Type, pokemon.chance_Critique)
+                Infliger_Degats(adversaire, tmp[0])
+                if (tmp[1]) {
+                    ecrire_dans_Zone_de_Texte("COUP CRITIQUE !!!")
+                }
+                adversaire.Check_KO()
+                if (adversaire.KO === false && tmp[0] > 0 && Calcul_Probabilite(10)) {
+                    Appliquer_Statut(adversaire, Statut.GEL)
+                }
+            } else {
+                ecrire_dans_Zone_de_Texte(`${pokemon.nom} rate son attaque ...`)
+            }
+        }
+    },
     LASER_GLACE: {
         Nom_capa: "Laser Glace",
         Categorie: Categorie.SPECIAL,
@@ -1992,4 +2064,17 @@ export const Capacites = {
             }
         }
     },
+        DANCE_DRACO: {
+        Nom_capa: "Dance Draco",
+        Categorie: Categorie.STATUS,
+        Type: Types.DRAGON,
+        Precision: 100,
+        PP: 10,
+        Effet(Jeu, adversaire, pokemon) {
+            ecrire_dans_Zone_de_Texte(`${pokemon.nom} lance l'attaque ${this.Nom_capa} !`)
+            Augmenter_Stat(pokemon, "Spe_Attaque")
+            Augmenter_Stat(pokemon, "Vitesse")
+        }
+    },
+
 }
