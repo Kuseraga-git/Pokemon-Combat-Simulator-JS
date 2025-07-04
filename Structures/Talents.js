@@ -3,6 +3,10 @@ export const Talents = {
         Nom : "Statik",
         Description : "Si un Pokémon utilise une attaque directe et que celle-ci inflige des dégâts sur un Pokémon doté de ce talent, il a 30 % de chances d'être paralysé.",
         Activation : "Quand_Subit_Degats",
+        Take_Damage(pokemon, adversaire) {
+            console.log("Pokemon" + pokemon)
+            console.log("Adversaire" + adversaire)
+        },
         Effet(pokemon, adversaire) {
             console.log("Tu m'as touché donc")
             console.log("Je vais lancer un Dés 100")
